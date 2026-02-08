@@ -7,12 +7,16 @@ import groupBy, { groupByDictTags } from '@/utils/groupBy'
 import * as ScrollArea from '@radix-ui/react-scroll-area'
 import { useCallback, useMemo } from 'react'
 import { useHotkeys } from 'react-hotkeys-hook'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useSearchParams } from 'react-router-dom'
 import IconInfo from '~icons/ic/outline-info'
 import IconX from '~icons/tabler/x'
 
 export default function GalleryPage() {
   const navigate = useNavigate()
+  const [searchParams] = useSearchParams()
+  
+  // 获取返回路径，默认为首页
+  const returnTo = searchParams.get('returnTo') || '/'
 
   const { groupedByCategoryAndTag } = useMemo(() => {
     const groupedByCategory = Object.entries(groupBy(dictionaries, (dict) => dict.category))
@@ -26,8 +30,8 @@ export default function GalleryPage() {
   }, [])
 
   const onBack = useCallback(() => {
-    navigate('/')
-  }, [navigate])
+    navigate(returnTo)
+  }, [navigate, returnTo])
 
   useHotkeys('enter,esc', onBack, { preventDefault: true })
 

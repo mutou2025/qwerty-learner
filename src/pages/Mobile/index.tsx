@@ -237,7 +237,7 @@ const MobilePage: React.FC = () => {
         <section className="mt-24 bg-gray-50/30 px-6 py-24 lg:mt-32 lg:px-24" itemScope itemType="https://schema.org/Product">
           <div className="mx-auto max-w-7xl">
             <meta itemProp="name" content="Echo Learner" />
-            <meta itemProp="description" content="为键盘工作者设计的英语学习软件，结合打字练习与单词记忆" />
+            <meta itemProp="description" content="为语言学习者设计的英语学习软件，结合打字练习与单词记忆" />
             <meta itemProp="brand" content="Echo Learner" />
 
             {/* Offers Schema */}
@@ -424,7 +424,7 @@ const MobilePage: React.FC = () => {
                   </div>
                   <h3 className="mb-3 text-lg font-semibold text-gray-900 sm:text-xl">英语肌肉记忆训练</h3>
                   <p className="text-sm leading-relaxed text-gray-600 sm:text-base">
-                    专为键盘工作者设计，将英语单词记忆与键盘输入的肌肉记忆锻炼相结合，在背诵单词的同时巩固打字技能。
+                    专为语言学习者设计，将英语单词记忆与键盘输入的肌肉记忆锻炼相结合，在背诵单词的同时巩固打字技能。
                   </p>
                 </div>
 
