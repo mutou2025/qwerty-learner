@@ -16,3 +16,5 @@ export const defaultFontSizeConfig = {
   foreignFont: 48,
   translateFont: 18,
 }
+
+export * from './site'

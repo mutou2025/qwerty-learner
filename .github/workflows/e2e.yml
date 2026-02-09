@@ -21,6 +21,8 @@ jobs:
             ${{ runner.os }}-node-
       - name: Install dependencies
         run: npm i
+      - name: Brand check
+        run: npm run check:brand
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps
       - name: Run all workflows

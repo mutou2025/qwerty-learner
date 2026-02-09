@@ -6,6 +6,7 @@ import codeImg from '@/assets/mobile/detail/code.png'
 import dictationImg from '@/assets/mobile/detail/dictation.png'
 import phoneticImg from '@/assets/mobile/detail/phonetic.png'
 import speedImg from '@/assets/mobile/detail/speed.png'
+import { SITE_URL } from '@/constants/site'
 import type React from 'react'
 import { useEffect, useRef, useState } from 'react'
 
@@ -75,7 +76,7 @@ const MobilePage: React.FC = () => {
           </div>
         </div>
         <a
-          href="https://qwerty.kaiyi.cool/"
+          href={SITE_URL}
           target="_blank"
           rel="noopener noreferrer"
           className="hidden items-center gap-2 rounded-xl bg-gray-900 px-6 py-3 text-sm font-medium text-white transition-all duration-200 hover:-translate-y-0.5 hover:bg-gray-800 hover:shadow-lg md:flex"
@@ -91,7 +92,7 @@ const MobilePage: React.FC = () => {
           </svg>
         </a>
         <a
-          href="https://qwerty.kaiyi.cool/"
+          href={SITE_URL}
           target="_blank"
           rel="noopener noreferrer"
           className="flex items-center gap-1 rounded-xl bg-gray-900 px-4 py-2.5 text-sm text-white transition-all duration-200 hover:bg-gray-800 md:hidden"
@@ -113,7 +114,7 @@ const MobilePage: React.FC = () => {
         <div className="mx-auto max-w-7xl">
           <ol className="flex items-center space-x-2 text-sm text-gray-500" itemScope itemType="https://schema.org/BreadcrumbList">
             <li itemProp="itemListElement" itemScope itemType="https://schema.org/ListItem">
-              <a href="https://qwerty.kaiyi.cool/" className="transition-colors hover:text-indigo-600" itemProp="item">
+              <a href={SITE_URL} className="transition-colors hover:text-indigo-600" itemProp="item">
                 <span itemProp="name">首页</span>
               </a>
               <meta itemProp="position" content="1" />
@@ -180,7 +181,7 @@ const MobilePage: React.FC = () => {
 
             {/* CTA按钮 */}
             <a
-              href="https://qwerty.kaiyi.cool/"
+              href={SITE_URL}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-3 rounded-full bg-gray-900 px-10 py-5 text-lg font-semibold text-white shadow-xl transition-all duration-300 hover:-translate-y-1 hover:bg-gray-800 hover:shadow-2xl"
@@ -245,7 +246,7 @@ const MobilePage: React.FC = () => {
               <meta itemProp="price" content="0" />
               <meta itemProp="priceCurrency" content="USD" />
               <meta itemProp="availability" content="https://schema.org/InStock" />
-              <meta itemProp="url" content="https://qwerty.kaiyi.cool/" />
+              <meta itemProp="url" content={SITE_URL} />
             </div>
 
             {/* Aggregate Rating */}
@@ -681,7 +682,7 @@ const MobilePage: React.FC = () => {
                 </p>
               </div>
               <a
-                href="https://qwerty.kaiyi.cool/"
+                href={SITE_URL}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 rounded-full bg-indigo-600 px-8 py-4 font-semibold text-white transition-all duration-300 hover:bg-indigo-700 hover:shadow-lg"
@@ -841,7 +842,7 @@ const MobilePage: React.FC = () => {
               </div>
               <div className="flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
                 <a
-                  href="https://qwerty.kaiyi.cool/"
+                  href={SITE_URL}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 rounded-full bg-indigo-600 px-8 py-4 font-semibold text-white transition-all duration-300 hover:bg-indigo-700 hover:shadow-lg"
@@ -1080,7 +1081,7 @@ const MobilePage: React.FC = () => {
                 </p>
               </div>
               <a
-                href="https://qwerty.kaiyi.cool/"
+                href={SITE_URL}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 rounded-full bg-indigo-600 px-8 py-4 font-semibold text-white transition-all duration-300 hover:bg-indigo-700 hover:shadow-lg"
@@ -1117,7 +1118,7 @@ const MobilePage: React.FC = () => {
             </p>
             <div className="flex flex-col items-center gap-4 sm:flex-row">
               <a
-                href="https://qwerty.kaiyi.cool/"
+                href={SITE_URL}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="hover:shadow-3xl group relative overflow-hidden rounded-full bg-white px-12 py-5 text-xl font-semibold text-gray-900 shadow-2xl transition-all duration-300 hover:-translate-y-1 hover:scale-105"

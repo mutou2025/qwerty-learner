@@ -9,6 +9,7 @@ import shareImage7 from '@/assets/sharePic/image-7.png'
 import shareImage8 from '@/assets/sharePic/image-8.png'
 import shareImage9 from '@/assets/sharePic/image-9.png'
 import keyboardSvg from '@/assets/sharePic/keyBackground.svg'
+import { SITE_DOMAIN } from '@/constants/site'
 import { currentChapterAtom, currentDictInfoAtom } from '@/store'
 import { recordShareAction } from '@/utils'
 import { Dialog, Transition } from '@headlessui/react'
@@ -178,7 +179,7 @@ export default function SharePicDialog({ showState, setShowState, randomChoose }
               <div className="ml-5 mt-2 self-start text-xs text-gray-600">{`第 ${currentChapter + 1} 章`}</div>
             </div>
             <div className="mb-3 ml-5 mt-auto">
-              <div className="text-xs">Qwerty.kaiyi.cool</div>
+              <div className="text-xs">{SITE_DOMAIN}</div>
               <div className="mt-1 text-xs font-normal text-gray-400">为语言学习者设计的单词与肌肉记忆锻炼软件</div>
             </div>
             <div className="absolute -right-9 bottom-10 ">
