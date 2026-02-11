@@ -1,6 +1,6 @@
-import type { AuthError, Session, User } from '@supabase/supabase-js'
-import noop from '@/utils/noop'
 import { isSupabaseConfigured, supabase } from './client'
+import noop from '@/utils/noop'
+import type { AuthError, Session, User } from '@supabase/supabase-js'
 
 export type AuthResult = {
   user: User | null
@@ -13,7 +13,11 @@ export type AuthResult = {
  */
 export async function signUp(email: string, password: string): Promise<AuthResult> {
   if (!supabase) {
-    return { user: null, session: null, error: { message: 'Supabase not configured', name: 'ConfigError' } as AuthError }
+    return {
+      user: null,
+      session: null,
+      error: { message: 'Supabase not configured', name: 'ConfigError' } as AuthError,
+    }
   }
 
   const { data, error } = await supabase.auth.signUp({
@@ -36,7 +40,11 @@ export async function signUp(email: string, password: string): Promise<AuthResul
  */
 export async function signIn(email: string, password: string): Promise<AuthResult> {
   if (!supabase) {
-    return { user: null, session: null, error: { message: 'Supabase not configured', name: 'ConfigError' } as AuthError }
+    return {
+      user: null,
+      session: null,
+      error: { message: 'Supabase not configured', name: 'ConfigError' } as AuthError,
+    }
   }
 
   const { data, error } = await supabase.auth.signInWithPassword({
@@ -54,7 +62,9 @@ export async function signIn(email: string, password: string): Promise<AuthResul
 /**
  * 使用 OAuth 登录 (Google, GitHub 等)
  */
-export async function signInWithOAuth(provider: 'google' | 'github'): Promise<{ error: AuthError | null }> {
+export async function signInWithOAuth(
+  provider: 'google' | 'github',
+): Promise<{ error: AuthError | null }> {
   if (!supabase) {
     return { error: { message: 'Supabase not configured', name: 'ConfigError' } as AuthError }
   }
@@ -89,7 +99,9 @@ export async function getCurrentUser(): Promise<User | null> {
     return null
   }
 
-  const { data: { user } } = await supabase.auth.getUser()
+  const {
+    data: { user },
+  } = await supabase.auth.getUser()
   return user
 }
 
@@ -101,7 +113,9 @@ export async function getSession(): Promise<Session | null> {
     return null
   }
 
-  const { data: { session } } = await supabase.auth.getSession()
+  const {
+    data: { session },
+  } = await supabase.auth.getSession()
   return session
 }
 
@@ -113,7 +127,9 @@ export function onAuthStateChange(callback: (user: User | null) => void) {
     return { unsubscribe: noop }
   }
 
-  const { data: { subscription } } = supabase.auth.onAuthStateChange((_, session) => {
+  const {
+    data: { subscription },
+  } = supabase.auth.onAuthStateChange((_, session) => {
     callback(session?.user ?? null)
   })
 

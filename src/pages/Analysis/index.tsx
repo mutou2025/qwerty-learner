@@ -8,8 +8,8 @@ import VocabularyDistribution from './components/VocabularyDistribution'
 import { useAchievementStats } from './hooks/useAchievementStats'
 import { useTodayStats } from './hooks/useTodayStats'
 import { useWordStats } from './hooks/useWordStats'
-import Layout from '@/components/Layout'
 import Header from '@/components/Header'
+import Layout from '@/components/Layout'
 import { isOpenDarkModeAtom } from '@/store'
 import * as ScrollArea from '@radix-ui/react-scroll-area'
 import dayjs from 'dayjs'
@@ -44,10 +44,8 @@ const Analysis = () => {
 
   useHotkeys('enter,esc', onBack, { preventDefault: true })
 
-  const { isEmpty, exerciseRecord, wordRecord, wpmRecord, accuracyRecord, wrongTimeRecord } = useWordStats(
-    dayjs().subtract(1, 'year').unix(),
-    dayjs().unix(),
-  )
+  const { isEmpty, exerciseRecord, wordRecord, wpmRecord, accuracyRecord, wrongTimeRecord } =
+    useWordStats(dayjs().subtract(1, 'year').unix(), dayjs().unix())
 
   return (
     <Layout>
@@ -62,13 +60,19 @@ const Analysis = () => {
         <ScrollArea.Root className="flex-1 overflow-y-auto">
           <ScrollArea.Viewport className="h-full w-auto pb-[10rem] [&>div]:!block">
             {/* 今日概览卡片 */}
-            <TodayOverview stats={achievementStats} todayWords={todayWords} todayMinutes={todayMinutes} />
+            <TodayOverview
+              stats={achievementStats}
+              todayWords={todayWords}
+              todayMinutes={todayMinutes}
+            />
 
             {isEmpty ? (
               <div className="mx-4 grid h-60 place-content-center rounded-xl bg-white shadow-sm dark:bg-gray-800">
                 <div className="text-center">
                   <p className="text-xl text-gray-400">暂无练习数据</p>
-                  <p className="mt-2 text-sm text-gray-400">完成一些练习后，这里会显示你的学习统计</p>
+                  <p className="mt-2 text-sm text-gray-400">
+                    完成一些练习后，这里会显示你的学习统计
+                  </p>
                 </div>
               </div>
             ) : (
@@ -97,13 +101,22 @@ const Analysis = () => {
                     <LineCharts title="WPM 趋势图" name="WPM" data={wpmRecord} />
                   </div>
                   <div className="h-72 rounded-xl bg-white p-6 shadow-sm dark:bg-gray-800">
-                    <LineCharts title="正确率趋势图" name="正确率(%)" data={accuracyRecord} suffix="%" />
+                    <LineCharts
+                      title="正确率趋势图"
+                      name="正确率(%)"
+                      data={accuracyRecord}
+                      suffix="%"
+                    />
                   </div>
                 </div>
 
                 {/* 按键错误分析 */}
                 <div className="mx-4 mb-6 h-72 rounded-xl bg-white p-6 shadow-sm dark:bg-gray-800">
-                  <KeyboardWithBarCharts title="按键错误次数排行" name="错误次数" data={wrongTimeRecord} />
+                  <KeyboardWithBarCharts
+                    title="按键错误次数排行"
+                    name="错误次数"
+                    data={wrongTimeRecord}
+                  />
                 </div>
 
                 {/* 成就系统 */}
@@ -113,7 +126,10 @@ const Analysis = () => {
               </>
             )}
           </ScrollArea.Viewport>
-          <ScrollArea.Scrollbar className="flex touch-none select-none bg-transparent" orientation="vertical" />
+          <ScrollArea.Scrollbar
+            className="flex touch-none select-none bg-transparent"
+            orientation="vertical"
+          />
         </ScrollArea.Root>
       </div>
     </Layout>

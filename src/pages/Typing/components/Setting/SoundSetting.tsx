@@ -85,7 +85,9 @@ export default function SoundSetting() {
 
   const onChangeKeySoundsResource = useCallback(
     (key: string) => {
-      const soundResource = keySoundResources.find((item: SoundResource) => item.key === key) as SoundResource
+      const soundResource = keySoundResources.find(
+        (item: SoundResource) => item.key === key,
+      ) as SoundResource
       if (!soundResource) return
 
       setKeySoundsConfig((prev) => ({
@@ -126,7 +128,11 @@ export default function SoundSetting() {
           <div className={styles.section}>
             <span className={styles.sectionLabel}>单词发音</span>
             <div className={styles.switchBlock}>
-              <Switch checked={pronunciationConfig.isOpen} onChange={onTogglePronunciation} className="switch-root">
+              <Switch
+                checked={pronunciationConfig.isOpen}
+                onChange={onTogglePronunciation}
+                className="switch-root"
+              >
                 <span aria-hidden="true" className="switch-thumb" />
               </Switch>
               <span className="text-right text-xs font-normal leading-tight text-gray-600">{`发音已${
@@ -149,7 +155,9 @@ export default function SoundSetting() {
                   </Slider.Track>
                   <Slider.Thumb />
                 </Slider.Root>
-                <span className="ml-4 w-10 text-xs font-normal text-gray-600">{`${Math.floor(pronunciationConfig.volume * 100)}%`}</span>
+                <span className="ml-4 w-10 text-xs font-normal text-gray-600">{`${Math.floor(
+                  pronunciationConfig.volume * 100,
+                )}%`}</span>
               </div>
             </div>
 
@@ -170,7 +178,10 @@ export default function SoundSetting() {
                   </Slider.Track>
                   <Slider.Thumb />
                 </Slider.Root>
-                <span className="ml-4 w-10 text-xs font-normal text-gray-600">{`${toFixedNumber(pronunciationConfig.rate, 2)}`}</span>
+                <span className="ml-4 w-10 text-xs font-normal text-gray-600">{`${toFixedNumber(
+                  pronunciationConfig.rate,
+                  2,
+                )}`}</span>
               </div>
             </div>
           </div>
@@ -178,7 +189,11 @@ export default function SoundSetting() {
             <div className={styles.section}>
               <span className={styles.sectionLabel}>释义发音</span>
               <div className={styles.switchBlock}>
-                <Switch checked={pronunciationConfig.isTransRead} onChange={onTogglePronunciationIsTransRead} className="switch-root">
+                <Switch
+                  checked={pronunciationConfig.isTransRead}
+                  onChange={onTogglePronunciationIsTransRead}
+                  className="switch-root"
+                >
                   <span aria-hidden="true" className="switch-thumb" />
                 </Switch>
                 <span className="text-right text-xs font-normal leading-tight text-gray-600">{`发音已${
@@ -211,7 +226,11 @@ export default function SoundSetting() {
           <div className={styles.section}>
             <span className={styles.sectionLabel}>按键音</span>
             <div className={styles.switchBlock}>
-              <Switch checked={keySoundsConfig.isOpen} onChange={onToggleKeySounds} className="switch-root">
+              <Switch
+                checked={keySoundsConfig.isOpen}
+                onChange={onToggleKeySounds}
+                className="switch-root"
+              >
                 <span aria-hidden="true" className="switch-thumb" />
               </Switch>
               <span className="text-right text-xs font-normal leading-tight text-gray-600">{`发音已${
@@ -235,7 +254,9 @@ export default function SoundSetting() {
                   </Slider.Track>
                   <Slider.Thumb />
                 </Slider.Root>
-                <span className="ml-4 w-10 text-xs font-normal text-gray-600">{`${Math.floor(keySoundsConfig.volume * 100)}%`}</span>
+                <span className="ml-4 w-10 text-xs font-normal text-gray-600">{`${Math.floor(
+                  keySoundsConfig.volume * 100,
+                )}%`}</span>
               </div>
             </div>
             <div className={`${styles.block}`}>
@@ -248,7 +269,12 @@ export default function SoundSetting() {
                       <IconChevronDown className="focus:outline-none" />
                     </span>
                   </Listbox.Button>
-                  <Transition as={Fragment} leave="transition ease-in duration-100" leaveFrom="opacity-100" leaveTo="opacity-0">
+                  <Transition
+                    as={Fragment}
+                    leave="transition ease-in duration-100"
+                    leaveFrom="opacity-100"
+                    leaveTo="opacity-0"
+                  >
                     <Listbox.Options className="listbox-options z-10">
                       {keySoundResources.map((keySoundResource) => (
                         <Listbox.Option key={keySoundResource.key} value={keySoundResource.key}>
@@ -283,7 +309,11 @@ export default function SoundSetting() {
           <div className={styles.section}>
             <span className={styles.sectionLabel}>效果音</span>
             <div className={styles.switchBlock}>
-              <Switch checked={hintSoundsConfig.isOpen} onChange={onToggleHintSounds} className="switch-root">
+              <Switch
+                checked={hintSoundsConfig.isOpen}
+                onChange={onToggleHintSounds}
+                className="switch-root"
+              >
                 <span aria-hidden="true" className="switch-thumb" />
               </Switch>
               <span className="text-right text-xs font-normal leading-tight text-gray-600">{`发音已${
@@ -307,13 +337,18 @@ export default function SoundSetting() {
                   </Slider.Track>
                   <Slider.Thumb />
                 </Slider.Root>
-                <span className="ml-4 w-10 text-xs font-normal text-gray-600">{`${Math.floor(hintSoundsConfig.volume * 100)}%`}</span>
+                <span className="ml-4 w-10 text-xs font-normal text-gray-600">{`${Math.floor(
+                  hintSoundsConfig.volume * 100,
+                )}%`}</span>
               </div>
             </div>
           </div>
         </div>
       </ScrollArea.Viewport>
-      <ScrollArea.Scrollbar className="flex touch-none select-none bg-transparent " orientation="vertical"></ScrollArea.Scrollbar>
+      <ScrollArea.Scrollbar
+        className="flex touch-none select-none bg-transparent "
+        orientation="vertical"
+      ></ScrollArea.Scrollbar>
     </ScrollArea.Root>
   )
 }

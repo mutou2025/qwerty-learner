@@ -1,5 +1,8 @@
 {
   "rewrites": [
-    { "source": "/((?!assets|dicts|sounds|favicon|android-chrome|manifest).*)", "destination": "/index.html" }
+    {
+      "source": "/((?!assets|dicts|sounds|favicon|android-chrome|manifest).*)",
+      "destination": "/index.html"
+    }
   ]
 }

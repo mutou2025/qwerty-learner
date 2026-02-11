@@ -1,7 +1,7 @@
 import type { UserDictionary } from '../types'
-import IconTrash from '~icons/tabler/trash'
 import IconBook from '~icons/tabler/book'
 import IconPlayerPlay from '~icons/tabler/player-play'
+import IconTrash from '~icons/tabler/trash'
 
 interface DictionaryListProps {
   dictionaries: UserDictionary[]
@@ -9,13 +9,19 @@ interface DictionaryListProps {
   onPractice: (dictionary: UserDictionary) => void
 }
 
-export default function DictionaryList({ dictionaries, onDelete, onPractice }: DictionaryListProps) {
+export default function DictionaryList({
+  dictionaries,
+  onDelete,
+  onPractice,
+}: DictionaryListProps) {
   if (dictionaries.length === 0) {
     return (
       <div className="flex flex-col items-center justify-center py-12 text-center">
         <IconBook className="mb-4 h-16 w-16 text-gray-300 dark:text-gray-600" />
         <p className="text-gray-500 dark:text-gray-400">暂无个人词库</p>
-        <p className="text-sm text-gray-400 dark:text-gray-500">点击上方按钮上传 CSV 文件创建词库</p>
+        <p className="text-sm text-gray-400 dark:text-gray-500">
+          点击上方按钮上传 CSV 文件创建词库
+        </p>
       </div>
     )
   }
@@ -32,7 +38,9 @@ export default function DictionaryList({ dictionaries, onDelete, onPractice }: D
             <div className="flex-1">
               <h3 className="font-medium text-gray-800 dark:text-white">{dict.name}</h3>
               {dict.description && (
-                <p className="mt-1 text-sm text-gray-500 dark:text-gray-400 line-clamp-2">{dict.description}</p>
+                <p className="mt-1 line-clamp-2 text-sm text-gray-500 dark:text-gray-400">
+                  {dict.description}
+                </p>
               )}
             </div>
           </div>

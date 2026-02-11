@@ -1,10 +1,4 @@
-export type Json =
-  | string
-  | number
-  | boolean
-  | null
-  | { [key: string]: Json | undefined }
-  | Json[]
+export type Json = string | number | boolean | null | { [key: string]: Json | undefined } | Json[]
 
 export interface Database {
   public: {
@@ -107,9 +101,9 @@ export interface Database {
           user_id: string
           word: string
           dict_id: string | null
-          ease_factor: number      // 简易度因子 >=1.3
-          interval: number         // 复习间隔 (天)
-          repetitions: number      // 连续正确次数
+          ease_factor: number // 简易度因子 >=1.3
+          interval: number // 复习间隔 (天)
+          repetitions: number // 连续正确次数
           next_review_at: string | null
           created_at: string
           updated_at: string
@@ -180,7 +174,7 @@ export interface Database {
           words_practiced: number
           correct_count: number
           wrong_count: number
-          practice_time: number    // 秒
+          practice_time: number // 秒
           created_at: string
           updated_at: string
         }
@@ -230,8 +224,8 @@ export type DailyStats = Database['public']['Tables']['daily_stats']['Row']
 
 // 单词类型 (个人词库中的单词格式)
 export interface WordItem {
-  name: string           // 单词
-  trans: string[]        // 释义
-  usphone?: string       // 美式音标
-  ukphone?: string       // 英式音标
+  name: string // 单词
+  trans: string[] // 释义
+  usphone?: string // 美式音标
+  ukphone?: string // 英式音标
 }

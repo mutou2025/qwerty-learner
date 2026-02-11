@@ -1,6 +1,6 @@
-import { useImmerReducer } from 'use-immer'
 import type { SpeakingAction, SpeakingState } from './type'
 import { initialSpeakingState } from './type'
+import { useImmerReducer } from 'use-immer'
 
 function speakingReducer(draft: SpeakingState, action: SpeakingAction): void {
   switch (action.type) {

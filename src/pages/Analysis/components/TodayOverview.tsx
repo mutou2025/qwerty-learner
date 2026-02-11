@@ -1,11 +1,10 @@
 /**
  * 今日学习概览卡片
  */
-
 import type { UserStats } from './Achievements'
-import IconFlame from '~icons/tabler/flame'
 import IconBook from '~icons/tabler/book-2'
 import IconClock from '~icons/tabler/clock'
+import IconFlame from '~icons/tabler/flame'
 import IconTarget from '~icons/tabler/target'
 
 interface TodayOverviewProps {

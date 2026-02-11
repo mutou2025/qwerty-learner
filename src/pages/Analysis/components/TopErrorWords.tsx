@@ -1,7 +1,6 @@
 /**
  * 易错词排行榜组件
  */
-
 import { db } from '@/utils/db'
 import { useEffect, useState } from 'react'
 import IconAlertTriangle from '~icons/tabler/alert-triangle'
@@ -20,10 +19,7 @@ export default function TopErrorWords() {
     const loadErrorWords = async () => {
       try {
         // 获取所有错误记录
-        const records = await db.wordRecords
-          .where('wrongCount')
-          .above(0)
-          .toArray()
+        const records = await db.wordRecords.where('wrongCount').above(0).toArray()
 
         // 按单词分组并统计错误次数
         const wordMap = new Map<string, number>()

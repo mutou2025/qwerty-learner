@@ -1,6 +1,10 @@
 export function isKanji(ch: string) {
   ch = ch[0]
-  return (ch >= '\u4e00' && ch <= '\u9fcf') || (ch >= '\uf900' && ch <= '\ufaff') || (ch >= '\u3400' && ch <= '\u4dbf')
+  return (
+    (ch >= '\u4e00' && ch <= '\u9fcf') ||
+    (ch >= '\uf900' && ch <= '\ufaff') ||
+    (ch >= '\u3400' && ch <= '\u4dbf')
+  )
 }
 
 /**
@@ -55,7 +59,9 @@ function isRomanConsonant(character: string): boolean {
 }
 
 function isRomanVowel(character: string): boolean {
-  return character == 'a' || character == 'i' || character == 'u' || character == 'e' || character == 'o'
+  return (
+    character == 'a' || character == 'i' || character == 'u' || character == 'e' || character == 'o'
+  )
 }
 
 interface RomajiToHiragana {

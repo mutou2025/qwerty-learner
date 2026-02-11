@@ -3,7 +3,12 @@ import purple from './purple.json'
 import useWindowSize from '@/hooks/useWindowSize'
 import { isOpenDarkModeAtom } from '@/store'
 import { BarChart, MapChart } from 'echarts/charts'
-import { GeoComponent, ToolboxComponent, TooltipComponent, VisualMapComponent } from 'echarts/components'
+import {
+  GeoComponent,
+  ToolboxComponent,
+  TooltipComponent,
+  VisualMapComponent,
+} from 'echarts/components'
 import * as echarts from 'echarts/core'
 import { UniversalTransition } from 'echarts/features'
 import { CanvasRenderer } from 'echarts/renderers'
@@ -11,7 +16,16 @@ import { useAtom } from 'jotai'
 import type { FC } from 'react'
 import { useEffect, useRef } from 'react'
 
-echarts.use([BarChart, CanvasRenderer, GeoComponent, MapChart, ToolboxComponent, TooltipComponent, UniversalTransition, VisualMapComponent])
+echarts.use([
+  BarChart,
+  CanvasRenderer,
+  GeoComponent,
+  MapChart,
+  ToolboxComponent,
+  TooltipComponent,
+  UniversalTransition,
+  VisualMapComponent,
+])
 echarts.registerTheme('purple', purple)
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 echarts.registerMap('Keyboard', Keyboard as any)
@@ -173,7 +187,11 @@ const KeyboardWithBarCharts: FC<KeyboardWithBarChartsProps> = ({ data, title, su
   return (
     <div className="flex h-full flex-col">
       <div className="text-center text-xl font-bold text-gray-600	dark:text-white">{title}</div>
-      <div style={{ width: '100%', height: '100%' }} ref={chartRef} className="line-chart flex-grow"></div>
+      <div
+        style={{ width: '100%', height: '100%' }}
+        ref={chartRef}
+        className="line-chart flex-grow"
+      ></div>
     </div>
   )
 }

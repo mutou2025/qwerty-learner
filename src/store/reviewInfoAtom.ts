@@ -15,7 +15,11 @@ export function reviewInfoAtom(initialValue: TReviewInfoAtomData) {
     (get) => {
       return get(storageAtom)
     },
-    (get, set, updater: TReviewInfoAtomData | ((oldValue: TReviewInfoAtomData) => TReviewInfoAtomData)) => {
+    (
+      get,
+      set,
+      updater: TReviewInfoAtomData | ((oldValue: TReviewInfoAtomData) => TReviewInfoAtomData),
+    ) => {
       const newValue = typeof updater === 'function' ? updater(get(storageAtom)) : updater
 
       // update reviewRecord to indexdb

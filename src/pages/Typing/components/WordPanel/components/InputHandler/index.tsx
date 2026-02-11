@@ -5,7 +5,11 @@ import { useAtomValue } from 'jotai'
 import type { FormEvent } from 'react'
 import { useMemo } from 'react'
 
-export default function InputHandler({ updateInput }: { updateInput: (updateObj: WordUpdateAction) => void }) {
+export default function InputHandler({
+  updateInput,
+}: {
+  updateInput: (updateObj: WordUpdateAction) => void
+}) {
   const dictInfo = useAtomValue(currentDictInfoAtom)
 
   const handler = useMemo(() => {

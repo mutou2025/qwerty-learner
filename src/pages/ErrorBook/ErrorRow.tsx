@@ -34,8 +34,12 @@ const ErrorRow: FC<IErrorRowProps> = ({ record, onDelete }) => {
       <span className="basis-4/12 break-normal text-center text-sm text-gray-600 dark:text-gray-400">
         {word ? word.trans.join('；') : <LoadingWordUI isLoading={isLoading} hasError={hasError} />}
       </span>
-      <span className="basis-2/12 break-normal text-center text-gray-700 dark:text-gray-300">{record.wrongCount}</span>
-      <span className="basis-2/12 break-normal text-center text-sm text-gray-500 dark:text-gray-400">{dictInfo?.name}</span>
+      <span className="basis-2/12 break-normal text-center text-gray-700 dark:text-gray-300">
+        {record.wrongCount}
+      </span>
+      <span className="basis-2/12 break-normal text-center text-sm text-gray-500 dark:text-gray-400">
+        {dictInfo?.name}
+      </span>
       <span
         className="basis-1/12 break-normal text-center"
         onClick={(e) => {

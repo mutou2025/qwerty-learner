@@ -55,7 +55,9 @@ export default function Switcher() {
       </Tooltip>
       <Tooltip className="h-7 w-7" content={`开关释义显示（${CTRL} + Shift + V）`}>
         <button
-          className={`p-[2px] ${state?.isTransVisible ? 'text-indigo-500' : 'text-gray-500'} text-lg focus:outline-none`}
+          className={`p-[2px] ${
+            state?.isTransVisible ? 'text-indigo-500' : 'text-gray-500'
+          } text-lg focus:outline-none`}
           type="button"
           onClick={(e) => {
             changeTransVisibleState()

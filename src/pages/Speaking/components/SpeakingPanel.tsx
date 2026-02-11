@@ -1,8 +1,8 @@
-import { useCallback, useEffect } from 'react'
-import { calculateSimilarity, useSpeechRecognition } from '@/hooks/useSpeechRecognition'
-import usePronunciation from '@/hooks/usePronunciation'
-import type { Word } from '@/typings'
 import type { SpeakingAction, SpeakingState } from '../store'
+import usePronunciation from '@/hooks/usePronunciation'
+import { calculateSimilarity, useSpeechRecognition } from '@/hooks/useSpeechRecognition'
+import type { Word } from '@/typings'
+import { useCallback, useEffect } from 'react'
 import IconArrowRight from '~icons/tabler/arrow-right'
 import IconCheck from '~icons/tabler/check'
 import IconMicrophone from '~icons/tabler/microphone'
@@ -21,8 +21,16 @@ interface SpeakingPanelProps {
 const SIMILARITY_THRESHOLD = 0.7
 
 export default function SpeakingPanel({ word, state, dispatch }: SpeakingPanelProps) {
-  const { isListening, transcript, confidence, isSupported, error, startListening, stopListening, resetTranscript } =
-    useSpeechRecognition()
+  const {
+    isListening,
+    transcript,
+    confidence,
+    isSupported,
+    error,
+    startListening,
+    stopListening,
+    resetTranscript,
+  } = useSpeechRecognition()
 
   const { play } = usePronunciation(word.name)
 
@@ -122,7 +130,14 @@ export default function SpeakingPanel({ word, state, dispatch }: SpeakingPanelPr
 
     window.addEventListener('keydown', handleKeyDown)
     return () => window.removeEventListener('keydown', handleKeyDown)
-  }, [state.status, handlePlayWord, handleStartListening, handleStopListening, handleNextWord, handleRetry])
+  }, [
+    state.status,
+    handlePlayWord,
+    handleStartListening,
+    handleStopListening,
+    handleNextWord,
+    handleRetry,
+  ])
 
   // 浏览器不支持提示
   if (!isSupported) {
@@ -146,7 +161,9 @@ export default function SpeakingPanel({ word, state, dispatch }: SpeakingPanelPr
         <h2 className="mb-4 text-4xl font-bold text-gray-800 dark:text-white">{word.name}</h2>
 
         {/* 音标 */}
-        {word.usphone && <p className="mb-2 text-lg text-gray-500 dark:text-gray-400">[{word.usphone}]</p>}
+        {word.usphone && (
+          <p className="mb-2 text-lg text-gray-500 dark:text-gray-400">[{word.usphone}]</p>
+        )}
 
         {/* 释义 */}
         <p className="text-center text-gray-600 dark:text-gray-300">{word.trans.join('；')}</p>
@@ -181,7 +198,11 @@ export default function SpeakingPanel({ word, state, dispatch }: SpeakingPanelPr
                 <IconX className="h-6 w-6 text-red-500" />
               )}
               <span
-                className={`text-lg font-medium ${state.similarity >= SIMILARITY_THRESHOLD ? 'text-green-600 dark:text-green-400' : 'text-red-600 dark:text-red-400'}`}
+                className={`text-lg font-medium ${
+                  state.similarity >= SIMILARITY_THRESHOLD
+                    ? 'text-green-600 dark:text-green-400'
+                    : 'text-red-600 dark:text-red-400'
+                }`}
               >
                 {state.transcript || '未识别到语音'}
               </span>
@@ -221,7 +242,11 @@ export default function SpeakingPanel({ word, state, dispatch }: SpeakingPanelPr
               }`}
               title={isListening ? '停止录音 (回车)' : '开始跟读 (回车)'}
             >
-              {isListening ? <IconMicrophoneOff className="h-8 w-8" /> : <IconMicrophone className="h-8 w-8" />}
+              {isListening ? (
+                <IconMicrophoneOff className="h-8 w-8" />
+              ) : (
+                <IconMicrophone className="h-8 w-8" />
+              )}
             </button>
           ) : (
             <>

@@ -56,7 +56,10 @@ export default function HandPositionIllustration() {
                   <button type="button" onClick={() => setIsOpen(false)} title="关闭对话框">
                     <IconX className="absolute right-7 top-5 cursor-pointer text-gray-400" />
                   </button>
-                  <Dialog.Title as="h3" className="text-center text-xl font-medium leading-6 text-gray-800 dark:text-gray-200">
+                  <Dialog.Title
+                    as="h3"
+                    className="text-center text-xl font-medium leading-6 text-gray-800 dark:text-gray-200"
+                  >
                     推荐打字指法图示
                   </Dialog.Title>
                   <div className="mt-8">

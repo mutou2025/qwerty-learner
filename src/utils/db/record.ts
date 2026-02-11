@@ -30,7 +30,14 @@ export class WordRecord implements IWordRecord {
   wrongCount: number
   mistakes: LetterMistakes
 
-  constructor(word: string, dict: string, chapter: number | null, timing: number[], wrongCount: number, mistakes: LetterMistakes) {
+  constructor(
+    word: string,
+    dict: string,
+    chapter: number | null,
+    timing: number[],
+    wrongCount: number,
+    mistakes: LetterMistakes,
+  ) {
     this.word = word
     this.timeStamp = getUTCUnixTimestamp()
     this.dict = dict

@@ -1,15 +1,15 @@
-import Layout from '@/components/Layout'
+import SpeakingPanel from './components/SpeakingPanel'
+import { useSpeakingReducer } from './store'
 import Header from '@/components/Header'
+import Layout from '@/components/Layout'
 import { DictChapterButton } from '@/pages/Typing/components/DictChapterButton'
 import { useWordList } from '@/pages/Typing/hooks/useWordList'
 import { randomConfigAtom } from '@/store'
-import SpeakingPanel from './components/SpeakingPanel'
-import { useSpeakingReducer } from './store'
 import { useAtomValue } from 'jotai'
 import { useMemo, useState } from 'react'
 import { Link } from 'react-router-dom'
-import IconMicrophone from '~icons/tabler/microphone'
 import IconKeyboard from '~icons/tabler/keyboard'
+import IconMicrophone from '~icons/tabler/microphone'
 
 export default function Speaking() {
   const [state, dispatch] = useSpeakingReducer()
@@ -31,7 +31,8 @@ export default function Speaking() {
   const currentWord = shuffledWords[state.wordIndex]
 
   // 检查是否练习完成
-  const isFinished = state.wordIndex >= shuffledWords.length && shuffledWords.length > 0 && isStarted
+  const isFinished =
+    state.wordIndex >= shuffledWords.length && shuffledWords.length > 0 && isStarted
 
   // 开始练习
   const handleStart = () => {
@@ -84,13 +85,22 @@ export default function Speaking() {
               <p className="mb-2 font-medium">快捷键：</p>
               <ul className="space-y-1">
                 <li>
-                  <kbd className="rounded bg-gray-200 px-1.5 py-0.5 text-xs dark:bg-gray-600">空格</kbd> 播放发音
+                  <kbd className="rounded bg-gray-200 px-1.5 py-0.5 text-xs dark:bg-gray-600">
+                    空格
+                  </kbd>{' '}
+                  播放发音
                 </li>
                 <li>
-                  <kbd className="rounded bg-gray-200 px-1.5 py-0.5 text-xs dark:bg-gray-600">回车</kbd> 开始/停止录音
+                  <kbd className="rounded bg-gray-200 px-1.5 py-0.5 text-xs dark:bg-gray-600">
+                    回车
+                  </kbd>{' '}
+                  开始/停止录音
                 </li>
                 <li>
-                  <kbd className="rounded bg-gray-200 px-1.5 py-0.5 text-xs dark:bg-gray-600">R</kbd> 重试当前单词
+                  <kbd className="rounded bg-gray-200 px-1.5 py-0.5 text-xs dark:bg-gray-600">
+                    R
+                  </kbd>{' '}
+                  重试当前单词
                 </li>
               </ul>
             </div>
@@ -104,7 +114,9 @@ export default function Speaking() {
             >
               开始跟读
             </button>
-            <p className="text-sm text-gray-500 dark:text-gray-400">共 {shuffledWords.length} 个单词</p>
+            <p className="text-sm text-gray-500 dark:text-gray-400">
+              共 {shuffledWords.length} 个单词
+            </p>
           </div>
         ) : isFinished ? (
           // 完成页面
@@ -115,11 +127,15 @@ export default function Speaking() {
             <h1 className="text-2xl font-bold text-gray-800 dark:text-white">练习完成！</h1>
             <div className="grid w-full grid-cols-2 gap-4 text-center">
               <div className="rounded-lg bg-green-50 p-4 dark:bg-green-900/20">
-                <p className="text-3xl font-bold text-green-600 dark:text-green-400">{state.correctCount}</p>
+                <p className="text-3xl font-bold text-green-600 dark:text-green-400">
+                  {state.correctCount}
+                </p>
                 <p className="text-sm text-green-600 dark:text-green-400">正确</p>
               </div>
               <div className="rounded-lg bg-red-50 p-4 dark:bg-red-900/20">
-                <p className="text-3xl font-bold text-red-600 dark:text-red-400">{state.wrongCount}</p>
+                <p className="text-3xl font-bold text-red-600 dark:text-red-400">
+                  {state.wrongCount}
+                </p>
                 <p className="text-sm text-red-600 dark:text-red-400">错误</p>
               </div>
             </div>
@@ -128,7 +144,9 @@ export default function Speaking() {
                 正确率:{' '}
                 <span className="font-bold text-indigo-600 dark:text-indigo-400">
                   {state.correctCount + state.wrongCount > 0
-                    ? Math.round((state.correctCount / (state.correctCount + state.wrongCount)) * 100)
+                    ? Math.round(
+                        (state.correctCount / (state.correctCount + state.wrongCount)) * 100,
+                      )
                     : 0}
                   %
                 </span>

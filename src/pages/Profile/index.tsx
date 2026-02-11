@@ -1,19 +1,19 @@
-import Layout from '@/components/Layout'
 import Header from '@/components/Header'
+import Layout from '@/components/Layout'
 import { useAuth } from '@/hooks/useAuth'
-import { Link, useNavigate } from 'react-router-dom'
 import { useState } from 'react'
-import IconUser from '~icons/tabler/user'
-import IconMail from '~icons/tabler/mail'
-import IconLogout from '~icons/tabler/logout'
-import IconLoader from '~icons/tabler/loader-2'
+import { Link, useNavigate } from 'react-router-dom'
 import IconCloud from '~icons/tabler/cloud'
 import IconCloudOff from '~icons/tabler/cloud-off'
 import IconCrown from '~icons/tabler/crown'
-import IconRefresh from '~icons/tabler/refresh'
-import IconLock from '~icons/tabler/lock'
 import IconDownload from '~icons/tabler/download'
+import IconLoader from '~icons/tabler/loader-2'
+import IconLock from '~icons/tabler/lock'
+import IconLogout from '~icons/tabler/logout'
+import IconMail from '~icons/tabler/mail'
+import IconRefresh from '~icons/tabler/refresh'
 import IconSettings from '~icons/tabler/settings'
+import IconUser from '~icons/tabler/user'
 
 type TabType = 'profile' | 'login' | 'membership'
 
@@ -52,7 +52,9 @@ export default function Profile() {
                 <IconCloudOff className="h-8 w-8 text-gray-400" />
               </div>
             </div>
-            <h1 className="mb-4 text-center text-2xl font-bold text-gray-800 dark:text-white">云同步未启用</h1>
+            <h1 className="mb-4 text-center text-2xl font-bold text-gray-800 dark:text-white">
+              云同步未启用
+            </h1>
             <p className="mb-6 text-center text-gray-600 dark:text-gray-400">
               云同步功能需要配置 Supabase。您的学习数据目前仅保存在本地。
             </p>
@@ -76,7 +78,9 @@ export default function Profile() {
                 <IconUser className="h-8 w-8 text-indigo-500" />
               </div>
             </div>
-            <h1 className="mb-4 text-center text-2xl font-bold text-gray-800 dark:text-white">登录以同步数据</h1>
+            <h1 className="mb-4 text-center text-2xl font-bold text-gray-800 dark:text-white">
+              登录以同步数据
+            </h1>
             <p className="mb-6 text-center text-gray-600 dark:text-gray-400">
               登录后，您的学习进度将自动同步到云端，可在多设备间无缝切换。
             </p>
@@ -207,15 +211,21 @@ export default function Profile() {
                 </h3>
                 <div className="space-y-4">
                   <div>
-                    <label className="mb-1 block text-sm text-gray-500 dark:text-gray-400">邮箱</label>
+                    <label className="mb-1 block text-sm text-gray-500 dark:text-gray-400">
+                      邮箱
+                    </label>
                     <div className="rounded-lg bg-gray-50 px-4 py-2.5 text-gray-700 dark:bg-gray-700 dark:text-white">
                       {user?.email}
                     </div>
                   </div>
                   <div>
-                    <label className="mb-1 block text-sm text-gray-500 dark:text-gray-400">注册时间</label>
+                    <label className="mb-1 block text-sm text-gray-500 dark:text-gray-400">
+                      注册时间
+                    </label>
                     <div className="rounded-lg bg-gray-50 px-4 py-2.5 text-gray-700 dark:bg-gray-700 dark:text-white">
-                      {user?.created_at ? new Date(user.created_at).toLocaleDateString('zh-CN') : '-'}
+                      {user?.created_at
+                        ? new Date(user.created_at).toLocaleDateString('zh-CN')
+                        : '-'}
                     </div>
                   </div>
                 </div>
@@ -238,7 +248,11 @@ export default function Profile() {
                 disabled={loading}
                 className="flex w-full items-center justify-center gap-2 rounded-xl border border-red-200 bg-red-50 py-3 font-medium text-red-600 transition-colors hover:bg-red-100 disabled:cursor-not-allowed disabled:opacity-50 dark:border-red-800 dark:bg-red-900/20 dark:text-red-400"
               >
-                {loading ? <IconLoader className="h-5 w-5 animate-spin" /> : <IconLogout className="h-5 w-5" />}
+                {loading ? (
+                  <IconLoader className="h-5 w-5 animate-spin" />
+                ) : (
+                  <IconLogout className="h-5 w-5" />
+                )}
                 退出登录
               </button>
             </div>
@@ -256,7 +270,9 @@ export default function Profile() {
                     </div>
                     <div>
                       <h3 className="font-medium text-gray-800 dark:text-white">会员中心</h3>
-                      <p className="text-sm text-gray-500 dark:text-gray-400">管理您的会员状态和订阅</p>
+                      <p className="text-sm text-gray-500 dark:text-gray-400">
+                        管理您的会员状态和订阅
+                      </p>
                     </div>
                   </div>
                   <div className="flex items-center gap-2">
@@ -278,8 +294,12 @@ export default function Profile() {
                 <div className="mx-auto mb-4 flex h-20 w-20 items-center justify-center rounded-full bg-gray-100 dark:bg-gray-700">
                   <IconCrown className="h-10 w-10 text-gray-300 dark:text-gray-500" />
                 </div>
-                <h3 className="mb-2 text-xl font-bold text-gray-800 dark:text-white">您还不是会员</h3>
-                <p className="mb-6 text-gray-500 dark:text-gray-400">升级到会员，享受更多功能和特权</p>
+                <h3 className="mb-2 text-xl font-bold text-gray-800 dark:text-white">
+                  您还不是会员
+                </h3>
+                <p className="mb-6 text-gray-500 dark:text-gray-400">
+                  升级到会员，享受更多功能和特权
+                </p>
                 <button className="inline-flex items-center gap-2 rounded-lg bg-amber-400 px-6 py-3 font-medium text-white transition-colors hover:bg-amber-500">
                   <IconDownload className="h-5 w-5" />
                   升级到会员
@@ -291,19 +311,27 @@ export default function Profile() {
                 <h3 className="mb-4 font-medium text-gray-800 dark:text-white">会员特权</h3>
                 <ul className="space-y-3 text-sm text-gray-600 dark:text-gray-400">
                   <li className="flex items-center gap-2">
-                    <span className="flex h-5 w-5 items-center justify-center rounded-full bg-amber-100 text-amber-600">✓</span>
+                    <span className="flex h-5 w-5 items-center justify-center rounded-full bg-amber-100 text-amber-600">
+                      ✓
+                    </span>
                     无限个人词库
                   </li>
                   <li className="flex items-center gap-2">
-                    <span className="flex h-5 w-5 items-center justify-center rounded-full bg-amber-100 text-amber-600">✓</span>
+                    <span className="flex h-5 w-5 items-center justify-center rounded-full bg-amber-100 text-amber-600">
+                      ✓
+                    </span>
                     高级学习统计报告
                   </li>
                   <li className="flex items-center gap-2">
-                    <span className="flex h-5 w-5 items-center justify-center rounded-full bg-amber-100 text-amber-600">✓</span>
+                    <span className="flex h-5 w-5 items-center justify-center rounded-full bg-amber-100 text-amber-600">
+                      ✓
+                    </span>
                     数据导出功能
                   </li>
                   <li className="flex items-center gap-2">
-                    <span className="flex h-5 w-5 items-center justify-center rounded-full bg-amber-100 text-amber-600">✓</span>
+                    <span className="flex h-5 w-5 items-center justify-center rounded-full bg-amber-100 text-amber-600">
+                      ✓
+                    </span>
                     去除广告
                   </li>
                 </ul>

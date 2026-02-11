@@ -17,10 +17,14 @@ test.describe('Dictionary manage', () => {
     await page.getByText('CET-4').click()
     await page.waitForURL('**/gallery')
 
-    await expect(await page.getByRole('radio', { name: /^英语$/ }).getAttribute('aria-checked')).toBeTruthy()
+    await expect(
+      await page.getByRole('radio', { name: /^英语$/ }).getAttribute('aria-checked'),
+    ).toBeTruthy()
 
     await page.getByRole('radio', { name: /^日语$/ }).click()
-    await expect(await page.getByRole('radio', { name: /^日语$/ }).getAttribute('aria-checked')).toBeTruthy()
+    await expect(
+      await page.getByRole('radio', { name: /^日语$/ }).getAttribute('aria-checked'),
+    ).toBeTruthy()
     await expect(
       await page
         .getByRole('button', { name: /日语常见词/g })
@@ -29,7 +33,9 @@ test.describe('Dictionary manage', () => {
     ).toBeTruthy()
 
     await page.getByRole('radio', { name: /^Code$/ }).click()
-    await expect(await page.getByRole('radio', { name: /^Code$/ }).getAttribute('aria-checked')).toBeTruthy()
+    await expect(
+      await page.getByRole('radio', { name: /^Code$/ }).getAttribute('aria-checked'),
+    ).toBeTruthy()
     await expect(
       await page
         .getByRole('button', { name: /Coder Dict/g })
@@ -42,14 +48,20 @@ test.describe('Dictionary manage', () => {
     await page.getByText('CET-4').click()
     await page.waitForURL('**/gallery')
 
-    await expect(await page.getByRole('radio', { name: /^大学英语$/ }).getAttribute('aria-checked')).toBeTruthy()
+    await expect(
+      await page.getByRole('radio', { name: /^大学英语$/ }).getAttribute('aria-checked'),
+    ).toBeTruthy()
 
     await page.getByRole('radio', { name: /^考研$/ }).click()
-    await expect(await page.getByRole('radio', { name: /^考研$/ }).getAttribute('aria-checked')).toBeTruthy()
+    await expect(
+      await page.getByRole('radio', { name: /^考研$/ }).getAttribute('aria-checked'),
+    ).toBeTruthy()
     await expect(await page.getByRole('button', { name: /考研/g }).first().isVisible()).toBeTruthy()
 
     await page.getByRole('radio', { name: /^GRE$/ }).click()
-    await expect(await page.getByRole('radio', { name: /^GRE$/ }).getAttribute('aria-checked')).toBeTruthy()
+    await expect(
+      await page.getByRole('radio', { name: /^GRE$/ }).getAttribute('aria-checked'),
+    ).toBeTruthy()
     await expect(await page.getByRole('button', { name: /GRE/g }).first().isVisible()).toBeTruthy()
   })
 
@@ -64,7 +76,9 @@ test.describe('Dictionary manage', () => {
     await page.getByRole('heading', { name: '第 2 章' }).click()
 
     await page.waitForURL('**/')
-    await expect(await page.getByRole('button', { name: '第 2 章' }).first().isVisible()).toBeTruthy()
+    await expect(
+      await page.getByRole('button', { name: '第 2 章' }).first().isVisible(),
+    ).toBeTruthy()
   })
 
   test('Close dictionary settings', async ({ page }) => {

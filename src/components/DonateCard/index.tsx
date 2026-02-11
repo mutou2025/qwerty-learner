@@ -1,6 +1,11 @@
 import type { AmountType } from '../DonatingCard'
 import { DonatingCard } from '../DonatingCard'
-import { useChapterNumber, useDayFromFirstWordRecord, useSumWrongCount, useWordNumber } from './hooks/useWordStats'
+import {
+  useChapterNumber,
+  useDayFromFirstWordRecord,
+  useSumWrongCount,
+  useWordNumber,
+} from './hooks/useWordStats'
 import { DONATE_DATE } from '@/constants'
 import { reportDonateCard } from '@/utils'
 import noop from '@/utils/noop'
@@ -102,18 +107,26 @@ export const DonateCard = () => {
             >
               <Dialog.Panel className="relative my-8 w-[37rem] transform select-text overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all">
                 <div className="flex w-full flex-col justify-center gap-4 bg-white px-2 pb-4 pt-5 dark:bg-gray-800 dark:text-gray-300">
-                  <h1 className="gradient-text w-full pt-3 text-center text-3xl font-bold">Support Project</h1>
+                  <h1 className="gradient-text w-full pt-3 text-center text-3xl font-bold">
+                    Support Project
+                  </h1>
 
                   <DonatingCard className="mt-2" onAmountChange={onAmountChange} />
                   <div className="flex w-full justify-between  px-14 pb-3 pt-0">
                     <button
                       type="button"
-                      className={`my-btn-primary ${!amount && 'invisible'} w-36 bg-amber-500 font-medium transition-all`}
+                      className={`my-btn-primary ${
+                        !amount && 'invisible'
+                      } w-36 bg-amber-500 font-medium transition-all`}
                       onClick={onClickHasDonated}
                     >
                       我已捐赠
                     </button>
-                    <button type="button" className="my-btn-primary w-36 font-medium" onClick={onClickRemindMeLater}>
+                    <button
+                      type="button"
+                      className="my-btn-primary w-36 font-medium"
+                      onClick={onClickRemindMeLater}
+                    >
                       之后提醒我
                     </button>
                   </div>

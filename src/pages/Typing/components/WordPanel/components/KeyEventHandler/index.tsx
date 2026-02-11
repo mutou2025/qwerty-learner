@@ -3,7 +3,11 @@ import { TypingContext } from '@/pages/Typing/store'
 import { isChineseSymbol, isLegal } from '@/utils'
 import { useCallback, useContext, useEffect } from 'react'
 
-export default function KeyEventHandler({ updateInput }: { updateInput: (updateObj: WordUpdateAction) => void }) {
+export default function KeyEventHandler({
+  updateInput,
+}: {
+  updateInput: (updateObj: WordUpdateAction) => void
+}) {
   // eslint-disable-next-line  @typescript-eslint/no-non-null-assertion
   const { state } = useContext(TypingContext)!
 

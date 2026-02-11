@@ -2,7 +2,6 @@
  * 复习记录云端同步服务
  * 会员登录后自动同步复习记录到 Supabase
  */
-
 import { supabase } from './client'
 import type { ReviewRecord } from './types'
 import type { ReviewCard } from '@/lib/spaced-repetition/sm2'
@@ -19,15 +18,14 @@ export async function loadReviewRecordsFromCloud(): Promise<ReviewCard[]> {
     return loadFromLocalStorage()
   }
 
-  const { data: { user } } = await supabase.auth.getUser()
+  const {
+    data: { user },
+  } = await supabase.auth.getUser()
   if (!user) {
     return loadFromLocalStorage()
   }
 
-  const { data, error } = await supabase
-    .from('review_records')
-    .select('*')
-    .eq('user_id', user.id)
+  const { data, error } = await supabase.from('review_records').select('*').eq('user_id', user.id)
 
   if (error) {
     console.error('Failed to load review records from cloud:', error)
@@ -47,24 +45,27 @@ export async function saveReviewRecordToCloud(card: ReviewCard): Promise<boolean
     return false
   }
 
-  const { data: { user } } = await supabase.auth.getUser()
+  const {
+    data: { user },
+  } = await supabase.auth.getUser()
   if (!user) {
     saveToLocalStorage(card)
     return false
   }
 
-  const { error } = await supabase
-    .from('review_records')
-    .upsert({
+  const { error } = await supabase.from('review_records').upsert(
+    {
       user_id: user.id,
       word: card.word,
       ease_factor: card.easeFactor,
       interval: card.interval,
       repetitions: card.repetitions,
       next_review_at: new Date(card.nextReviewAt).toISOString(),
-    }, {
+    },
+    {
       onConflict: 'user_id,word',
-    })
+    },
+  )
 
   if (error) {
     console.error('Failed to save review record to cloud:', error)
@@ -83,12 +84,14 @@ export async function saveAllReviewRecordsToCloud(cards: ReviewCard[]): Promise<
     return false
   }
 
-  const { data: { user } } = await supabase.auth.getUser()
+  const {
+    data: { user },
+  } = await supabase.auth.getUser()
   if (!user) {
     return false
   }
 
-  const records = cards.map(card => ({
+  const records = cards.map((card) => ({
     user_id: user.id,
     word: card.word,
     ease_factor: card.easeFactor,
@@ -97,11 +100,9 @@ export async function saveAllReviewRecordsToCloud(cards: ReviewCard[]): Promise<
     next_review_at: new Date(card.nextReviewAt).toISOString(),
   }))
 
-  const { error } = await supabase
-    .from('review_records')
-    .upsert(records, {
-      onConflict: 'user_id,word',
-    })
+  const { error } = await supabase.from('review_records').upsert(records, {
+    onConflict: 'user_id,word',
+  })
 
   if (error) {
     console.error('Failed to batch save review records:', error)
@@ -119,7 +120,9 @@ export async function deleteReviewRecordFromCloud(word: string): Promise<boolean
     return false
   }
 
-  const { data: { user } } = await supabase.auth.getUser()
+  const {
+    data: { user },
+  } = await supabase.auth.getUser()
   if (!user) {
     return false
   }
@@ -146,15 +149,14 @@ export async function clearAllReviewRecordsFromCloud(): Promise<boolean> {
     return false
   }
 
-  const { data: { user } } = await supabase.auth.getUser()
+  const {
+    data: { user },
+  } = await supabase.auth.getUser()
   if (!user) {
     return false
   }
 
-  const { error } = await supabase
-    .from('review_records')
-    .delete()
-    .eq('user_id', user.id)
+  const { error } = await supabase.from('review_records').delete().eq('user_id', user.id)
 
   if (error) {
     console.error('Failed to clear review records:', error)
@@ -173,7 +175,9 @@ export async function syncLocalToCloud(): Promise<ReviewCard[]> {
     return loadFromLocalStorage()
   }
 
-  const { data: { user } } = await supabase.auth.getUser()
+  const {
+    data: { user },
+  } = await supabase.auth.getUser()
   if (!user) {
     return loadFromLocalStorage()
   }
@@ -188,14 +192,18 @@ export async function syncLocalToCloud(): Promise<ReviewCard[]> {
   const mergedMap = new Map<string, ReviewCard>()
 
   // 先添加云端数据
-  cloudCards.forEach(card => {
+  cloudCards.forEach((card) => {
     mergedMap.set(card.word, card)
   })
 
   // 再用本地数据更新（如果本地更新时间更晚）
-  localCards.forEach(localCard => {
+  localCards.forEach((localCard) => {
     const cloudCard = mergedMap.get(localCard.word)
-    if (!cloudCard || (localCard.lastReviewAt && (!cloudCard.lastReviewAt || localCard.lastReviewAt > cloudCard.lastReviewAt))) {
+    if (
+      !cloudCard ||
+      (localCard.lastReviewAt &&
+        (!cloudCard.lastReviewAt || localCard.lastReviewAt > cloudCard.lastReviewAt))
+    ) {
       mergedMap.set(localCard.word, localCard)
     }
   })
@@ -219,7 +227,9 @@ export async function isUserLoggedIn(): Promise<boolean> {
     return false
   }
 
-  const { data: { user } } = await supabase.auth.getUser()
+  const {
+    data: { user },
+  } = await supabase.auth.getUser()
   return !!user
 }
 
@@ -236,7 +246,7 @@ function loadFromLocalStorage(): ReviewCard[] {
 
 function saveToLocalStorage(card: ReviewCard): void {
   const cards = loadFromLocalStorage()
-  const index = cards.findIndex(c => c.word === card.word)
+  const index = cards.findIndex((c) => c.word === card.word)
   if (index >= 0) {
     cards[index] = card
   } else {

@@ -2,9 +2,9 @@ import Layout from '@/components/Layout'
 import { useAuth } from '@/hooks/useAuth'
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
-import IconLock from '~icons/tabler/lock'
 import IconCheck from '~icons/tabler/check'
 import IconLoader from '~icons/tabler/loader-2'
+import IconLock from '~icons/tabler/lock'
 import IconMail from '~icons/tabler/mail'
 
 export default function Register() {
@@ -32,17 +32,17 @@ export default function Register() {
       <Layout hideSidebar>
         <div className="flex min-h-[60vh] items-center justify-center">
           <div className="w-full max-w-md rounded-2xl bg-white p-8 shadow-lg dark:bg-gray-800">
-            <h1 className="mb-6 text-center text-2xl font-bold text-gray-800 dark:text-white">注册</h1>
+            <h1 className="mb-6 text-center text-2xl font-bold text-gray-800 dark:text-white">
+              注册
+            </h1>
             <div className="rounded-lg bg-amber-50 p-4 text-center text-amber-700 dark:bg-amber-900/20 dark:text-amber-400">
               <p className="mb-2 font-medium">云同步功能未配置</p>
               <p className="text-sm">
-                请在 <code className="rounded bg-amber-100 px-1 dark:bg-amber-900/40">.env</code> 文件中配置 Supabase 凭据
+                请在 <code className="rounded bg-amber-100 px-1 dark:bg-amber-900/40">.env</code>{' '}
+                文件中配置 Supabase 凭据
               </p>
             </div>
-            <Link
-              to="/"
-              className="mt-6 block text-center text-indigo-500 hover:text-indigo-600"
-            >
+            <Link to="/" className="mt-6 block text-center text-indigo-500 hover:text-indigo-600">
               返回首页
             </Link>
           </div>
@@ -61,10 +61,12 @@ export default function Register() {
                 <IconCheck className="h-8 w-8 text-green-600 dark:text-green-400" />
               </div>
             </div>
-            <h1 className="mb-4 text-center text-2xl font-bold text-gray-800 dark:text-white">注册成功！</h1>
+            <h1 className="mb-4 text-center text-2xl font-bold text-gray-800 dark:text-white">
+              注册成功！
+            </h1>
             <p className="mb-6 text-center text-gray-600 dark:text-gray-400">
-              我们已向 <span className="font-medium text-gray-800 dark:text-white">{email}</span> 发送了一封验证邮件。
-              请查收邮件并点击验证链接完成注册。
+              我们已向 <span className="font-medium text-gray-800 dark:text-white">{email}</span>{' '}
+              发送了一封验证邮件。 请查收邮件并点击验证链接完成注册。
             </p>
             <Link
               to="/login"
@@ -82,7 +84,9 @@ export default function Register() {
     <Layout hideSidebar>
       <div className="flex min-h-[60vh] items-center justify-center">
         <div className="w-full max-w-md rounded-2xl bg-white p-8 shadow-lg dark:bg-gray-800">
-          <h1 className="mb-6 text-center text-2xl font-bold text-gray-800 dark:text-white">注册</h1>
+          <h1 className="mb-6 text-center text-2xl font-bold text-gray-800 dark:text-white">
+            注册
+          </h1>
 
           {error && (
             <div className="mb-4 rounded-lg bg-red-50 p-3 text-sm text-red-600 dark:bg-red-900/20 dark:text-red-400">
@@ -175,7 +179,10 @@ export default function Register() {
           </div>
 
           <div className="mt-4 text-center">
-            <Link to="/" className="text-sm text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-300">
+            <Link
+              to="/"
+              className="text-sm text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-300"
+            >
               返回首页
             </Link>
           </div>

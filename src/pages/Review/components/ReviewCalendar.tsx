@@ -1,5 +1,5 @@
-import { useMemo } from 'react'
 import type { ReviewCard } from '@/lib/spaced-repetition/sm2'
+import { useMemo } from 'react'
 
 interface ReviewCalendarProps {
   cards: ReviewCard[]
@@ -32,7 +32,13 @@ export default function ReviewCalendar({ cards, selectedDate, onDateClick }: Rev
     const startDayOfWeek = firstDay.getDay()
 
     // 生成日历格子
-    const days: Array<{ date: string; day: number; isCurrentMonth: boolean; isToday: boolean; count: number }> = []
+    const days: Array<{
+      date: string
+      day: number
+      isCurrentMonth: boolean
+      isToday: boolean
+      count: number
+    }> = []
 
     // 填充上月的日期
     const prevMonthLastDay = new Date(year, month, 0).getDate()
@@ -115,10 +121,10 @@ export default function ReviewCalendar({ cards, selectedDate, onDateClick }: Rev
               dayData.isToday
                 ? 'bg-indigo-500 font-bold text-white'
                 : dayData.isCurrentMonth
-                  ? selectedDate === dayData.date
-                    ? 'bg-indigo-100 text-indigo-600 dark:bg-indigo-900/30 dark:text-indigo-400'
-                    : 'text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700'
-                  : 'text-gray-400 dark:text-gray-600'
+                ? selectedDate === dayData.date
+                  ? 'bg-indigo-100 text-indigo-600 dark:bg-indigo-900/30 dark:text-indigo-400'
+                  : 'text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700'
+                : 'text-gray-400 dark:text-gray-600'
             }`}
           >
             {dayData.day}

@@ -1,7 +1,7 @@
-import { useCallback, useState } from 'react'
+import usePronunciation from '@/hooks/usePronunciation'
 import type { ReviewCard } from '@/lib/spaced-repetition/sm2'
 import { SimpleQuality } from '@/lib/spaced-repetition/sm2'
-import usePronunciation from '@/hooks/usePronunciation'
+import { useCallback, useState } from 'react'
 import IconVolume from '~icons/tabler/volume'
 
 interface FlashCardProps {
@@ -10,7 +10,11 @@ interface FlashCardProps {
   showAnswer?: boolean
 }
 
-export default function FlashCard({ card, onReview, showAnswer: initialShowAnswer = false }: FlashCardProps) {
+export default function FlashCard({
+  card,
+  onReview,
+  showAnswer: initialShowAnswer = false,
+}: FlashCardProps) {
   const [isFlipped, setIsFlipped] = useState(initialShowAnswer)
   const { play } = usePronunciation(card.word)
 
@@ -39,17 +43,19 @@ export default function FlashCard({ card, onReview, showAnswer: initialShowAnswe
       {/* 卡片 */}
       <div
         onClick={handleFlip}
-        className="group relative h-64 w-full max-w-md cursor-pointer perspective-1000"
+        className="perspective-1000 group relative h-64 w-full max-w-md cursor-pointer"
       >
         <div
-          className={`relative h-full w-full transition-transform duration-500 transform-style-preserve-3d ${
+          className={`transform-style-preserve-3d relative h-full w-full transition-transform duration-500 ${
             isFlipped ? 'rotate-y-180' : ''
           }`}
         >
           {/* 正面 - 单词 */}
-          <div className="absolute inset-0 flex flex-col items-center justify-center rounded-2xl bg-white p-6 shadow-lg backface-hidden dark:bg-gray-800">
+          <div className="backface-hidden absolute inset-0 flex flex-col items-center justify-center rounded-2xl bg-white p-6 shadow-lg dark:bg-gray-800">
             <h2 className="mb-2 text-4xl font-bold text-gray-800 dark:text-white">{card.word}</h2>
-            {card.usphone && <p className="mb-4 text-lg text-gray-500 dark:text-gray-400">[{card.usphone}]</p>}
+            {card.usphone && (
+              <p className="mb-4 text-lg text-gray-500 dark:text-gray-400">[{card.usphone}]</p>
+            )}
             <button
               onClick={handlePlaySound}
               className="rounded-full bg-indigo-100 p-3 text-indigo-600 transition-colors hover:bg-indigo-200 dark:bg-indigo-900/30 dark:text-indigo-400 dark:hover:bg-indigo-900/50"
@@ -60,7 +66,7 @@ export default function FlashCard({ card, onReview, showAnswer: initialShowAnswe
           </div>
 
           {/* 背面 - 释义 */}
-          <div className="absolute inset-0 flex flex-col items-center justify-center rounded-2xl bg-indigo-50 p-6 shadow-lg backface-hidden rotate-y-180 dark:bg-indigo-900/20">
+          <div className="backface-hidden rotate-y-180 absolute inset-0 flex flex-col items-center justify-center rounded-2xl bg-indigo-50 p-6 shadow-lg dark:bg-indigo-900/20">
             <h2 className="mb-2 text-2xl font-bold text-gray-800 dark:text-white">{card.word}</h2>
             <div className="mb-4 text-center">
               {card.trans.map((t, i) => (
@@ -104,7 +110,11 @@ export default function FlashCard({ card, onReview, showAnswer: initialShowAnswe
             >
               <span className="text-sm font-medium">良好</span>
               <span className="text-xs opacity-70">
-                {card.repetitions === 0 ? '1天' : card.repetitions === 1 ? '6天' : `${Math.round(card.interval * card.easeFactor)}天`}
+                {card.repetitions === 0
+                  ? '1天'
+                  : card.repetitions === 1
+                  ? '6天'
+                  : `${Math.round(card.interval * card.easeFactor)}天`}
               </span>
             </button>
             <button
@@ -113,7 +123,9 @@ export default function FlashCard({ card, onReview, showAnswer: initialShowAnswe
             >
               <span className="text-sm font-medium">简单</span>
               <span className="text-xs opacity-70">
-                {card.repetitions === 0 ? '4天' : `${Math.round(card.interval * card.easeFactor * 1.3)}天`}
+                {card.repetitions === 0
+                  ? '4天'
+                  : `${Math.round(card.interval * card.easeFactor * 1.3)}天`}
               </span>
             </button>
           </div>

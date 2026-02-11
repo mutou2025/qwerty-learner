@@ -1,6 +1,7 @@
 import type { LanguagePronunciationMap, SoundResource } from '@/typings'
 
-export const SOUND_URL_PREFIX = REACT_APP_DEPLOY_ENV === 'pages' ? '/qwerty-learner/sounds/' : './sounds/'
+export const SOUND_URL_PREFIX =
+  REACT_APP_DEPLOY_ENV === 'pages' ? '/qwerty-learner/sounds/' : './sounds/'
 export const KEY_SOUND_URL_PREFIX = SOUND_URL_PREFIX + 'key-sound/'
 
 // will add more sound resource and add config ui in the future
@@ -33,9 +34,13 @@ export const keySoundResources: SoundResource[] = Object.keys(videoList)
     return a.key.localeCompare(b.key)
   })
 
-export const wrongSoundResources: SoundResource[] = [{ key: '1', name: '声音1', filename: 'beep.wav' }]
+export const wrongSoundResources: SoundResource[] = [
+  { key: '1', name: '声音1', filename: 'beep.wav' },
+]
 
-export const correctSoundResources: SoundResource[] = [{ key: '1', name: '声音1', filename: 'correct.wav' }]
+export const correctSoundResources: SoundResource[] = [
+  { key: '1', name: '声音1', filename: 'correct.wav' },
+]
 
 export const LANG_PRON_MAP: LanguagePronunciationMap = {
   en: {

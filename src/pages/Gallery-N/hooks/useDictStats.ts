@@ -26,7 +26,9 @@ interface IDictStats {
 
 async function getDictStats(dict: string): Promise<IDictStats> {
   const records: IChapterRecord[] = await db.chapterRecords.where({ dict }).toArray()
-  const allChapter = records.map(({ chapter }) => chapter).filter((item) => item !== null) as number[]
+  const allChapter = records
+    .map(({ chapter }) => chapter)
+    .filter((item) => item !== null) as number[]
   const uniqueChapter = allChapter.filter((value, index, self) => {
     return self.indexOf(value) === index
   })

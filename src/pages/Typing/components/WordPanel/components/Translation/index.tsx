@@ -12,11 +12,19 @@ export type TranslationProps = {
   onMouseLeave?: () => void
 }
 
-export default function Translation({ trans, showTrans = true, onMouseEnter, onMouseLeave }: TranslationProps) {
+export default function Translation({
+  trans,
+  showTrans = true,
+  onMouseEnter,
+  onMouseLeave,
+}: TranslationProps) {
   const pronunciationConfig = useAtomValue(pronunciationConfigAtom)
   const fontSizeConfig = useAtomValue(fontSizeConfigAtom)
   const isShowTransRead = window.speechSynthesis && pronunciationConfig.isTransRead
-  const speechOptions = useMemo(() => ({ volume: pronunciationConfig.transVolume }), [pronunciationConfig.transVolume])
+  const speechOptions = useMemo(
+    () => ({ volume: pronunciationConfig.transVolume }),
+    [pronunciationConfig.transVolume],
+  )
   const { speak, speaking } = useSpeech(trans, speechOptions)
 
   const handleClickSoundIcon = useCallback(() => {
@@ -25,7 +33,11 @@ export default function Translation({ trans, showTrans = true, onMouseEnter, onM
 
   const isTextSelectable = useAtomValue(isTextSelectableAtom)
   return (
-    <div className={`flex items-center justify-center  pb-4 pt-5`} onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
+    <div
+      className={`flex items-center justify-center  pb-4 pt-5`}
+      onMouseEnter={onMouseEnter}
+      onMouseLeave={onMouseLeave}
+    >
       <span
         className={`max-w-4xl text-center font-sans transition-colors duration-300 dark:text-white dark:text-opacity-80 ${
           isShowTransRead && 'pl-8'

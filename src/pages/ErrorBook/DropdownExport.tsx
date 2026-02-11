@@ -87,7 +87,10 @@ const DropdownExport: FC<DropdownProps> = ({ renderRecords }) => {
         const worksheet = XLSX.utils.json_to_sheet(ExportData)
         const workbook = XLSX.utils.book_new()
         XLSX.utils.book_append_sheet(workbook, worksheet, 'Sheet1')
-        const excelBuffer = XLSX.write(workbook, { bookType: bookType as XLSX.BookType, type: 'array' })
+        const excelBuffer = XLSX.write(workbook, {
+          bookType: bookType as XLSX.BookType,
+          type: 'array',
+        })
         blob = new Blob([excelBuffer], { type: 'application/octet-stream' })
       }
 
@@ -109,7 +112,10 @@ const DropdownExport: FC<DropdownProps> = ({ renderRecords }) => {
     <div className="z-10">
       <DropdownMenu.Root>
         <DropdownMenu.Trigger asChild>
-          <button className="my-btn-primary h-8 shadow transition hover:bg-indigo-600 disabled:opacity-50" disabled={isExporting}>
+          <button
+            className="my-btn-primary h-8 shadow transition hover:bg-indigo-600 disabled:opacity-50"
+            disabled={isExporting}
+          >
             {isExporting ? '导出中...' : '导出'}
           </button>
         </DropdownMenu.Trigger>

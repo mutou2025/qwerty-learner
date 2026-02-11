@@ -12,13 +12,19 @@ export type ErrorColumn = {
   errorChar: string[]
 }
 
-export const errorColumns = (onDelete: (word: string) => Promise<void>): ColumnDef<ErrorColumn>[] => [
+export const errorColumns = (
+  onDelete: (word: string) => Promise<void>,
+): ColumnDef<ErrorColumn>[] => [
   {
     accessorKey: 'word',
     size: 100,
     header: ({ column }) => {
       return (
-        <Button variant="ghost" className="p-0" onClick={() => column.toggleSorting(column.getIsSorted() === 'asc')}>
+        <Button
+          variant="ghost"
+          className="p-0"
+          onClick={() => column.toggleSorting(column.getIsSorted() === 'asc')}
+        >
           单词
           <PhArrowsDownUpFill className="ml-1.5 h-4 w-4" />
         </Button>
@@ -35,7 +41,11 @@ export const errorColumns = (onDelete: (word: string) => Promise<void>): ColumnD
     size: 40,
     header: ({ column }) => {
       return (
-        <Button variant="ghost" className="p-0" onClick={() => column.toggleSorting(column.getIsSorted() === 'asc')}>
+        <Button
+          variant="ghost"
+          className="p-0"
+          onClick={() => column.toggleSorting(column.getIsSorted() === 'asc')}
+        >
           错误次数
           <PhArrowsDownUpFill className="ml-1.5 h-4 w-4" />
         </Button>

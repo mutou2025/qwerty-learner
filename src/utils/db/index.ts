@@ -1,4 +1,10 @@
-import type { IChapterRecord, IReviewRecord, IRevisionDictRecord, IWordRecord, LetterMistakes } from './record'
+import type {
+  IChapterRecord,
+  IReviewRecord,
+  IRevisionDictRecord,
+  IWordRecord,
+  LetterMistakes,
+} from './record'
 import { ChapterRecord, ReviewRecord, WordRecord } from './record'
 import { TypingContext, TypingStateActionType } from '@/pages/Typing/store'
 import type { TypingState } from '@/pages/Typing/store/type'
@@ -51,7 +57,9 @@ export function useSaveChapterRecord() {
         chapterData: { correctCount, wrongCount, userInputLogs, wordCount, words, wordRecordIds },
         timerData: { time },
       } = typingState
-      const correctWordIndexes = userInputLogs.filter((log) => log.correctCount > 0 && log.wrongCount === 0).map((log) => log.index)
+      const correctWordIndexes = userInputLogs
+        .filter((log) => log.correctCount > 0 && log.wrongCount === 0)
+        .map((log) => log.index)
 
       const chapterRecord = new ChapterRecord(
         dictID,
@@ -102,7 +110,14 @@ export function useSaveWordRecord() {
         timing.push(diff)
       }
 
-      const wordRecord = new WordRecord(word, dictID, isRevision ? -1 : currentChapter, timing, wrongCount, letterMistake)
+      const wordRecord = new WordRecord(
+        word,
+        dictID,
+        isRevision ? -1 : currentChapter,
+        timing,
+        wrongCount,
+        letterMistake,
+      )
 
       let dbID = -1
       try {

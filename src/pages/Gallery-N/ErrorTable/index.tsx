@@ -1,9 +1,21 @@
 import type { ErrorColumn } from './columns'
 import { errorColumns } from './columns'
 import { LoadingUI } from '@/components/Loading'
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table'
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from '@/components/ui/table'
 import type { SortingState } from '@tanstack/react-table'
-import { flexRender, getCoreRowModel, getSortedRowModel, useReactTable } from '@tanstack/react-table'
+import {
+  flexRender,
+  getCoreRowModel,
+  getSortedRowModel,
+  useReactTable,
+} from '@tanstack/react-table'
 import { useMemo, useState } from 'react'
 
 interface DataTableProps {
@@ -46,7 +58,9 @@ export function ErrorTable({ data, isLoading, error, onDelete }: DataTableProps)
                       },
                     }}
                   >
-                    {header.isPlaceholder ? null : flexRender(header.column.columnDef.header, header.getContext())}
+                    {header.isPlaceholder
+                      ? null
+                      : flexRender(header.column.columnDef.header, header.getContext())}
                   </TableHead>
                 )
               })}
@@ -76,7 +90,13 @@ export function ErrorTable({ data, isLoading, error, onDelete }: DataTableProps)
           ) : (
             <TableRow>
               <TableCell colSpan={table.getAllColumns().length} className="h-[22rem] text-center">
-                {isLoading ? <LoadingUI /> : error ? '好像遇到错误啦！尝试刷新下' : '暂无数据, 快去练习吧！'}
+                {isLoading ? (
+                  <LoadingUI />
+                ) : error ? (
+                  '好像遇到错误啦！尝试刷新下'
+                ) : (
+                  '暂无数据, 快去练习吧！'
+                )}
               </TableCell>
             </TableRow>
           )}

@@ -2,11 +2,11 @@ import Layout from '@/components/Layout'
 import { useAuth } from '@/hooks/useAuth'
 import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import IconMail from '~icons/tabler/mail'
-import IconLock from '~icons/tabler/lock'
-import IconBrandGoogle from '~icons/tabler/brand-google'
 import IconBrandGithub from '~icons/tabler/brand-github'
+import IconBrandGoogle from '~icons/tabler/brand-google'
 import IconLoader from '~icons/tabler/loader-2'
+import IconLock from '~icons/tabler/lock'
+import IconMail from '~icons/tabler/mail'
 
 export default function Login() {
   const navigate = useNavigate()
@@ -31,21 +31,21 @@ export default function Login() {
       <Layout hideSidebar>
         <div className="flex min-h-[60vh] items-center justify-center">
           <div className="w-full max-w-md rounded-2xl bg-white p-8 shadow-lg dark:bg-gray-800">
-            <h1 className="mb-6 text-center text-2xl font-bold text-gray-800 dark:text-white">登录</h1>
+            <h1 className="mb-6 text-center text-2xl font-bold text-gray-800 dark:text-white">
+              登录
+            </h1>
             <div className="rounded-lg bg-amber-50 p-4 text-center text-amber-700 dark:bg-amber-900/20 dark:text-amber-400">
               <p className="mb-2 font-medium">云同步功能未配置</p>
               <p className="text-sm">
-                请在 <code className="rounded bg-amber-100 px-1 dark:bg-amber-900/40">.env</code> 文件中配置 Supabase 凭据：
+                请在 <code className="rounded bg-amber-100 px-1 dark:bg-amber-900/40">.env</code>{' '}
+                文件中配置 Supabase 凭据：
               </p>
               <pre className="mt-2 text-left text-xs">
-{`VITE_SUPABASE_URL=your-url
+                {`VITE_SUPABASE_URL=your-url
 VITE_SUPABASE_ANON_KEY=your-key`}
               </pre>
             </div>
-            <Link
-              to="/"
-              className="mt-6 block text-center text-indigo-500 hover:text-indigo-600"
-            >
+            <Link to="/" className="mt-6 block text-center text-indigo-500 hover:text-indigo-600">
               返回首页
             </Link>
           </div>
@@ -58,7 +58,9 @@ VITE_SUPABASE_ANON_KEY=your-key`}
     <Layout hideSidebar>
       <div className="flex min-h-[60vh] items-center justify-center">
         <div className="w-full max-w-md rounded-2xl bg-white p-8 shadow-lg dark:bg-gray-800">
-          <h1 className="mb-6 text-center text-2xl font-bold text-gray-800 dark:text-white">登录</h1>
+          <h1 className="mb-6 text-center text-2xl font-bold text-gray-800 dark:text-white">
+            登录
+          </h1>
 
           {error && (
             <div className="mb-4 rounded-lg bg-red-50 p-3 text-sm text-red-600 dark:bg-red-900/20 dark:text-red-400">
@@ -154,7 +156,10 @@ VITE_SUPABASE_ANON_KEY=your-key`}
           </div>
 
           <div className="mt-4 text-center">
-            <Link to="/" className="text-sm text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-300">
+            <Link
+              to="/"
+              className="text-sm text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-300"
+            >
               返回首页
             </Link>
           </div>

@@ -2,19 +2,18 @@
  * useReviewCards Hook
  * 管理复习卡片状态，自动处理云端同步
  */
-
-import { useCallback, useEffect, useState } from 'react'
-import { useAtomValue } from 'jotai'
-import { currentUserAtom } from '@/store/authAtom'
-import type { ReviewCard } from '@/lib/spaced-repetition/sm2'
-import { createReviewCard, getDueCards, updateCardAfterReview, SimpleQuality } from '@/lib/spaced-repetition/sm2'
+import type { ReviewCard, SimpleQuality } from '@/lib/spaced-repetition/sm2'
+import { createReviewCard, getDueCards, updateCardAfterReview } from '@/lib/spaced-repetition/sm2'
 import {
-  loadReviewRecordsFromCloud,
-  saveReviewRecordToCloud,
-  saveAllReviewRecordsToCloud,
   clearAllReviewRecordsFromCloud,
+  loadReviewRecordsFromCloud,
+  saveAllReviewRecordsToCloud,
+  saveReviewRecordToCloud,
   syncLocalToCloud,
 } from '@/lib/supabase/reviewService'
+import { currentUserAtom } from '@/store/authAtom'
+import { useAtomValue } from 'jotai'
+import { useCallback, useEffect, useState } from 'react'
 
 const LOCAL_STORAGE_KEY = 'reviewCards'
 
@@ -64,63 +63,72 @@ export function useReviewCards(): UseReviewCardsResult {
   }, [isLoggedIn])
 
   // 添加单个卡片
-  const addCard = useCallback(async (word: string, trans: string[], usphone?: string) => {
-    const newCard = createReviewCard(word, trans, usphone)
-    
-    setCards(prev => {
-      // 检查是否已存在
-      if (prev.some(c => c.word === word)) {
-        return prev
-      }
-      return [...prev, newCard]
-    })
+  const addCard = useCallback(
+    async (word: string, trans: string[], usphone?: string) => {
+      const newCard = createReviewCard(word, trans, usphone)
 
-    if (isLoggedIn) {
-      await saveReviewRecordToCloud(newCard)
-    } else {
-      // 保存到本地
-      const stored = localStorage.getItem(LOCAL_STORAGE_KEY)
-      const existing = stored ? JSON.parse(stored) : []
-      if (!existing.some((c: ReviewCard) => c.word === word)) {
-        localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify([...existing, newCard]))
+      setCards((prev) => {
+        // 检查是否已存在
+        if (prev.some((c) => c.word === word)) {
+          return prev
+        }
+        return [...prev, newCard]
+      })
+
+      if (isLoggedIn) {
+        await saveReviewRecordToCloud(newCard)
+      } else {
+        // 保存到本地
+        const stored = localStorage.getItem(LOCAL_STORAGE_KEY)
+        const existing = stored ? JSON.parse(stored) : []
+        if (!existing.some((c: ReviewCard) => c.word === word)) {
+          localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify([...existing, newCard]))
+        }
       }
-    }
-  }, [isLoggedIn])
+    },
+    [isLoggedIn],
+  )
 
   // 批量添加卡片
-  const addCards = useCallback(async (newCards: ReviewCard[]) => {
-    setCards(prev => {
-      const existingWords = new Set(prev.map(c => c.word))
-      const uniqueNewCards = newCards.filter(c => !existingWords.has(c.word))
-      return [...prev, ...uniqueNewCards]
-    })
+  const addCards = useCallback(
+    async (newCards: ReviewCard[]) => {
+      setCards((prev) => {
+        const existingWords = new Set(prev.map((c) => c.word))
+        const uniqueNewCards = newCards.filter((c) => !existingWords.has(c.word))
+        return [...prev, ...uniqueNewCards]
+      })
 
-    if (isLoggedIn) {
-      await saveAllReviewRecordsToCloud(newCards)
-    } else {
-      const stored = localStorage.getItem(LOCAL_STORAGE_KEY)
-      const existing: ReviewCard[] = stored ? JSON.parse(stored) : []
-      const existingWords = new Set(existing.map(c => c.word))
-      const uniqueNewCards = newCards.filter(c => !existingWords.has(c.word))
-      localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify([...existing, ...uniqueNewCards]))
-    }
-  }, [isLoggedIn])
+      if (isLoggedIn) {
+        await saveAllReviewRecordsToCloud(newCards)
+      } else {
+        const stored = localStorage.getItem(LOCAL_STORAGE_KEY)
+        const existing: ReviewCard[] = stored ? JSON.parse(stored) : []
+        const existingWords = new Set(existing.map((c) => c.word))
+        const uniqueNewCards = newCards.filter((c) => !existingWords.has(c.word))
+        localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify([...existing, ...uniqueNewCards]))
+      }
+    },
+    [isLoggedIn],
+  )
 
   // 复习卡片
-  const reviewCard = useCallback(async (card: ReviewCard, quality: SimpleQuality) => {
-    const updatedCard = updateCardAfterReview(card, quality)
+  const reviewCard = useCallback(
+    async (card: ReviewCard, quality: SimpleQuality) => {
+      const updatedCard = updateCardAfterReview(card, quality)
 
-    setCards(prev => prev.map(c => c.word === card.word ? updatedCard : c))
+      setCards((prev) => prev.map((c) => (c.word === card.word ? updatedCard : c)))
 
-    if (isLoggedIn) {
-      await saveReviewRecordToCloud(updatedCard)
-    } else {
-      const stored = localStorage.getItem(LOCAL_STORAGE_KEY)
-      const existing: ReviewCard[] = stored ? JSON.parse(stored) : []
-      const updated = existing.map(c => c.word === card.word ? updatedCard : c)
-      localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(updated))
-    }
-  }, [isLoggedIn])
+      if (isLoggedIn) {
+        await saveReviewRecordToCloud(updatedCard)
+      } else {
+        const stored = localStorage.getItem(LOCAL_STORAGE_KEY)
+        const existing: ReviewCard[] = stored ? JSON.parse(stored) : []
+        const updated = existing.map((c) => (c.word === card.word ? updatedCard : c))
+        localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(updated))
+      }
+    },
+    [isLoggedIn],
+  )
 
   // 清空所有卡片
   const clearAllCards = useCallback(async () => {

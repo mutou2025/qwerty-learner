@@ -1,5 +1,5 @@
-import { useEffect, useState } from 'react'
 import type { CSVRow, FieldMapping } from '../types'
+import { useEffect, useState } from 'react'
 
 interface FieldMapperProps {
   headers: string[]
@@ -39,7 +39,17 @@ export default function FieldMapper({ headers, sampleData, onConfirm, onBack }: 
     }
 
     // 检测翻译字段
-    const transPatterns = ['trans', 'translation', 'meaning', 'chinese', 'cn', 'zh', '翻译', '释义', '中文']
+    const transPatterns = [
+      'trans',
+      'translation',
+      'meaning',
+      'chinese',
+      'cn',
+      'zh',
+      '翻译',
+      '释义',
+      '中文',
+    ]
     for (const pattern of transPatterns) {
       const index = lowerHeaders.findIndex((h) => h.includes(pattern))
       if (index !== -1) {
@@ -184,7 +194,10 @@ export default function FieldMapper({ headers, sampleData, onConfirm, onBack }: 
             <thead className="bg-gray-50 dark:bg-gray-700">
               <tr>
                 {headers.map((header) => (
-                  <th key={header} className="px-2 py-1.5 text-left font-medium text-gray-600 dark:text-gray-300">
+                  <th
+                    key={header}
+                    className="px-2 py-1.5 text-left font-medium text-gray-600 dark:text-gray-300"
+                  >
                     {header}
                   </th>
                 ))}

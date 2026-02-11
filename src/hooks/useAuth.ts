@@ -1,11 +1,4 @@
-import { useCallback, useEffect, useState } from 'react'
-import { useAtom, useSetAtom } from 'jotai'
-import { authLoadingAtom, currentUserAtom, isAuthenticatedAtom } from '@/store/authAtom'
-import {
-  getCurrentUser,
-  isSupabaseConfigured,
-  onAuthStateChange,
-} from '@/lib/supabase'
+import { getCurrentUser, isSupabaseConfigured, onAuthStateChange } from '@/lib/supabase'
 import {
   resetPassword as authResetPassword,
   signIn as authSignIn,
@@ -13,7 +6,10 @@ import {
   signOut as authSignOut,
   signUp as authSignUp,
 } from '@/lib/supabase'
+import { authLoadingAtom, currentUserAtom, isAuthenticatedAtom } from '@/store/authAtom'
 import type { User } from '@supabase/supabase-js'
+import { useAtom, useSetAtom } from 'jotai'
+import { useCallback, useEffect, useState } from 'react'
 
 export function useAuth() {
   const [user, setUser] = useAtom(currentUserAtom)
@@ -48,21 +44,24 @@ export function useAuth() {
   }, [setUser, setAuthLoading])
 
   // 邮箱密码登录
-  const signIn = useCallback(async (email: string, password: string) => {
-    setLoading(true)
-    setError(null)
+  const signIn = useCallback(
+    async (email: string, password: string) => {
+      setLoading(true)
+      setError(null)
 
-    const result = await authSignIn(email, password)
+      const result = await authSignIn(email, password)
 
-    if (result.error) {
-      setError(result.error.message)
-    } else if (result.user) {
-      setUser(result.user)
-    }
+      if (result.error) {
+        setError(result.error.message)
+      } else if (result.user) {
+        setUser(result.user)
+      }
 
-    setLoading(false)
-    return result
-  }, [setUser])
+      setLoading(false)
+      return result
+    },
+    [setUser],
+  )
 
   // 邮箱密码注册
   const signUp = useCallback(async (email: string, password: string) => {

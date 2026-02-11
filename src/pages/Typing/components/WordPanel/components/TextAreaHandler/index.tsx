@@ -3,7 +3,11 @@ import { TypingContext } from '@/pages/Typing/store'
 import type { FormEvent } from 'react'
 import { useCallback, useContext, useEffect, useRef } from 'react'
 
-export default function TextAreaHandler({ updateInput }: { updateInput: (updateObj: WordUpdateAction) => void }) {
+export default function TextAreaHandler({
+  updateInput,
+}: {
+  updateInput: (updateObj: WordUpdateAction) => void
+}) {
   const textareaRef = useRef<HTMLTextAreaElement>(null)
   // eslint-disable-next-line  @typescript-eslint/no-non-null-assertion
   const { state } = useContext(TypingContext)!

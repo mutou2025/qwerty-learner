@@ -53,8 +53,16 @@ test.describe('Practice', () => {
 
     await pressWord(page, 'canca')
 
-    await page.locator('div', { hasText: '输入数' }).locator('span', { hasText: /^5$/ }).first().click()
-    await page.locator('div', { hasText: '正确数' }).locator('span', { hasText: /^4$/ }).first().click()
+    await page
+      .locator('div', { hasText: '输入数' })
+      .locator('span', { hasText: /^5$/ })
+      .first()
+      .click()
+    await page
+      .locator('div', { hasText: '正确数' })
+      .locator('span', { hasText: /^4$/ })
+      .first()
+      .click()
     await page.waitForTimeout(500)
     await page.locator('div', { hasText: '正确率' }).locator('span', { hasText: /^80$/ }).click()
   })

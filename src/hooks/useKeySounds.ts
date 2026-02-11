@@ -1,4 +1,8 @@
-import { KEY_SOUND_URL_PREFIX, SOUND_URL_PREFIX, keySoundResources } from '@/resources/soundResource'
+import {
+  KEY_SOUND_URL_PREFIX,
+  SOUND_URL_PREFIX,
+  keySoundResources,
+} from '@/resources/soundResource'
 import { hintSoundsConfigAtom, keySoundsConfigAtom } from '@/store'
 import noop from '@/utils/noop'
 import { useAtomValue, useSetAtom } from 'jotai'
@@ -8,7 +12,12 @@ import useSound from 'use-sound'
 export type PlayFunction = ReturnType<typeof useSound>[0]
 
 export default function useKeySound(): [PlayFunction, PlayFunction, PlayFunction] {
-  const { isOpen: isKeyOpen, isOpenClickSound, volume: keyVolume, resource: keyResource } = useAtomValue(keySoundsConfigAtom)
+  const {
+    isOpen: isKeyOpen,
+    isOpenClickSound,
+    volume: keyVolume,
+    resource: keyResource,
+  } = useAtomValue(keySoundsConfigAtom)
   const setKeySoundsConfig = useSetAtom(keySoundsConfigAtom)
   const {
     isOpen: isHintOpen,
@@ -21,8 +30,13 @@ export default function useKeySound(): [PlayFunction, PlayFunction, PlayFunction
   const [keySoundUrl, setKeySoundUrl] = useState(`${KEY_SOUND_URL_PREFIX}${keyResource.filename}`)
 
   useEffect(() => {
-    if (!keySoundResources.some((item) => item.filename === keyResource.filename && item.key === keyResource.key)) {
-      const defaultKeySoundResource = keySoundResources.find((item) => item.key === 'Default') || keySoundResources[0]
+    if (
+      !keySoundResources.some(
+        (item) => item.filename === keyResource.filename && item.key === keyResource.key,
+      )
+    ) {
+      const defaultKeySoundResource =
+        keySoundResources.find((item) => item.key === 'Default') || keySoundResources[0]
 
       setKeySoundUrl(`${KEY_SOUND_URL_PREFIX}${defaultKeySoundResource.filename}`)
       setKeySoundsConfig((prev) => ({ ...prev, resource: defaultKeySoundResource }))

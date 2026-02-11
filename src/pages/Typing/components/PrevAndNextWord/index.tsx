@@ -12,9 +12,15 @@ export default function PrevAndNextWord({ type }: LastAndNextWordProps) {
   const { state, dispatch } = useContext(TypingContext)!
 
   const wordDictationConfig = useAtomValue(wordDictationConfigAtom)
-  const newIndex = useMemo(() => state.chapterData.index + (type === 'prev' ? -1 : 1), [state.chapterData.index, type])
+  const newIndex = useMemo(
+    () => state.chapterData.index + (type === 'prev' ? -1 : 1),
+    [state.chapterData.index, type],
+  )
   const word = state.chapterData.words[newIndex]
-  const shortCutKey = useMemo(() => (type === 'prev' ? `${CTRL} + Shift + ArrowLeft` : `${CTRL} + Shift + ArrowRight`), [type])
+  const shortCutKey = useMemo(
+    () => (type === 'prev' ? `${CTRL} + Shift + ArrowLeft` : `${CTRL} + Shift + ArrowRight`),
+    [type],
+  )
   const currentLanguage = useAtomValue(currentDictInfoAtom).language
 
   const onClickWord = useCallback(() => {
@@ -46,7 +52,11 @@ export default function PrevAndNextWord({ type }: LastAndNextWordProps) {
           >
             {type === 'prev' && <IconPrev className="mr-4 shrink-0 grow-0 text-2xl" />}
 
-            <div className={`grow-1 flex w-full flex-col ${type === 'next' ? 'items-end text-right' : ''}`}>
+            <div
+              className={`grow-1 flex w-full flex-col ${
+                type === 'next' ? 'items-end text-right' : ''
+              }`}
+            >
               <p
                 className={`font-mono text-2xl font-normal text-gray-700 dark:text-gray-400 ${
                   !wordDictationConfig.isOpen ? 'tracking-normal' : 'tracking-wider'
@@ -55,7 +65,9 @@ export default function PrevAndNextWord({ type }: LastAndNextWordProps) {
                 {headWord}
               </p>
               {state.isTransVisible && (
-                <p className="line-clamp-1 max-w-full text-sm font-normal text-gray-600 dark:text-gray-500">{word.trans.join('；')}</p>
+                <p className="line-clamp-1 max-w-full text-sm font-normal text-gray-600 dark:text-gray-500">
+                  {word.trans.join('；')}
+                </p>
               )}
             </div>
             {type === 'next' && <IconNext className="ml-4 shrink-0 grow-0 text-2xl" />}

@@ -49,7 +49,10 @@ export default function WordList() {
       </Tooltip>
 
       <Drawer open={isOpen} onClose={closeModal} classNames="bg-stone-50 dark:bg-gray-900">
-        <Dialog.Title as="h3" className="flex items-center justify-between p-4 text-lg font-medium leading-6 dark:text-gray-50">
+        <Dialog.Title
+          as="h3"
+          className="flex items-center justify-between p-4 text-lg font-medium leading-6 dark:text-gray-50"
+        >
           {currentDictTitleValue}
           <IconX onClick={closeModal} className="cursor-pointer" />
         </Dialog.Title>
@@ -57,11 +60,20 @@ export default function WordList() {
           <ScrollArea.Viewport className="h-full w-full px-3">
             <div className="flex h-full w-full flex-col gap-1">
               {state.chapterData.words?.map((word, index) => {
-                return <WordCard word={word} key={`${word.name}_${index}`} isActive={state.chapterData.index === index} />
+                return (
+                  <WordCard
+                    word={word}
+                    key={`${word.name}_${index}`}
+                    isActive={state.chapterData.index === index}
+                  />
+                )
               })}
             </div>
           </ScrollArea.Viewport>
-          <ScrollArea.Scrollbar className="flex touch-none select-none bg-transparent " orientation="vertical"></ScrollArea.Scrollbar>
+          <ScrollArea.Scrollbar
+            className="flex touch-none select-none bg-transparent "
+            orientation="vertical"
+          ></ScrollArea.Scrollbar>
         </ScrollArea.Root>
       </Drawer>
     </>

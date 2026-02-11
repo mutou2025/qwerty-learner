@@ -34,7 +34,8 @@ const RowDetail: React.FC<RowDetailProps> = ({ currentRowDetail, allRecords }) =
   const rowDetailData: RowDetailData = useMemo(() => {
     const time =
       currentRowDetail.records.length > 0
-        ? currentRowDetail.records.reduce((acc, cur) => acc + cur.totalTime, 0) / currentRowDetail.records.length
+        ? currentRowDetail.records.reduce((acc, cur) => acc + cur.totalTime, 0) /
+          currentRowDetail.records.length
         : 0
     const timeStr = (time / 1000).toFixed(2)
     const correctCount = currentRowDetail.records.length
@@ -68,7 +69,10 @@ const RowDetail: React.FC<RowDetailProps> = ({ currentRowDetail, allRecords }) =
   return (
     <div className="absolute inset-0 flex  flex-col items-center  justify-center ">
       <div className="my-card relative z-10 flex h-[32rem] min-w-[26rem] select-text flex-col items-center justify-around rounded-2xl bg-white px-3 py-10 dark:bg-gray-900">
-        <IconX className="absolute right-3 top-3  h-6 w-6 cursor-pointer text-gray-400" onClick={onClose} />
+        <IconX
+          className="absolute right-3 top-3  h-6 w-6 cursor-pointer text-gray-400"
+          onClick={onClose}
+        />
         <div className="flex flex-col items-center justify-start">
           <div>
             {currentRowDetail.word.split('').map((t, index) => (
@@ -76,7 +80,11 @@ const RowDetail: React.FC<RowDetailProps> = ({ currentRowDetail, allRecords }) =
             ))}
           </div>
           <div className="relative flex h-8 items-center">
-            {word ? <Phonetic word={word} /> : <LoadingWordUI isLoading={isLoading} hasError={hasError} />}
+            {word ? (
+              <Phonetic word={word} />
+            ) : (
+              <LoadingWordUI isLoading={isLoading} hasError={hasError} />
+            )}
             {word && (
               <WordPronunciationIcon
                 lang={dictInfo.language}
@@ -87,8 +95,14 @@ const RowDetail: React.FC<RowDetailProps> = ({ currentRowDetail, allRecords }) =
             )}
           </div>
           <div className="flex max-w-[24rem] items-center">
-            <span className={`max-w-4xl text-center font-sans transition-colors duration-300 dark:text-white dark:text-opacity-80`}>
-              {word ? word.trans.join('；') : <LoadingWordUI isLoading={isLoading} hasError={hasError} />}
+            <span
+              className={`max-w-4xl text-center font-sans transition-colors duration-300 dark:text-white dark:text-opacity-80`}
+            >
+              {word ? (
+                word.trans.join('；')
+              ) : (
+                <LoadingWordUI isLoading={isLoading} hasError={hasError} />
+              )}
             </span>
           </div>
         </div>

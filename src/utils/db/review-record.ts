@@ -33,7 +33,9 @@ type TRankedErrorWordData = TErrorWordData & {
 
 export async function generateNewWordReviewRecord(dictID: string, errorData: TErrorWordData[]) {
   const errorCountRankings = [...errorData].sort((a, b) => a.errorCount - b.errorCount)
-  const latestErrorTimeRankings = [...errorData].sort((a, b) => a.latestErrorTime - b.latestErrorTime)
+  const latestErrorTimeRankings = [...errorData].sort(
+    (a, b) => a.latestErrorTime - b.latestErrorTime,
+  )
 
   // 计算每个对象的排名得分
   const errorDataWithRank: TRankedErrorWordData[] = errorData.map((item) => ({
@@ -49,8 +51,10 @@ export async function generateNewWordReviewRecord(dictID: string, errorData: TEr
   const sortedWords: Word[] = errorDataWithRank
     .sort((a, b) => {
       // 计算 a 和 b 的得分
-      const scoreA = a.errorCountScore * errorCountWeight + a.latestErrorTimeScore * latestErrorTimeWeight
-      const scoreB = b.errorCountScore * errorCountWeight + b.latestErrorTimeScore * latestErrorTimeWeight
+      const scoreA =
+        a.errorCountScore * errorCountWeight + a.latestErrorTimeScore * latestErrorTimeWeight
+      const scoreB =
+        b.errorCountScore * errorCountWeight + b.latestErrorTimeScore * latestErrorTimeWeight
 
       // 根据得分进行排序
       return scoreA - scoreB

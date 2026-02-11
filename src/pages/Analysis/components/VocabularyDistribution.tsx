@@ -1,11 +1,10 @@
 /**
  * 词汇掌握分布图组件
  */
-
 import { useReviewCards } from '@/hooks/useReviewCards'
 import IconCircleCheck from '~icons/tabler/circle-check'
-import IconProgress from '~icons/tabler/progress'
 import IconClock from '~icons/tabler/clock'
+import IconProgress from '~icons/tabler/progress'
 
 export default function VocabularyDistribution() {
   const { cards } = useReviewCards()

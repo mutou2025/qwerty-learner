@@ -71,7 +71,9 @@ const MobilePage: React.FC = () => {
         <div className="flex items-center">
           <img src={logo} className="mr-4 h-10 w-10 lg:h-12 lg:w-12" alt="Echo Learner Logo" />
           <div className="flex flex-col">
-            <h1 className="text-lg font-semibold tracking-tight text-indigo-500 lg:text-xl">Echo Learner</h1>
+            <h1 className="text-lg font-semibold tracking-tight text-indigo-500 lg:text-xl">
+              Echo Learner
+            </h1>
             <span className="text-xs font-normal text-gray-500">官方网站</span>
           </div>
         </div>
@@ -112,16 +114,34 @@ const MobilePage: React.FC = () => {
       {/* 面包屑导航 */}
       <nav aria-label="面包屑导航" className="bg-gray-50/50 px-6 py-3 lg:px-24">
         <div className="mx-auto max-w-7xl">
-          <ol className="flex items-center space-x-2 text-sm text-gray-500" itemScope itemType="https://schema.org/BreadcrumbList">
+          <ol
+            className="flex items-center space-x-2 text-sm text-gray-500"
+            itemScope
+            itemType="https://schema.org/BreadcrumbList"
+          >
             <li itemProp="itemListElement" itemScope itemType="https://schema.org/ListItem">
-              <a href={SITE_URL} className="transition-colors hover:text-indigo-600" itemProp="item">
+              <a
+                href={SITE_URL}
+                className="transition-colors hover:text-indigo-600"
+                itemProp="item"
+              >
                 <span itemProp="name">首页</span>
               </a>
               <meta itemProp="position" content="1" />
             </li>
             <li className="flex items-center">
-              <svg className="h-4 w-4 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
+              <svg
+                className="h-4 w-4 text-gray-300"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M9 5l7 7-7 7"
+                />
               </svg>
             </li>
             <li itemProp="itemListElement" itemScope itemType="https://schema.org/ListItem">
@@ -148,35 +168,51 @@ const MobilePage: React.FC = () => {
             {/* 官网标识 */}
             <div className="mb-8 inline-flex items-center gap-2 rounded-full border border-indigo-100 bg-indigo-50 px-5 py-2.5 text-sm font-medium text-indigo-600">
               <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                />
               </svg>
               <span>官方网站</span>
             </div>
 
             {/* 主标题 */}
-            <h1 className="mb-8 text-5xl font-bold leading-[1.1] tracking-tight text-gray-900 sm:text-6xl lg:text-7xl" itemProp="name">
+            <h1
+              className="mb-8 text-5xl font-bold leading-[1.1] tracking-tight text-gray-900 sm:text-6xl lg:text-7xl"
+              itemProp="name"
+            >
               为<span className="text-indigo-500">键盘工作者</span>
               <br />
               设计的<span className="text-indigo-500">英语学习软件</span>
             </h1>
 
             {/* 副标题 */}
-            <p className="mx-auto mb-16 max-w-3xl text-xl font-light leading-relaxed text-gray-600 sm:text-2xl" itemProp="description">
+            <p
+              className="mx-auto mb-16 max-w-3xl text-xl font-light leading-relaxed text-gray-600 sm:text-2xl"
+              itemProp="description"
+            >
               结合打字练习与单词记忆，让英语学习变得高效而有趣
             </p>
 
             {/* 功能标签 */}
             <div className="mb-16 flex flex-wrap justify-center gap-3" itemProp="featureList">
-              {['英语单词记忆训练', '国际音标发音练习', 'CET 四六级词库', '程序员专用词汇', '免费在线学习', '完全开源'].map(
-                (item, index) => (
-                  <span
-                    key={index}
-                    className="rounded-full border border-gray-200/50 bg-gray-50 px-6 py-3 text-sm font-medium text-gray-700 transition-all duration-200 hover:bg-white hover:shadow-sm"
-                  >
-                    {item}
-                  </span>
-                ),
-              )}
+              {[
+                '英语单词记忆训练',
+                '国际音标发音练习',
+                'CET 四六级词库',
+                '程序员专用词汇',
+                '免费在线学习',
+                '完全开源',
+              ].map((item, index) => (
+                <span
+                  key={index}
+                  className="rounded-full border border-gray-200/50 bg-gray-50 px-6 py-3 text-sm font-medium text-gray-700 transition-all duration-200 hover:bg-white hover:shadow-sm"
+                >
+                  {item}
+                </span>
+              ))}
             </div>
 
             {/* CTA按钮 */}
@@ -188,7 +224,12 @@ const MobilePage: React.FC = () => {
             >
               <span>立即开始</span>
               <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M17 8l4 4m0 0l-4 4m4-4H3"
+                />
               </svg>
             </a>
           </div>
@@ -214,7 +255,11 @@ const MobilePage: React.FC = () => {
                   alt="Echo Learner 免费英语学习软件词库目录 - 支持程序员技术英语学习"
                   className="w-full flex-shrink-0"
                 />
-                <img src={indexImg} alt="Echo Learner 英语打字练习软件主界面 - 在线英语单词记忆训练" className="w-full flex-shrink-0" />
+                <img
+                  src={indexImg}
+                  alt="Echo Learner 英语打字练习软件主界面 - 在线英语单词记忆训练"
+                  className="w-full flex-shrink-0"
+                />
                 <img
                   src={hotImg}
                   alt="Echo Learner 英语学习软件热门词库界面 - CET 四六级雅思托福词汇在线练习"
@@ -235,10 +280,17 @@ const MobilePage: React.FC = () => {
           </div>
         </section>
 
-        <section className="mt-24 bg-gray-50/30 px-6 py-24 lg:mt-32 lg:px-24" itemScope itemType="https://schema.org/Product">
+        <section
+          className="mt-24 bg-gray-50/30 px-6 py-24 lg:mt-32 lg:px-24"
+          itemScope
+          itemType="https://schema.org/Product"
+        >
           <div className="mx-auto max-w-7xl">
             <meta itemProp="name" content="Echo Learner" />
-            <meta itemProp="description" content="为语言学习者设计的英语学习软件，结合打字练习与单词记忆" />
+            <meta
+              itemProp="description"
+              content="为语言学习者设计的英语学习软件，结合打字练习与单词记忆"
+            />
             <meta itemProp="brand" content="Echo Learner" />
 
             {/* Offers Schema */}
@@ -343,8 +395,12 @@ const MobilePage: React.FC = () => {
                       }`}
                       onClick={() => setActiveIndex(index)}
                     >
-                      <h3 className="mb-3 text-xl font-semibold text-indigo-500 lg:text-2xl">{item.title}</h3>
-                      <p className="text-base font-light leading-relaxed text-gray-600 lg:text-lg">{item.description}</p>
+                      <h3 className="mb-3 text-xl font-semibold text-indigo-500 lg:text-2xl">
+                        {item.title}
+                      </h3>
+                      <p className="text-base font-light leading-relaxed text-gray-600 lg:text-lg">
+                        {item.description}
+                      </p>
                     </div>
                   )
                 })}
@@ -365,7 +421,12 @@ const MobilePage: React.FC = () => {
                 {/* 音标显示与发音 */}
                 <div className="rounded-2xl border border-gray-200 bg-white p-6 shadow-lg transition-all duration-300 hover:shadow-xl sm:p-8">
                   <div className="mb-4 inline-flex items-center justify-center rounded-full bg-indigo-100 p-3">
-                    <svg className="h-6 w-6 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg
+                      className="h-6 w-6 text-indigo-600"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
                       <path
                         strokeLinecap="round"
                         strokeLinejoin="round"
@@ -374,7 +435,9 @@ const MobilePage: React.FC = () => {
                       />
                     </svg>
                   </div>
-                  <h3 className="mb-3 text-lg font-semibold text-gray-900 sm:text-xl">音标显示与发音功能</h3>
+                  <h3 className="mb-3 text-lg font-semibold text-gray-900 sm:text-xl">
+                    音标显示与发音功能
+                  </h3>
                   <p className="text-sm leading-relaxed text-gray-600 sm:text-base">
                     方便用户在记忆单词时，同时记忆读音与音标。支持标准美式发音，帮助用户建立正确的语音记忆，提高听力和口语能力。
                   </p>
@@ -383,7 +446,12 @@ const MobilePage: React.FC = () => {
                 {/* 拼写挑战 */}
                 <div className="rounded-2xl border border-gray-200 bg-white p-6 shadow-lg transition-all duration-300 hover:shadow-xl sm:p-8">
                   <div className="mb-4 inline-flex items-center justify-center rounded-full bg-indigo-100 p-3">
-                    <svg className="h-6 w-6 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg
+                      className="h-6 w-6 text-indigo-600"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
                       <path
                         strokeLinecap="round"
                         strokeLinejoin="round"
@@ -392,7 +460,9 @@ const MobilePage: React.FC = () => {
                       />
                     </svg>
                   </div>
-                  <h3 className="mb-3 text-lg font-semibold text-gray-900 sm:text-xl">智能拼写挑战</h3>
+                  <h3 className="mb-3 text-lg font-semibold text-gray-900 sm:text-xl">
+                    智能拼写挑战
+                  </h3>
                   <p className="text-sm leading-relaxed text-gray-600 sm:text-base">
                     在用户完成一个章节的练习后，会弹出选项是否进行拼写挑战，方便用户巩固本章学习的单词。通过拼写挑战强化记忆效果。
                   </p>
@@ -401,7 +471,12 @@ const MobilePage: React.FC = () => {
                 {/* 速度统计 */}
                 <div className="rounded-2xl border border-gray-200 bg-white p-6 shadow-lg transition-all duration-300 hover:shadow-xl sm:p-8">
                   <div className="mb-4 inline-flex items-center justify-center rounded-full bg-indigo-100 p-3">
-                    <svg className="h-6 w-6 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg
+                      className="h-6 w-6 text-indigo-600"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
                       <path
                         strokeLinecap="round"
                         strokeLinejoin="round"
@@ -410,20 +485,35 @@ const MobilePage: React.FC = () => {
                       />
                     </svg>
                   </div>
-                  <h3 className="mb-3 text-lg font-semibold text-gray-900 sm:text-xl">精准数据统计</h3>
+                  <h3 className="mb-3 text-lg font-semibold text-gray-900 sm:text-xl">
+                    精准数据统计
+                  </h3>
                   <p className="text-sm leading-relaxed text-gray-600 sm:text-base">
-                    量化用户输入的速度和输入的正确率，让用户有感知的了解自己技能的提升。支持 WPM 统计、准确率分析和进度跟踪。
+                    量化用户输入的速度和输入的正确率，让用户有感知的了解自己技能的提升。支持 WPM
+                    统计、准确率分析和进度跟踪。
                   </p>
                 </div>
 
                 {/* 肌肉记忆 */}
                 <div className="rounded-2xl border border-gray-200 bg-white p-6 shadow-lg transition-all duration-300 hover:shadow-xl sm:p-8">
                   <div className="mb-4 inline-flex items-center justify-center rounded-full bg-indigo-100 p-3">
-                    <svg className="h-6 w-6 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                    <svg
+                      className="h-6 w-6 text-indigo-600"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2"
+                        d="M13 10V3L4 14h7v7l9-11h-7z"
+                      />
                     </svg>
                   </div>
-                  <h3 className="mb-3 text-lg font-semibold text-gray-900 sm:text-xl">英语肌肉记忆训练</h3>
+                  <h3 className="mb-3 text-lg font-semibold text-gray-900 sm:text-xl">
+                    英语肌肉记忆训练
+                  </h3>
                   <p className="text-sm leading-relaxed text-gray-600 sm:text-base">
                     专为语言学习者设计，将英语单词记忆与键盘输入的肌肉记忆锻炼相结合，在背诵单词的同时巩固打字技能。
                   </p>
@@ -432,7 +522,12 @@ const MobilePage: React.FC = () => {
                 {/* 错误纠正 */}
                 <div className="rounded-2xl border border-gray-200 bg-white p-6 shadow-lg transition-all duration-300 hover:shadow-xl sm:p-8">
                   <div className="mb-4 inline-flex items-center justify-center rounded-full bg-indigo-100 p-3">
-                    <svg className="h-6 w-6 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg
+                      className="h-6 w-6 text-indigo-600"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
                       <path
                         strokeLinecap="round"
                         strokeLinejoin="round"
@@ -441,7 +536,9 @@ const MobilePage: React.FC = () => {
                       />
                     </svg>
                   </div>
-                  <h3 className="mb-3 text-lg font-semibold text-gray-900 sm:text-xl">智能错误纠正</h3>
+                  <h3 className="mb-3 text-lg font-semibold text-gray-900 sm:text-xl">
+                    智能错误纠正
+                  </h3>
                   <p className="text-sm leading-relaxed text-gray-600 sm:text-base">
                     为了避免造成错误的肌肉记忆，如果用户单词输入错误则需要重新输入单词，确保用户维持正确的肌肉记忆和拼写习惯。
                   </p>
@@ -450,7 +547,12 @@ const MobilePage: React.FC = () => {
                 {/* 多平台支持 */}
                 <div className="rounded-2xl border border-gray-200 bg-white p-6 shadow-lg transition-all duration-300 hover:shadow-xl sm:p-8">
                   <div className="mb-4 inline-flex items-center justify-center rounded-full bg-indigo-100 p-3">
-                    <svg className="h-6 w-6 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg
+                      className="h-6 w-6 text-indigo-600"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
                       <path
                         strokeLinecap="round"
                         strokeLinejoin="round"
@@ -459,9 +561,12 @@ const MobilePage: React.FC = () => {
                       />
                     </svg>
                   </div>
-                  <h3 className="mb-3 text-lg font-semibold text-gray-900 sm:text-xl">多平台无缝体验</h3>
+                  <h3 className="mb-3 text-lg font-semibold text-gray-900 sm:text-xl">
+                    多平台无缝体验
+                  </h3>
                   <p className="text-sm leading-relaxed text-gray-600 sm:text-base">
-                    支持网页版和 VSCode 插件版本，随时随地开始练习。还提供了便捷的快速部署方案，满足不同用户的使用需求。
+                    支持网页版和 VSCode
+                    插件版本，随时随地开始练习。还提供了便捷的快速部署方案，满足不同用户的使用需求。
                   </p>
                 </div>
               </div>
@@ -470,15 +575,19 @@ const MobilePage: React.FC = () => {
         </section>
 
         {/* 词库展示区 */}
-        <section className="mt-24 px-6 py-24 lg:mt-32 lg:px-24" itemScope itemType="https://schema.org/EducationalOrganization">
+        <section
+          className="mt-24 px-6 py-24 lg:mt-32 lg:px-24"
+          itemScope
+          itemType="https://schema.org/EducationalOrganization"
+        >
           <div className="mx-auto max-w-7xl">
             <div className="mb-16 text-center">
               <h2 className="mb-6 text-4xl font-bold tracking-tight text-gray-900 lg:text-5xl xl:text-6xl">
                 丰富词库，<span className="text-indigo-500">应有尽有</span>
               </h2>
               <p className="mx-auto max-w-3xl text-xl font-light leading-relaxed text-gray-600">
-                涵盖 CET-4/6 四六级英语考试、雅思托福 GRE 考研英语、商务英语 BEC 考试以及专为程序员定制的 JavaScript/Java/Python
-                技术词库，满足不同用户的英语学习需求
+                涵盖 CET-4/6 四六级英语考试、雅思托福 GRE 考研英语、商务英语 BEC
+                考试以及专为程序员定制的 JavaScript/Java/Python 技术词库，满足不同用户的英语学习需求
               </p>
             </div>
 
@@ -486,7 +595,12 @@ const MobilePage: React.FC = () => {
               {/* 考试词库 */}
               <div className="rounded-2xl border border-gray-200 bg-white p-6 shadow-lg transition-all duration-300 hover:shadow-xl sm:p-8">
                 <div className="mb-6 inline-flex items-center justify-center rounded-full bg-red-100 p-3">
-                  <svg className="h-6 w-6 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg
+                    className="h-6 w-6 text-red-600"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
                     <path
                       strokeLinecap="round"
                       strokeLinejoin="round"
@@ -495,7 +609,9 @@ const MobilePage: React.FC = () => {
                     />
                   </svg>
                 </div>
-                <h3 className="mb-4 text-lg font-semibold text-gray-900 sm:text-xl">考试必备词库</h3>
+                <h3 className="mb-4 text-lg font-semibold text-gray-900 sm:text-xl">
+                  考试必备词库
+                </h3>
                 <div className="space-y-2 text-xs text-gray-600 sm:text-sm">
                   <div className="flex items-center gap-2">
                     <span className="text-indigo-500">•</span>
@@ -531,7 +647,12 @@ const MobilePage: React.FC = () => {
               {/* 学术词库 */}
               <div className="rounded-2xl border border-gray-200 bg-white p-6 shadow-lg transition-all duration-300 hover:shadow-xl sm:p-8">
                 <div className="mb-6 inline-flex items-center justify-center rounded-full bg-blue-100 p-3">
-                  <svg className="h-6 w-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg
+                    className="h-6 w-6 text-blue-600"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
                     <path
                       strokeLinecap="round"
                       strokeLinejoin="round"
@@ -540,7 +661,9 @@ const MobilePage: React.FC = () => {
                     />
                   </svg>
                 </div>
-                <h3 className="mb-4 text-lg font-semibold text-gray-900 sm:text-xl">学术专业词库</h3>
+                <h3 className="mb-4 text-lg font-semibold text-gray-900 sm:text-xl">
+                  学术专业词库
+                </h3>
                 <div className="space-y-2 text-xs text-gray-600 sm:text-sm">
                   <div className="flex items-center gap-2">
                     <span className="text-indigo-500">•</span>
@@ -572,7 +695,12 @@ const MobilePage: React.FC = () => {
               {/* 商务与语言 */}
               <div className="rounded-2xl border border-gray-200 bg-white p-6 shadow-lg transition-all duration-300 hover:shadow-xl sm:p-8">
                 <div className="mb-6 inline-flex items-center justify-center rounded-full bg-green-100 p-3">
-                  <svg className="h-6 w-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg
+                    className="h-6 w-6 text-green-600"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
                     <path
                       strokeLinecap="round"
                       strokeLinejoin="round"
@@ -581,7 +709,9 @@ const MobilePage: React.FC = () => {
                     />
                   </svg>
                 </div>
-                <h3 className="mb-4 text-lg font-semibold text-gray-900 sm:text-xl">商务与多语言</h3>
+                <h3 className="mb-4 text-lg font-semibold text-gray-900 sm:text-xl">
+                  商务与多语言
+                </h3>
                 <div className="space-y-2 text-xs text-gray-600 sm:text-sm">
                   <div className="flex items-center gap-2">
                     <span className="text-indigo-500">•</span>
@@ -610,11 +740,23 @@ const MobilePage: React.FC = () => {
               <div className="col-span-full rounded-2xl border border-indigo-200 bg-gradient-to-r from-indigo-50 to-purple-50 p-6 shadow-lg sm:p-8">
                 <div className="mb-8 text-center">
                   <div className="mb-4 inline-flex items-center justify-center rounded-full bg-indigo-100 p-4">
-                    <svg className="h-8 w-8 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                    <svg
+                      className="h-8 w-8 text-indigo-600"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2"
+                        d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"
+                      />
                     </svg>
                   </div>
-                  <h3 className="mb-4 text-xl font-bold text-gray-900 sm:text-2xl">程序员专属词库与 API</h3>
+                  <h3 className="mb-4 text-xl font-bold text-gray-900 sm:text-2xl">
+                    程序员专属词库与 API
+                  </h3>
                   <p className="mx-auto max-w-3xl text-gray-600">
                     专为程序员量身定制的技术词汇和编程 API 练习，提高代码编写效率和技术英语水平
                   </p>
@@ -622,7 +764,9 @@ const MobilePage: React.FC = () => {
 
                 <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-5">
                   <div className="text-center">
-                    <div className="mb-2 text-sm font-semibold text-gray-900 sm:text-base">编程词汇</div>
+                    <div className="mb-2 text-sm font-semibold text-gray-900 sm:text-base">
+                      编程词汇
+                    </div>
                     <div className="text-xs text-gray-600 sm:text-sm">
                       Coder Dict
                       <br />
@@ -630,7 +774,9 @@ const MobilePage: React.FC = () => {
                     </div>
                   </div>
                   <div className="text-center">
-                    <div className="mb-2 text-sm font-semibold text-gray-900 sm:text-base">JavaScript</div>
+                    <div className="mb-2 text-sm font-semibold text-gray-900 sm:text-base">
+                      JavaScript
+                    </div>
                     <div className="text-xs text-gray-600 sm:text-sm">
                       JS API
                       <br />
@@ -638,7 +784,9 @@ const MobilePage: React.FC = () => {
                     </div>
                   </div>
                   <div className="text-center">
-                    <div className="mb-2 text-sm font-semibold text-gray-900 sm:text-base">Node.js</div>
+                    <div className="mb-2 text-sm font-semibold text-gray-900 sm:text-base">
+                      Node.js
+                    </div>
                     <div className="text-xs text-gray-600 sm:text-sm">
                       Node API
                       <br />
@@ -646,7 +794,9 @@ const MobilePage: React.FC = () => {
                     </div>
                   </div>
                   <div className="text-center">
-                    <div className="mb-2 text-sm font-semibold text-gray-900 sm:text-base">Java</div>
+                    <div className="mb-2 text-sm font-semibold text-gray-900 sm:text-base">
+                      Java
+                    </div>
                     <div className="text-xs text-gray-600 sm:text-sm">
                       Java API
                       <br />
@@ -654,7 +804,9 @@ const MobilePage: React.FC = () => {
                     </div>
                   </div>
                   <div className="text-center">
-                    <div className="mb-2 text-sm font-semibold text-gray-900 sm:text-base">Linux</div>
+                    <div className="mb-2 text-sm font-semibold text-gray-900 sm:text-base">
+                      Linux
+                    </div>
                     <div className="text-xs text-gray-600 sm:text-sm">
                       命令行指令
                       <br />
@@ -666,7 +818,12 @@ const MobilePage: React.FC = () => {
                 <div className="mt-8 text-center">
                   <span className="inline-flex items-center gap-2 rounded-full bg-indigo-100 px-6 py-2 text-sm font-medium text-indigo-600">
                     <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2"
+                        d="M13 10V3L4 14h7v7l9-11h-7z"
+                      />
                     </svg>
                     持续更新更多编程语言 API
                   </span>
@@ -678,7 +835,8 @@ const MobilePage: React.FC = () => {
               <div className="mb-8">
                 <h4 className="mb-4 text-2xl font-bold text-gray-900">社区共建，持续增长</h4>
                 <p className="mx-auto max-w-2xl text-gray-600">
-                  我们的词库由活跃的开源社区持续贡献和维护，如果您需要特定的词库，欢迎在 GitHub 提出 Issue
+                  我们的词库由活跃的开源社区持续贡献和维护，如果您需要特定的词库，欢迎在 GitHub 提出
+                  Issue
                 </p>
               </div>
               <a
@@ -689,7 +847,12 @@ const MobilePage: React.FC = () => {
               >
                 <span>立即体验丰富词库</span>
                 <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M17 8l4 4m0 0l-4 4m4-4H3"
+                  />
                 </svg>
               </a>
             </div>
@@ -706,7 +869,12 @@ const MobilePage: React.FC = () => {
             <div className="mb-16 text-center">
               <div className="mb-6 inline-flex items-center gap-3 rounded-full bg-indigo-100 px-6 py-3 text-indigo-600">
                 <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"
+                  />
                 </svg>
                 <span className="font-semibold">For Coder</span>
               </div>
@@ -715,7 +883,8 @@ const MobilePage: React.FC = () => {
               </h2>
               <p className="mx-auto max-w-3xl text-xl font-light leading-relaxed text-gray-300">
                 内置程序员工作常用技术英语单词词库，包括算法数据结构、设计模式、云计算等技术词汇，提高英语打字速度。同时支持
-                JavaScript/Node.js/Java/Python/Linux 命令等多种编程语言 API 练习，帮助程序员快速熟悉常用编程接口
+                JavaScript/Node.js/Java/Python/Linux 命令等多种编程语言 API
+                练习，帮助程序员快速熟悉常用编程接口
               </p>
             </div>
 
@@ -724,7 +893,12 @@ const MobilePage: React.FC = () => {
               <div className="rounded-2xl border border-gray-700 bg-gray-800/50 p-6 backdrop-blur-sm sm:p-8">
                 <div className="mb-6 flex items-center gap-4">
                   <div className="rounded-full bg-indigo-600 p-3">
-                    <svg className="h-6 w-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg
+                      className="h-6 w-6 text-white"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
                       <path
                         strokeLinecap="round"
                         strokeLinejoin="round"
@@ -762,8 +936,18 @@ const MobilePage: React.FC = () => {
               <div className="rounded-2xl border border-gray-700 bg-gray-800/50 p-6 backdrop-blur-sm sm:p-8">
                 <div className="mb-6 flex items-center gap-4">
                   <div className="rounded-full bg-green-600 p-3">
-                    <svg className="h-6 w-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                    <svg
+                      className="h-6 w-6 text-white"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2"
+                        d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"
+                      />
                     </svg>
                   </div>
                   <h3 className="text-xl font-bold text-white sm:text-2xl">API 方法练习</h3>
@@ -796,8 +980,18 @@ const MobilePage: React.FC = () => {
             <div className="mt-16 grid gap-8 md:grid-cols-3">
               <div className="text-center">
                 <div className="mb-4 inline-flex items-center justify-center rounded-full bg-indigo-600/20 p-4">
-                  <svg className="h-8 w-8 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                  <svg
+                    className="h-8 w-8 text-indigo-400"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M13 10V3L4 14h7v7l9-11h-7z"
+                    />
                   </svg>
                 </div>
                 <h4 className="mb-3 text-xl font-semibold text-white">快速熟悉 API</h4>
@@ -805,7 +999,12 @@ const MobilePage: React.FC = () => {
               </div>
               <div className="text-center">
                 <div className="mb-4 inline-flex items-center justify-center rounded-full bg-green-600/20 p-4">
-                  <svg className="h-8 w-8 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg
+                    className="h-8 w-8 text-green-400"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
                     <path
                       strokeLinecap="round"
                       strokeLinejoin="round"
@@ -819,7 +1018,12 @@ const MobilePage: React.FC = () => {
               </div>
               <div className="text-center">
                 <div className="mb-4 inline-flex items-center justify-center rounded-full bg-purple-600/20 p-4">
-                  <svg className="h-8 w-8 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg
+                    className="h-8 w-8 text-purple-400"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
                     <path
                       strokeLinecap="round"
                       strokeLinejoin="round"
@@ -849,7 +1053,12 @@ const MobilePage: React.FC = () => {
                 >
                   <span>体验程序员专属功能</span>
                   <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M17 8l4 4m0 0l-4 4m4-4H3"
+                    />
                   </svg>
                 </a>
                 <a
@@ -891,7 +1100,8 @@ const MobilePage: React.FC = () => {
                 备受<span className="text-indigo-500">认可</span>的优质项目
               </h2>
               <p className="mx-auto max-w-3xl text-xl font-light leading-relaxed text-gray-600">
-                获得 GitHub 全球趋势榜第一名、V2EX 全站热搜、Gitee GVP 最有价值开源项目、少数派首页推荐等多个权威平台认可，成为 10 万+
+                获得 GitHub 全球趋势榜第一名、V2EX 全站热搜、Gitee GVP
+                最有价值开源项目、少数派首页推荐等多个权威平台认可，成为 10 万+
                 用户的首选免费英语学习软件
               </p>
             </div>
@@ -900,8 +1110,18 @@ const MobilePage: React.FC = () => {
             <div className="mb-16 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
               <div className="rounded-2xl border border-orange-200 bg-orange-50 p-6 text-center shadow-lg sm:p-8">
                 <div className="mb-4 inline-flex items-center justify-center rounded-full bg-orange-100 p-4">
-                  <svg className="h-8 w-8 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                  <svg
+                    className="h-8 w-8 text-orange-600"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M13 10V3L4 14h7v7l9-11h-7z"
+                    />
                   </svg>
                 </div>
                 <h3 className="mb-2 text-lg font-bold text-gray-900 sm:text-xl">GitHub 趋势榜</h3>
@@ -910,7 +1130,12 @@ const MobilePage: React.FC = () => {
 
               <div className="rounded-2xl border border-red-200 bg-red-50 p-8 text-center shadow-lg">
                 <div className="mb-4 inline-flex items-center justify-center rounded-full bg-red-100 p-4">
-                  <svg className="h-8 w-8 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg
+                    className="h-8 w-8 text-red-600"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
                     <path
                       strokeLinecap="round"
                       strokeLinejoin="round"
@@ -925,7 +1150,12 @@ const MobilePage: React.FC = () => {
 
               <div className="rounded-2xl border border-green-200 bg-green-50 p-8 text-center shadow-lg">
                 <div className="mb-4 inline-flex items-center justify-center rounded-full bg-green-100 p-4">
-                  <svg className="h-8 w-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg
+                    className="h-8 w-8 text-green-600"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
                     <path
                       strokeLinecap="round"
                       strokeLinejoin="round"
@@ -940,7 +1170,12 @@ const MobilePage: React.FC = () => {
 
               <div className="rounded-2xl border border-blue-200 bg-blue-50 p-8 text-center shadow-lg">
                 <div className="mb-4 inline-flex items-center justify-center rounded-full bg-blue-100 p-4">
-                  <svg className="h-8 w-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg
+                    className="h-8 w-8 text-blue-600"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
                     <path
                       strokeLinecap="round"
                       strokeLinejoin="round"
@@ -961,7 +1196,11 @@ const MobilePage: React.FC = () => {
                 <div className="space-y-4">
                   <div className="flex items-center gap-3 rounded-lg border border-gray-100 bg-gray-50 p-3 sm:gap-4 sm:p-4">
                     <div className="flex-shrink-0 rounded-full bg-orange-100 p-2">
-                      <svg className="h-5 w-5 text-orange-600" fill="currentColor" viewBox="0 0 20 20">
+                      <svg
+                        className="h-5 w-5 text-orange-600"
+                        fill="currentColor"
+                        viewBox="0 0 20 20"
+                      >
                         <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
                       </svg>
                     </div>
@@ -973,19 +1212,29 @@ const MobilePage: React.FC = () => {
 
                   <div className="flex items-center gap-3 rounded-lg border border-gray-100 bg-gray-50 p-3 sm:gap-4 sm:p-4">
                     <div className="flex-shrink-0 rounded-full bg-green-100 p-2">
-                      <svg className="h-5 w-5 text-green-600" fill="currentColor" viewBox="0 0 20 20">
+                      <svg
+                        className="h-5 w-5 text-green-600"
+                        fill="currentColor"
+                        viewBox="0 0 20 20"
+                      >
                         <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
                       </svg>
                     </div>
                     <div>
-                      <div className="font-semibold text-gray-900">Gitee 最有价值开源项目 (GVP)</div>
+                      <div className="font-semibold text-gray-900">
+                        Gitee 最有价值开源项目 (GVP)
+                      </div>
                       <div className="text-sm text-gray-600">国内顶级开源项目认证</div>
                     </div>
                   </div>
 
                   <div className="flex items-center gap-3 rounded-lg border border-gray-100 bg-gray-50 p-3 sm:gap-4 sm:p-4">
                     <div className="flex-shrink-0 rounded-full bg-purple-100 p-2">
-                      <svg className="h-5 w-5 text-purple-600" fill="currentColor" viewBox="0 0 20 20">
+                      <svg
+                        className="h-5 w-5 text-purple-600"
+                        fill="currentColor"
+                        viewBox="0 0 20 20"
+                      >
                         <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
                       </svg>
                     </div>
@@ -1018,7 +1267,11 @@ const MobilePage: React.FC = () => {
 
                   <div className="flex items-center gap-3 rounded-lg border border-gray-100 bg-gray-50 p-3 sm:gap-4 sm:p-4">
                     <div className="flex-shrink-0 rounded-full bg-blue-100 p-2">
-                      <svg className="h-5 w-5 text-blue-600" fill="currentColor" viewBox="0 0 20 20">
+                      <svg
+                        className="h-5 w-5 text-blue-600"
+                        fill="currentColor"
+                        viewBox="0 0 20 20"
+                      >
                         <path
                           fillRule="evenodd"
                           d="M12.586 4.586a2 2 0 112.828 2.828l-3 3a2 2 0 01-2.828 0 1 1 0 00-1.414 1.414 4 4 0 005.656 0l3-3a4 4 0 00-5.656-5.656l-1.5 1.5a1 1 0 101.414 1.414l1.5-1.5zm-5 5a2 2 0 012.828 0 1 1 0 101.414-1.414 4 4 0 00-5.656 0l-3 3a4 4 0 105.656 5.656l1.5-1.5a1 1 0 10-1.414-1.414l-1.5 1.5a2 2 0 11-2.828-2.828l3-3z"
@@ -1034,7 +1287,11 @@ const MobilePage: React.FC = () => {
 
                   <div className="flex items-center gap-3 rounded-lg border border-gray-100 bg-gray-50 p-3 sm:gap-4 sm:p-4">
                     <div className="flex-shrink-0 rounded-full bg-gray-100 p-2">
-                      <svg className="h-5 w-5 text-gray-600" fill="currentColor" viewBox="0 0 20 20">
+                      <svg
+                        className="h-5 w-5 text-gray-600"
+                        fill="currentColor"
+                        viewBox="0 0 20 20"
+                      >
                         <path
                           fillRule="evenodd"
                           d="M4 2a1 1 0 011 1v2.101a7.002 7.002 0 0111.601 2.566 1 1 0 11-1.885.666A5.002 5.002 0 005.999 7H9a1 1 0 010 2H4a1 1 0 01-1-1V3a1 1 0 011-1zm.008 9.057a1 1 0 011.276.61A5.002 5.002 0 0014.001 13H11a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0v-2.101a7.002 7.002 0 01-11.601-2.566 1 1 0 01.61-1.276z"
@@ -1053,7 +1310,9 @@ const MobilePage: React.FC = () => {
 
             {/* 用户数据统计 */}
             <div className="mt-16 rounded-2xl border border-indigo-200 bg-gradient-to-r from-indigo-50 to-purple-50 p-6 text-center sm:p-8">
-              <h3 className="mb-6 text-xl font-bold text-gray-900 sm:mb-8 sm:text-2xl">用户信赖，数据说话</h3>
+              <h3 className="mb-6 text-xl font-bold text-gray-900 sm:mb-8 sm:text-2xl">
+                用户信赖，数据说话
+              </h3>
               <div className="grid grid-cols-1 gap-6 sm:grid-cols-3 sm:gap-8">
                 <div>
                   <div className="mb-2 text-3xl font-bold text-indigo-600 sm:text-4xl">20000+</div>
@@ -1075,7 +1334,9 @@ const MobilePage: React.FC = () => {
 
             <div className="mt-12 text-center sm:mt-16">
               <div className="mb-8">
-                <h4 className="mb-4 text-xl font-bold text-gray-900 sm:text-2xl">加入我们的用户群体</h4>
+                <h4 className="mb-4 text-xl font-bold text-gray-900 sm:text-2xl">
+                  加入我们的用户群体
+                </h4>
                 <p className="mx-auto max-w-2xl text-sm text-gray-600 sm:text-base">
                   成为数万名用户中的一员，体验这款备受认可的英语学习工具，提升您的打字技能和英语水平
                 </p>
@@ -1088,7 +1349,12 @@ const MobilePage: React.FC = () => {
               >
                 <span>立即加入用户群体</span>
                 <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M17 8l4 4m0 0l-4 4m4-4H3"
+                  />
                 </svg>
               </a>
             </div>

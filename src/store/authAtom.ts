@@ -1,6 +1,6 @@
+import type { User } from '@supabase/supabase-js'
 import { atom } from 'jotai'
 import { atomWithStorage } from 'jotai/utils'
-import type { User } from '@supabase/supabase-js'
 
 // 当前登录用户
 export const currentUserAtom = atom<User | null>(null)

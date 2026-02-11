@@ -21,7 +21,13 @@ export default function ShareButton() {
 
   return (
     <>
-      {isShowSharePanel && <SharePicDialog showState={isShowSharePanel} setShowState={setIsShowSharePanel} randomChoose={randomChoose} />}
+      {isShowSharePanel && (
+        <SharePicDialog
+          showState={isShowSharePanel}
+          setShowState={setIsShowSharePanel}
+          randomChoose={randomChoose}
+        />
+      )}
 
       <button
         type="button"

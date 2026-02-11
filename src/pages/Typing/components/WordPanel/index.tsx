@@ -6,7 +6,13 @@ import Phonetic from './components/Phonetic'
 import Translation from './components/Translation'
 import WordComponent from './components/Word'
 import { usePrefetchPronunciationSound } from '@/hooks/usePronunciation'
-import { isReviewModeAtom, isShowPrevAndNextWordAtom, loopWordConfigAtom, phoneticConfigAtom, reviewModeInfoAtom } from '@/store'
+import {
+  isReviewModeAtom,
+  isShowPrevAndNextWordAtom,
+  loopWordConfigAtom,
+  phoneticConfigAtom,
+  reviewModeInfoAtom,
+} from '@/store'
 import type { Word } from '@/typings'
 import { useAtomValue, useSetAtom } from 'jotai'
 import { useCallback, useContext, useMemo, useState } from 'react'
@@ -32,7 +38,9 @@ export default function WordPanel() {
   }, [state.chapterData.index])
   const nextIndex = useMemo(() => {
     const newIndex = state.chapterData.index + 1
-    return newIndex > state.chapterData.words.length - 1 ? state.chapterData.words.length - 1 : newIndex
+    return newIndex > state.chapterData.words.length - 1
+      ? state.chapterData.words.length - 1
+      : newIndex
   }, [state.chapterData.index, state.chapterData.words.length])
 
   usePrefetchPronunciationSound(nextWord?.name)
@@ -45,14 +53,19 @@ export default function WordPanel() {
     (state: TypingState) => {
       setReviewModeInfo((old) => ({
         ...old,
-        reviewRecord: old.reviewRecord ? { ...old.reviewRecord, index: state.chapterData.index } : undefined,
+        reviewRecord: old.reviewRecord
+          ? { ...old.reviewRecord, index: state.chapterData.index }
+          : undefined,
       }))
     },
     [setReviewModeInfo],
   )
 
   const onFinish = useCallback(() => {
-    if (state.chapterData.index < state.chapterData.words.length - 1 || currentWordExerciseCount < loopWordTimes - 1) {
+    if (
+      state.chapterData.index < state.chapterData.words.length - 1 ||
+      currentWordExerciseCount < loopWordTimes - 1
+    ) {
       // 用户完成当前单词
       if (currentWordExerciseCount < loopWordTimes - 1) {
         setCurrentWordExerciseCount((old) => old + 1)
@@ -75,7 +88,10 @@ export default function WordPanel() {
       // 用户完成当前章节
       dispatch({ type: TypingStateActionType.FINISH_CHAPTER })
       if (isReviewMode) {
-        setReviewModeInfo((old) => ({ ...old, reviewRecord: old.reviewRecord ? { ...old.reviewRecord, isFinished: true } : undefined }))
+        setReviewModeInfo((old) => ({
+          ...old,
+          reviewRecord: old.reviewRecord ? { ...old.reviewRecord, isFinished: true } : undefined,
+        }))
       }
     }
   }, [

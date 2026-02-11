@@ -5,7 +5,13 @@ import { useEffect, useState } from 'react'
 export type AmountType = -1 | 6 | 12 | 36 | 50 | 66
 const displayAmount: AmountType[] = [6, 12, 36, 50, 66, -1]
 
-export const DonatingCard = ({ className, onAmountChange }: { className?: string; onAmountChange?: (amount: AmountType) => void }) => {
+export const DonatingCard = ({
+  className,
+  onAmountChange,
+}: {
+  className?: string
+  onAmountChange?: (amount: AmountType) => void
+}) => {
   const [amount, setAmount] = useState<AmountType | undefined>(undefined)
 
   const onClickAmount = (amount: AmountType) => {
@@ -17,14 +23,20 @@ export const DonatingCard = ({ className, onAmountChange }: { className?: string
   }, [amount, onAmountChange])
 
   return (
-    <div className={`flex w-full flex-col items-center justify-center gap-3 ${className && className}`}>
+    <div
+      className={`flex w-full flex-col items-center justify-center gap-3 ${className && className}`}
+    >
       <div className="mt-2 flex gap-3">
         {displayAmount.map((a) => {
           return <Amount active={a === amount} key={a} amount={a} onClick={onClickAmount} />
         })}
       </div>
 
-      <div className={`mt-3 flex w-full  flex-col  overflow-hidden px-11 transition-[height] duration-500 ${amount ? 'h-44' : 'h-0'}`}>
+      <div
+        className={`mt-3 flex w-full  flex-col  overflow-hidden px-11 transition-[height] duration-500 ${
+          amount ? 'h-44' : 'h-0'
+        }`}
+      >
         {amount && (
           <div className="flex w-full justify-between">
             <img src={AmountImageMap[amount][0]} alt="alipay" className=" h-44" />

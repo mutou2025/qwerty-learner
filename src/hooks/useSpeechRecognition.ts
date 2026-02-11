@@ -72,7 +72,8 @@ export function useSpeechRecognition(): UseSpeechRecognitionReturn {
   const recognitionRef = useRef<SpeechRecognition | null>(null)
 
   // 检查浏览器是否支持 Web Speech API
-  const isSupported = typeof window !== 'undefined' && !!(window.SpeechRecognition || window.webkitSpeechRecognition)
+  const isSupported =
+    typeof window !== 'undefined' && !!(window.SpeechRecognition || window.webkitSpeechRecognition)
 
   useEffect(() => {
     if (!isSupported) return

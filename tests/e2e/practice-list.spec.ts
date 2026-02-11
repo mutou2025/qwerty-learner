@@ -13,7 +13,9 @@ test.describe('Practice List', () => {
   })
 
   test('Practice list button click to open the list ', async ({ page }) => {
-    await expect(await page.getByRole('heading', { name: 'CET-4 第 1 章' }).isVisible()).toBeTruthy()
+    await expect(
+      await page.getByRole('heading', { name: 'CET-4 第 1 章' }).isVisible(),
+    ).toBeTruthy()
     // should use testId
     await page.locator('#headlessui-portal-root').locator('div > p', { hasText: 'cancel' }).click()
   })
@@ -21,6 +23,8 @@ test.describe('Practice List', () => {
   test('Close practice list', async ({ page }) => {
     await page.getByRole('heading', { name: 'CET-4 第 1 章' }).getByRole('img').click()
     await page.waitForTimeout(1000)
-    await expect(await page.locator('h3', { hasText: 'CET-4 第 1 章' }).isVisible()).not.toBeTruthy()
+    await expect(
+      await page.locator('h3', { hasText: 'CET-4 第 1 章' }).isVisible(),
+    ).not.toBeTruthy()
   })
 })

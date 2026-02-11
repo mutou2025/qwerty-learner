@@ -19,15 +19,18 @@ import { useAtomValue } from 'jotai'
 import { useCallback, useEffect, useMemo, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import IconAdjustmentsHorizontal from '~icons/tabler/adjustments-horizontal'
-import IconSettings from '~icons/tabler/settings'
 import IconChevronDown from '~icons/tabler/chevron-down'
-import IconTrash from '~icons/tabler/trash'
 import IconLoader from '~icons/tabler/loader-2'
+import IconSettings from '~icons/tabler/settings'
+import IconTrash from '~icons/tabler/trash'
 
 export function ErrorBook() {
   const [groupedRecords, setGroupedRecords] = useState<groupedWordRecords[]>([])
   const [currentPage, setCurrentPage] = useState(1)
-  const totalPages = useMemo(() => Math.ceil(groupedRecords.length / ITEM_PER_PAGE), [groupedRecords.length])
+  const totalPages = useMemo(
+    () => Math.ceil(groupedRecords.length / ITEM_PER_PAGE),
+    [groupedRecords.length],
+  )
   const [sortType, setSortType] = useState<ISortType>('asc')
   const currentRowDetail = useAtomValue(currentRowDetailAtom)
   const { deleteWordRecord } = useDeleteWordRecord()
@@ -115,12 +118,12 @@ export function ErrorBook() {
 
   const handleStartReview = async () => {
     if (groupedRecords.length === 0) return
-    
+
     setIsAddingToReview(true)
     try {
       // 收集所有错词的详细信息
       const reviewCards = []
-      
+
       // 按词典分组加载单词信息
       const dictGroups = new Map<string, groupedWordRecords[]>()
       for (const record of groupedRecords) {
@@ -139,11 +142,7 @@ export function ErrorBook() {
           for (const record of records) {
             const word = wordList?.find((w: { name: string }) => w.name === record.word)
             if (word) {
-              reviewCards.push(createReviewCard(
-                word.name,
-                word.trans || [],
-                word.usphone
-              ))
+              reviewCards.push(createReviewCard(word.name, word.trans || [], word.usphone))
             }
           }
         } catch (error) {
@@ -183,7 +182,11 @@ export function ErrorBook() {
 
   return (
     <Layout>
-      <div className={`relative flex h-full w-full flex-1 flex-col items-center pb-4 ease-in ${currentRowDetail && 'blur-sm'}`}>
+      <div
+        className={`relative flex h-full w-full flex-1 flex-col items-center pb-4 ease-in ${
+          currentRowDetail && 'blur-sm'
+        }`}
+      >
         <div className="flex w-full flex-1 select-text flex-col items-start justify-start overflow-hidden px-8">
           <div className="flex h-full w-full flex-col pt-4">
             {/* 工具栏 - 与表格同宽 */}
@@ -193,14 +196,20 @@ export function ErrorBook() {
                 <button className="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200">
                   <IconAdjustmentsHorizontal className="h-5 w-5" />
                 </button>
-                
+
                 {/* 批量删除开关 */}
                 <div className="flex items-center gap-2">
                   <button
                     onClick={() => setBatchDeleteMode(!batchDeleteMode)}
-                    className={`relative h-5 w-9 rounded-full transition-colors ${batchDeleteMode ? 'bg-indigo-500' : 'bg-gray-200 dark:bg-gray-600'}`}
+                    className={`relative h-5 w-9 rounded-full transition-colors ${
+                      batchDeleteMode ? 'bg-indigo-500' : 'bg-gray-200 dark:bg-gray-600'
+                    }`}
                   >
-                    <span className={`block h-4 w-4 rounded-full bg-white transition-transform ${batchDeleteMode ? 'translate-x-4' : 'translate-x-0.5'}`} />
+                    <span
+                      className={`block h-4 w-4 rounded-full bg-white transition-transform ${
+                        batchDeleteMode ? 'translate-x-4' : 'translate-x-0.5'
+                      }`}
+                    />
                   </button>
                   <span className="text-sm text-gray-600 dark:text-gray-300">批量删除</span>
                 </div>
@@ -218,8 +227,10 @@ export function ErrorBook() {
 
               {/* 右侧工具栏 */}
               <div className="flex items-center gap-4">
-                <span className="text-sm text-gray-500 dark:text-gray-400">• 点击单词查看详细信息</span>
-                
+                <span className="text-sm text-gray-500 dark:text-gray-400">
+                  • 点击单词查看详细信息
+                </span>
+
                 {batchDeleteMode && selectedWords.size > 0 && (
                   <button
                     onClick={handleBatchDelete}
@@ -229,7 +240,7 @@ export function ErrorBook() {
                     删除选中 ({selectedWords.size})
                   </button>
                 )}
-                
+
                 <button
                   onClick={handleStartReview}
                   disabled={groupedRecords.length === 0 || isAddingToReview}
@@ -253,7 +264,11 @@ export function ErrorBook() {
               {batchDeleteMode && <span className="basis-1/12 text-center"></span>}
               <span className="basis-2/12 text-center">单词</span>
               <span className="basis-4/12 text-center">释义</span>
-              <HeadWrongNumber className="basis-2/12 text-center" sortType={sortType} setSortType={setSort} />
+              <HeadWrongNumber
+                className="basis-2/12 text-center"
+                sortType={sortType}
+                setSortType={setSort}
+              />
               <span className="basis-2/12 text-center">词典</span>
               <span className="basis-1/12 text-center">操作</span>
             </div>
@@ -270,7 +285,10 @@ export function ErrorBook() {
                     {renderRecords.map((record) => {
                       const key = `${record.dict}::${record.word}`
                       return (
-                        <div key={key} className="flex items-center border-b border-gray-100 dark:border-gray-700">
+                        <div
+                          key={key}
+                          className="flex items-center border-b border-gray-100 dark:border-gray-700"
+                        >
                           {batchDeleteMode && (
                             <div className="basis-1/12 px-6 py-4">
                               <input
@@ -291,17 +309,25 @@ export function ErrorBook() {
                   </div>
                 )}
               </ScrollArea.Viewport>
-              <ScrollArea.Scrollbar className="flex touch-none select-none bg-transparent" orientation="vertical"></ScrollArea.Scrollbar>
+              <ScrollArea.Scrollbar
+                className="flex touch-none select-none bg-transparent"
+                orientation="vertical"
+              ></ScrollArea.Scrollbar>
             </ScrollArea.Root>
           </div>
         </div>
         <Pagination className="pt-3" page={currentPage} setPage={setPage} totalPages={totalPages} />
       </div>
-      {currentRowDetail && <RowDetail currentRowDetail={currentRowDetail} allRecords={sortedRecords} />}
+      {currentRowDetail && (
+        <RowDetail currentRowDetail={currentRowDetail} allRecords={sortedRecords} />
+      )}
 
-      <SettingsModal open={showSettings} onOpenChange={setShowSettings} settings={settings} onSettingsChange={setSettings} />
+      <SettingsModal
+        open={showSettings}
+        onOpenChange={setShowSettings}
+        settings={settings}
+        onSettingsChange={setSettings}
+      />
     </Layout>
   )
 }
-
-

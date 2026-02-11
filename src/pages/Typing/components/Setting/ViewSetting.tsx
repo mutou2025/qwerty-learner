@@ -55,7 +55,9 @@ export default function ViewSetting() {
                   </Slider.Track>
                   <Slider.Thumb />
                 </Slider.Root>
-                <span className="ml-4 w-10 text-xs font-normal text-gray-600">{fontSizeConfig.foreignFont}px</span>
+                <span className="ml-4 w-10 text-xs font-normal text-gray-600">
+                  {fontSizeConfig.foreignFont}px
+                </span>
               </div>
             </div>
 
@@ -75,16 +77,26 @@ export default function ViewSetting() {
                   </Slider.Track>
                   <Slider.Thumb />
                 </Slider.Root>
-                <span className="ml-4 w-10 text-xs font-normal text-gray-600">{fontSizeConfig.translateFont}px</span>
+                <span className="ml-4 w-10 text-xs font-normal text-gray-600">
+                  {fontSizeConfig.translateFont}px
+                </span>
               </div>
             </div>
           </div>
-          <button className="my-btn-primary ml-4 disabled:bg-gray-300" type="button" onClick={onResetFontSize} title="重置字体设置">
+          <button
+            className="my-btn-primary ml-4 disabled:bg-gray-300"
+            type="button"
+            onClick={onResetFontSize}
+            title="重置字体设置"
+          >
             重置字体设置
           </button>
         </div>
       </ScrollArea.Viewport>
-      <ScrollArea.Scrollbar className="flex touch-none select-none bg-transparent " orientation="vertical"></ScrollArea.Scrollbar>
+      <ScrollArea.Scrollbar
+        className="flex touch-none select-none bg-transparent "
+        orientation="vertical"
+      ></ScrollArea.Scrollbar>
     </ScrollArea.Root>
   )
 }

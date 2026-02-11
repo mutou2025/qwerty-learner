@@ -138,7 +138,9 @@ export function updateCardAfterReview(card: ReviewCard, quality: SimpleQuality):
  */
 export function getDueCards(cards: ReviewCard[]): ReviewCard[] {
   const now = Date.now()
-  return cards.filter((card) => card.nextReviewAt <= now).sort((a, b) => a.nextReviewAt - b.nextReviewAt)
+  return cards
+    .filter((card) => card.nextReviewAt <= now)
+    .sort((a, b) => a.nextReviewAt - b.nextReviewAt)
 }
 
 /**

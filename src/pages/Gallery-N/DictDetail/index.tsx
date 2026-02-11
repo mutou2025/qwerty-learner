@@ -34,7 +34,10 @@ export default function DictDetail({ dictionary: dict }: { dictionary: Dictionar
   const { deleteWordRecord } = useDeleteWordRecord()
   const [reload, setReload] = useState(false)
 
-  const chapter = useMemo(() => (dict.id === currentDictId ? currentChapter : 0), [currentChapter, currentDictId, dict.id])
+  const chapter = useMemo(
+    () => (dict.id === currentDictId ? currentChapter : 0),
+    [currentChapter, currentDictId, dict.id],
+  )
   const { errorWordData, isLoading, error } = useErrorWordData(dict, reload)
 
   const tableData = useMemo(() => {
@@ -80,7 +83,9 @@ export default function DictDetail({ dictionary: dict }: { dictionary: Dictionar
             <ToggleGroupItem
               value={Tab.Chapters}
               disabled={curTab === Tab.Chapters}
-              className={`${curTab === Tab.Chapters ? 'text-primary-foreground bg-primary' : ''} disabled:opacity-100`}
+              className={`${
+                curTab === Tab.Chapters ? 'text-primary-foreground bg-primary' : ''
+              } disabled:opacity-100`}
             >
               <MajesticonsPaperFoldTextLine className="mr-1.5 text-gray-500" />
               章节选择
@@ -90,7 +95,9 @@ export default function DictDetail({ dictionary: dict }: { dictionary: Dictionar
                 <ToggleGroupItem
                   value={Tab.Errors}
                   disabled={curTab === Tab.Errors}
-                  className={`${curTab === Tab.Errors ? 'text-primary-foreground bg-primary' : ''} disabled:opacity-100`}
+                  className={`${
+                    curTab === Tab.Errors ? 'text-primary-foreground bg-primary' : ''
+                  } disabled:opacity-100`}
                 >
                   <IcOutlineCollectionsBookmark className="mr-1.5 text-gray-500" />
                   查看错题
@@ -98,7 +105,9 @@ export default function DictDetail({ dictionary: dict }: { dictionary: Dictionar
                 <ToggleGroupItem
                   value={Tab.Review}
                   disabled={curTab === Tab.Review}
-                  className={`${curTab === Tab.Review ? 'text-primary-foreground bg-primary' : ''} disabled:opacity-100`}
+                  className={`${
+                    curTab === Tab.Review ? 'text-primary-foreground bg-primary' : ''
+                  } disabled:opacity-100`}
                 >
                   <PajamasReviewList className="mr-1.5 text-gray-500" />
                   错题回顾

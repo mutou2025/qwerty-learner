@@ -1,12 +1,18 @@
-import Layout from '@/components/Layout'
-import Header from '@/components/Header'
-import { DictChapterButton } from '@/pages/Typing/components/DictChapterButton'
-import WordPanel from '@/pages/Typing/components/WordPanel'
-import Speed from '@/pages/Typing/components/Speed'
-import { useWordList } from '@/pages/Typing/hooks/useWordList'
-import { useConfetti } from '@/pages/Typing/hooks/useConfetti'
-import { TypingContext, TypingStateActionType, initialState, typingReducer } from '@/pages/Typing/store'
 import ResultScreen from './components/ResultScreen'
+import Header from '@/components/Header'
+import Layout from '@/components/Layout'
+import { DictChapterButton } from '@/pages/Typing/components/DictChapterButton'
+import Speed from '@/pages/Typing/components/Speed'
+import WordPanel from '@/pages/Typing/components/WordPanel'
+import { useConfetti } from '@/pages/Typing/hooks/useConfetti'
+import { useWordList } from '@/pages/Typing/hooks/useWordList'
+import {
+  TypingContext,
+  TypingStateActionType,
+  initialState,
+  typingReducer,
+} from '@/pages/Typing/store'
+import { idDictionaryMap } from '@/resources/dictionary'
 import {
   currentChapterAtom,
   currentDictIdAtom,
@@ -14,14 +20,13 @@ import {
   randomConfigAtom,
   wordDictationConfigAtom,
 } from '@/store'
-import { idDictionaryMap } from '@/resources/dictionary'
 import { isLegal } from '@/utils'
 import { useSaveChapterRecord } from '@/utils/db'
 import { useMixPanelChapterLogUploader } from '@/utils/mixpanel'
 import { useAtom, useAtomValue, useSetAtom } from 'jotai'
 import { useCallback, useEffect, useRef, useState } from 'react'
-import { useImmerReducer } from 'use-immer'
 import { Link } from 'react-router-dom'
+import { useImmerReducer } from 'use-immer'
 import IconKeyboard from '~icons/tabler/keyboard'
 
 export default function Dictation() {
@@ -87,7 +92,14 @@ export default function Dictation() {
   useEffect(() => {
     if (!state.isTyping) {
       const onKeyDown = (e: KeyboardEvent) => {
-        if (!isLoading && e.key !== 'Enter' && (isLegal(e.key) || e.key === ' ') && !e.altKey && !e.ctrlKey && !e.metaKey) {
+        if (
+          !isLoading &&
+          e.key !== 'Enter' &&
+          (isLegal(e.key) || e.key === ' ') &&
+          !e.altKey &&
+          !e.ctrlKey &&
+          !e.metaKey
+        ) {
           e.preventDefault()
           dispatch({ type: TypingStateActionType.SET_IS_TYPING, payload: true })
         }

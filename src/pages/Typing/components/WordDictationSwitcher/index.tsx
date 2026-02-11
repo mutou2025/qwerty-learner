@@ -49,7 +49,10 @@ export default function WordDictationSwitcher() {
   }
 
   useLayoutEffect(() => {
-    setCurrentType(wordDictationTypeList.find((item) => item.type === wordDictationConfig.type) || wordDictationTypeList[0])
+    setCurrentType(
+      wordDictationTypeList.find((item) => item.type === wordDictationConfig.type) ||
+        wordDictationTypeList[0],
+    )
   }, [wordDictationConfig.type])
 
   useHotkeys(
@@ -74,7 +77,11 @@ export default function WordDictationSwitcher() {
             type="button"
             aria-label="开关拼写挑战"
           >
-            {wordDictationConfig.isOpen ? <IconEye className="icon" /> : <IconEyeSlash className="icon" />}
+            {wordDictationConfig.isOpen ? (
+              <IconEye className="icon" />
+            ) : (
+              <IconEyeSlash className="icon" />
+            )}
           </Popover.Button>
           <Transition
             as={Fragment}
@@ -88,9 +95,15 @@ export default function WordDictationSwitcher() {
             <Popover.Panel className="absolute left-1/2 z-10 mt-2 flex max-w-max -translate-x-1/2 px-4 ">
               <div className="shadow-upper box-border flex w-60 select-none flex-col items-center justify-center gap-4 rounded-xl bg-white p-4 drop-shadow dark:bg-gray-800">
                 <div className="flex w-full  flex-col  items-start gap-2 py-0">
-                  <span className="text-sm font-normal leading-5 text-gray-900 dark:text-white dark:text-opacity-60">开关拼写挑战</span>
+                  <span className="text-sm font-normal leading-5 text-gray-900 dark:text-white dark:text-opacity-60">
+                    开关拼写挑战
+                  </span>
                   <div className="flex w-full flex-row items-center justify-between">
-                    <Switch checked={wordDictationConfig.isOpen} onChange={onToggleWordDictation} className="switch-root">
+                    <Switch
+                      checked={wordDictationConfig.isOpen}
+                      onChange={onToggleWordDictation}
+                      className="switch-root"
+                    >
                       <span aria-hidden="true" className="switch-thumb" />
                     </Switch>
                     <span className="text-right text-xs font-normal leading-tight text-gray-600">{`拼写挑战已${
@@ -110,7 +123,9 @@ export default function WordDictationSwitcher() {
                   leaveTo="max-h-0 opacity-0"
                 >
                   <div className="flex w-full  flex-col  items-start gap-2 py-0">
-                    <span className="text-sm font-normal leading-5 text-gray-900 dark:text-white dark:text-opacity-60">拼写挑战模式</span>
+                    <span className="text-sm font-normal leading-5 text-gray-900 dark:text-white dark:text-opacity-60">
+                      拼写挑战模式
+                    </span>
                     <div className="flex w-full flex-row items-center justify-between">
                       <Listbox value={currentType.type} onChange={onChangeWordDictationType}>
                         <div className="relative">
@@ -120,7 +135,12 @@ export default function WordDictationSwitcher() {
                               <IconChevronDown className="focus:outline-none" />
                             </span>
                           </Listbox.Button>
-                          <Transition as={Fragment} leave="transition ease-in duration-100" leaveFrom="opacity-100" leaveTo="opacity-0">
+                          <Transition
+                            as={Fragment}
+                            leave="transition ease-in duration-100"
+                            leaveFrom="opacity-100"
+                            leaveTo="opacity-0"
+                          >
                             <Listbox.Options className="listbox-options">
                               {wordDictationTypeList.map((item) => (
                                 <Listbox.Option key={item.name} value={item.type}>

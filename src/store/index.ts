@@ -2,7 +2,11 @@ import atomForConfig from './atomForConfig'
 import { reviewInfoAtom } from './reviewInfoAtom'
 import { DISMISS_START_CARD_DATE_KEY, defaultFontSizeConfig } from '@/constants'
 import { idDictionaryMap } from '@/resources/dictionary'
-import { correctSoundResources, keySoundResources, wrongSoundResources } from '@/resources/soundResource'
+import {
+  correctSoundResources,
+  keySoundResources,
+  wrongSoundResources,
+} from '@/resources/soundResource'
 import type {
   Dictionary,
   InfoPanelState,
@@ -89,7 +93,10 @@ export const phoneticConfigAtom = atomForConfig('phoneticConfig', {
   type: 'us' as PhoneticType,
 })
 
-export const isOpenDarkModeAtom = atomWithStorage('isOpenDarkModeAtom', window.matchMedia('(prefers-color-scheme: dark)').matches)
+export const isOpenDarkModeAtom = atomWithStorage(
+  'isOpenDarkModeAtom',
+  window.matchMedia('(prefers-color-scheme: dark)').matches,
+)
 
 export const isShowSkipAtom = atom(false)
 
@@ -108,7 +115,10 @@ export const wordDictationConfigAtom = atomForConfig('wordDictationConfig', {
   openBy: 'auto' as WordDictationOpenBy,
 })
 
-export const dismissStartCardDateAtom = atomWithStorage<Date | null>(DISMISS_START_CARD_DATE_KEY, null)
+export const dismissStartCardDateAtom = atomWithStorage<Date | null>(
+  DISMISS_START_CARD_DATE_KEY,
+  null,
+)
 
 // Enhanced version promotion popup state
 export const hasSeenEnhancedPromotionAtom = atomWithStorage('hasSeenEnhancedPromotion', false)

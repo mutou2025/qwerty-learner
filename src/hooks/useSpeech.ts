@@ -24,7 +24,10 @@ export type UseSpeechResult = {
  * @throws {Error} If browser not support SpeechSynthesis API.
  * @see {@link https://developer.mozilla.org/en-US/docs/Web/API/Web_Speech_API}
  */
-export default function useSpeech(text: string, option?: Partial<SpeechSynthesisUtterance>): UseSpeechResult {
+export default function useSpeech(
+  text: string,
+  option?: Partial<SpeechSynthesisUtterance>,
+): UseSpeechResult {
   const [speaking, setSpeaking] = useState(false)
   const [utterance, setUtterance] = useState<SpeechSynthesisUtterance | null>(null)
 

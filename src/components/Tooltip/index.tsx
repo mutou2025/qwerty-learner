@@ -12,7 +12,11 @@ const Tooltip = ({ children, content, className, placement = 'top' }: TooltipPro
 
   return (
     <div className={classNames('relative', className)}>
-      <div onMouseEnter={() => setVisible(true)} onMouseLeave={() => setVisible(false)} onBlur={() => setVisible(false)}>
+      <div
+        onMouseEnter={() => setVisible(true)}
+        onMouseLeave={() => setVisible(false)}
+        onBlur={() => setVisible(false)}
+      >
         {children}
       </div>
       <div

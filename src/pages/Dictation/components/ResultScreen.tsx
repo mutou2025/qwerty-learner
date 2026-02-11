@@ -1,13 +1,9 @@
-import { TypingContext, TypingStateActionType } from '@/pages/Typing/store'
+import Tooltip from '@/components/Tooltip'
 import ConclusionBar from '@/pages/Typing/components/ResultScreen/ConclusionBar'
 import RemarkRing from '@/pages/Typing/components/ResultScreen/RemarkRing'
 import WordChip from '@/pages/Typing/components/ResultScreen/WordChip'
-import Tooltip from '@/components/Tooltip'
-import {
-  currentChapterAtom,
-  currentDictInfoAtom,
-  randomConfigAtom,
-} from '@/store'
+import { TypingContext, TypingStateActionType } from '@/pages/Typing/store'
+import { currentChapterAtom, currentDictInfoAtom, randomConfigAtom } from '@/store'
 import { Transition } from '@headlessui/react'
 import { useAtom, useAtomValue } from 'jotai'
 import { useCallback, useContext, useEffect, useMemo } from 'react'
@@ -107,7 +103,11 @@ const ResultScreen = () => {
             </button>
             <div className="mt-10 flex flex-row gap-2 overflow-hidden">
               <div className="flex flex-shrink-0 flex-grow-0 flex-col gap-3 px-4 sm:px-1 md:px-2 lg:px-4">
-                <RemarkRing remark={`${state.timerData.accuracy}%`} caption="正确率" percentage={state.timerData.accuracy} />
+                <RemarkRing
+                  remark={`${state.timerData.accuracy}%`}
+                  caption="正确率"
+                  percentage={state.timerData.accuracy}
+                />
                 <RemarkRing remark={timeString} caption="章节耗时" />
                 <RemarkRing remark={state.timerData.wpm + ''} caption="WPM" />
               </div>

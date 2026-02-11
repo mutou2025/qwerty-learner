@@ -16,8 +16,12 @@ function Phonetic({ word }: PhoneticProps) {
         isTextSelectable && 'select-text'
       }`}
     >
-      {phoneticConfig.type === 'us' && word.usphone && word.usphone.length > 1 && <span>{`AmE: [${word.usphone}]`}</span>}
-      {phoneticConfig.type === 'uk' && word.ukphone && word.ukphone.length > 1 && <span>{`BrE: [${word.ukphone}]`}</span>}
+      {phoneticConfig.type === 'us' && word.usphone && word.usphone.length > 1 && (
+        <span>{`AmE: [${word.usphone}]`}</span>
+      )}
+      {phoneticConfig.type === 'uk' && word.ukphone && word.ukphone.length > 1 && (
+        <span>{`BrE: [${word.ukphone}]`}</span>
+      )}
     </div>
   )
 }

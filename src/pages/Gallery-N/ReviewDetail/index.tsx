@@ -9,7 +9,13 @@ import { useSetAtom } from 'jotai'
 import { useNavigate } from 'react-router-dom'
 import MdiRobotAngry from '~icons/mdi/robot-angry'
 
-export function ReviewDetail({ errorData, dict }: { errorData: TErrorWordData[]; dict: Dictionary }) {
+export function ReviewDetail({
+  errorData,
+  dict,
+}: {
+  errorData: TErrorWordData[]
+  dict: Dictionary
+}) {
   const latestReviewRecord = useGetLatestReviewRecord(dict.id)
   const setReviewModeInfo = useSetAtom(reviewModeInfoAtom)
   const setCurrentDictId = useSetAtom(currentDictIdAtom)
@@ -56,14 +62,20 @@ export function ReviewDetail({ errorData, dict }: { errorData: TErrorWordData[];
               >
                 <Progress.Indicator
                   className="h-full rounded-full bg-indigo-400 pl-0"
-                  style={{ width: `calc(${((latestReviewRecord.index + 1) / latestReviewRecord.words.length) * 100}% )` }}
+                  style={{
+                    width: `calc(${
+                      ((latestReviewRecord.index + 1) / latestReviewRecord.words.length) * 100
+                    }% )`,
+                  }}
                 />
               </Progress.Root>
               <span className="p-0 text-xs">
                 {latestReviewRecord.index + 1}/{latestReviewRecord.words.length}
               </span>
             </div>
-            <div className="mt-1 text-sm font-normal text-gray-500">{`( 创建于 ${timeStamp2String(latestReviewRecord.createTime)} )`}</div>
+            <div className="mt-1 text-sm font-normal text-gray-500">{`( 创建于 ${timeStamp2String(
+              latestReviewRecord.createTime,
+            )} )`}</div>
           </>
         )}
 

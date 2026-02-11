@@ -1,19 +1,19 @@
-import Layout from '@/components/Layout'
-import Header from '@/components/Header'
 import FlashCard from './components/FlashCard'
 import ReviewCalendar from './components/ReviewCalendar'
+import Header from '@/components/Header'
+import Layout from '@/components/Layout'
 import { useReviewCards } from '@/hooks/useReviewCards'
-import { createReviewCard, SimpleQuality } from '@/lib/spaced-repetition/sm2'
+import { SimpleQuality, createReviewCard } from '@/lib/spaced-repetition/sm2'
 import { useCallback, useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import IconCalendar from '~icons/tabler/calendar'
-import IconPlus from '~icons/tabler/plus'
-import IconPlayerPlay from '~icons/tabler/player-play'
 import IconCheck from '~icons/tabler/check'
-import IconRefresh from '~icons/tabler/refresh'
 import IconCloud from '~icons/tabler/cloud'
 import IconCloudOff from '~icons/tabler/cloud-off'
 import IconLoader from '~icons/tabler/loader-2'
+import IconPlayerPlay from '~icons/tabler/player-play'
+import IconPlus from '~icons/tabler/plus'
+import IconRefresh from '~icons/tabler/refresh'
 
 export default function Review() {
   const {
@@ -188,7 +188,9 @@ export default function Review() {
                 {dueCards.length > 0 ? (
                   <div className="flex items-center justify-between">
                     <div>
-                      <p className="text-3xl font-bold text-indigo-600 dark:text-indigo-400">{dueCards.length}</p>
+                      <p className="text-3xl font-bold text-indigo-600 dark:text-indigo-400">
+                        {dueCards.length}
+                      </p>
                       <p className="text-sm text-gray-500 dark:text-gray-400">个单词待复习</p>
                     </div>
                     <button
@@ -202,7 +204,9 @@ export default function Review() {
                 ) : (
                   <div className="flex flex-col items-center py-8 text-center">
                     <IconCheck className="mb-4 h-16 w-16 text-green-500" />
-                    <p className="text-lg font-medium text-gray-800 dark:text-white">今日复习已完成！</p>
+                    <p className="text-lg font-medium text-gray-800 dark:text-white">
+                      今日复习已完成！
+                    </p>
                     <p className="text-sm text-gray-500 dark:text-gray-400">
                       {cards.length > 0 ? '明天再来继续学习吧' : '添加一些单词开始学习'}
                     </p>

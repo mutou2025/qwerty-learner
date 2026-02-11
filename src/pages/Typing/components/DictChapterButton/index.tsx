@@ -19,9 +19,8 @@ export const DictChapterButton = ({ returnTo = '/' }: DictChapterButtonProps) =>
   const isReviewMode = useAtomValue(isReviewModeAtom)
 
   // 构建 gallery 链接，包含返回路径参数
-  const galleryLink = returnTo && returnTo !== '/' 
-    ? `/gallery?returnTo=${encodeURIComponent(returnTo)}`
-    : '/gallery'
+  const galleryLink =
+    returnTo && returnTo !== '/' ? `/gallery?returnTo=${encodeURIComponent(returnTo)}` : '/gallery'
 
   const handleKeyDown: React.KeyboardEventHandler<HTMLButtonElement> = (event) => {
     if (event.key === ' ') {
@@ -47,7 +46,12 @@ export const DictChapterButton = ({ returnTo = '/' }: DictChapterButtonProps) =>
             >
               第 {currentChapter + 1} 章
             </Listbox.Button>
-            <Transition as={Fragment} leave="transition ease-in duration-100" leaveFrom="opacity-100" leaveTo="opacity-0">
+            <Transition
+              as={Fragment}
+              leave="transition ease-in duration-100"
+              leaveFrom="opacity-100"
+              leaveTo="opacity-0"
+            >
               <Listbox.Options className="listbox-options z-10 w-32">
                 {range(0, chapterCount, 1).map((index) => (
                   <Listbox.Option key={index} value={index}>
@@ -71,4 +75,3 @@ export const DictChapterButton = ({ returnTo = '/' }: DictChapterButtonProps) =>
     </>
   )
 }
-

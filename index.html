@@ -48,7 +48,10 @@
       content="Echo Learner官网, 官方网站, 打字练习软件, 单词记忆工具, 英语学习软件, 背单词神器, 英语肌肉记忆, 键盘工作者, 免费英语学习, 音标发音, 拼写挑战, 在线学英语, CET-4, CET-6, TOEFL, IELTS, GRE, GMAT, SAT, 考研英语, 专四专八, 程序员英语, JavaScript API, Node.js API, Java API, Linux命令, 编程词汇, 技术英语, VSCode插件, 开源项目, GitHub趋势榜, V2EX热搜, Gitee GVP, 少数派推荐, 英语打字训练, WPM统计, 准确率分析, 商务英语, BEC, 雅思听力, 日语学习, 多语言学习, 英语口语练习, 单词拼写训练"
     />
     <meta name="author" content="Echo Learner Team" />
-    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    <meta
+      name="robots"
+      content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+    />
     <link rel="canonical" href="https://www.echolearner.com/" />
 
     <!-- Open Graph / Facebook -->
@@ -184,10 +187,9 @@
     <script>
       ;(() => {
         const configuredOrigin = 'https://www.echolearner.com'
-        const siteOrigin = (window.location.origin === configuredOrigin ? configuredOrigin : window.location.origin).replace(
-          /\/+$/,
-          '',
-        )
+        const siteOrigin = (
+          window.location.origin === configuredOrigin ? configuredOrigin : window.location.origin
+        ).replace(/\/+$/, '')
         const siteUrl = `${siteOrigin}/`
         const ogImageUrl = `${siteOrigin}/og-image.png`
 

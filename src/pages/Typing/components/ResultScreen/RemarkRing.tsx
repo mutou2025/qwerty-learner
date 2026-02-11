@@ -16,9 +16,16 @@ export type RemarkRingProps = {
   size?: number
 }
 
-const rootFontSize = parseInt(window.getComputedStyle(document.documentElement).getPropertyValue('font-size'))
+const rootFontSize = parseInt(
+  window.getComputedStyle(document.documentElement).getPropertyValue('font-size'),
+)
 
-export default function RemarkRing({ remark, caption, percentage = null, size = 7 }: RemarkRingProps) {
+export default function RemarkRing({
+  remark,
+  caption,
+  percentage = null,
+  size = 7,
+}: RemarkRingProps) {
   const clipPath = useMemo((): string | undefined => {
     if (percentage === null) {
       return undefined
@@ -29,7 +36,9 @@ export default function RemarkRing({ remark, caption, percentage = null, size = 
     }
     const alpha = Math.PI * 2 * (clamped / 100)
     const r = (rootFontSize * size) / 2
-    const path = `M ${r},0 A ${r},${r} 0 ${clamped > 50 ? 1 : 0},1 ${r + Math.sin(alpha) * r},${r + -Math.cos(alpha) * r} L ${r},${r} Z`
+    const path = `M ${r},0 A ${r},${r} 0 ${clamped > 50 ? 1 : 0},1 ${r + Math.sin(alpha) * r},${
+      r + -Math.cos(alpha) * r
+    } L ${r},${r} Z`
     return `path("${path}")`
   }, [percentage, size])
   return (

@@ -1,7 +1,7 @@
 import { useAuth } from '@/hooks/useAuth'
 import { Link } from 'react-router-dom'
-import IconUser from '~icons/tabler/user'
 import IconLogin from '~icons/tabler/login'
+import IconUser from '~icons/tabler/user'
 
 /**
  * 用户菜单组件

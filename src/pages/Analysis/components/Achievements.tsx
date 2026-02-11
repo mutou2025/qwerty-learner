@@ -1,14 +1,14 @@
 import { useMemo } from 'react'
-import IconTrophy from '~icons/tabler/trophy'
-import IconFlame from '~icons/tabler/flame'
-import IconStar from '~icons/tabler/star'
-import IconTarget from '~icons/tabler/target'
 import IconBook from '~icons/tabler/book'
 import IconClock from '~icons/tabler/clock'
-import IconRocket from '~icons/tabler/rocket'
-import IconMedal from '~icons/tabler/medal'
 import IconCrown from '~icons/tabler/crown'
 import IconDiamond from '~icons/tabler/diamond'
+import IconFlame from '~icons/tabler/flame'
+import IconMedal from '~icons/tabler/medal'
+import IconRocket from '~icons/tabler/rocket'
+import IconStar from '~icons/tabler/star'
+import IconTarget from '~icons/tabler/target'
+import IconTrophy from '~icons/tabler/trophy'
 
 export interface Achievement {
   id: string
@@ -253,7 +253,9 @@ export default function Achievements({ stats }: AchievementsProps) {
                   key={achievement.id}
                   className={`flex items-center gap-3 rounded-xl border p-4 ${colors.bg} ${colors.border}`}
                 >
-                  <div className={`flex h-10 w-10 items-center justify-center rounded-full bg-white dark:bg-gray-800 ${colors.icon}`}>
+                  <div
+                    className={`flex h-10 w-10 items-center justify-center rounded-full bg-white dark:bg-gray-800 ${colors.icon}`}
+                  >
                     {achievement.icon}
                   </div>
                   <div className="flex-1">
@@ -261,7 +263,9 @@ export default function Achievements({ stats }: AchievementsProps) {
                       <span className={`font-medium ${colors.text}`}>{achievement.name}</span>
                       <IconMedal className={`h-4 w-4 ${colors.icon}`} />
                     </div>
-                    <p className="text-xs text-gray-500 dark:text-gray-400">{achievement.description}</p>
+                    <p className="text-xs text-gray-500 dark:text-gray-400">
+                      {achievement.description}
+                    </p>
                   </div>
                 </div>
               )
@@ -284,8 +288,12 @@ export default function Achievements({ stats }: AchievementsProps) {
                   {achievement.icon}
                 </div>
                 <div className="flex-1">
-                  <span className="font-medium text-gray-600 dark:text-gray-400">{achievement.name}</span>
-                  <p className="text-xs text-gray-400 dark:text-gray-500">{achievement.description}</p>
+                  <span className="font-medium text-gray-600 dark:text-gray-400">
+                    {achievement.name}
+                  </span>
+                  <p className="text-xs text-gray-400 dark:text-gray-500">
+                    {achievement.description}
+                  </p>
                   {/* 进度条 */}
                   {achievement.progress && (
                     <div className="mt-2">
@@ -293,7 +301,9 @@ export default function Achievements({ stats }: AchievementsProps) {
                         <div
                           className="h-full bg-indigo-400 transition-all"
                           style={{
-                            width: `${(achievement.progress.current / achievement.progress.target) * 100}%`,
+                            width: `${
+                              (achievement.progress.current / achievement.progress.target) * 100
+                            }%`,
                           }}
                         />
                       </div>

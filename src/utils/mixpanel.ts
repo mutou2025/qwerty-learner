@@ -123,7 +123,14 @@ export function useMixPanelWordLogUploader(typingState: TypingState) {
   const wordDictationConfig = useAtomValue(wordDictationConfigAtom)
 
   const wordLogUploader = useCallback(
-    (wordLog: { headword: string; timeStart: string; timeEnd: string; countInput: number; countCorrect: number; countTypo: number }) => {
+    (wordLog: {
+      headword: string
+      timeStart: string
+      timeEnd: string
+      countInput: number
+      countCorrect: number
+      countTypo: number
+    }) => {
       const props: WordLogUpload = {
         ...wordLog,
         order: typingState.chapterData.index + 1,
@@ -136,7 +143,8 @@ export function useMixPanelWordLogUploader(typingState: TypingState) {
         enabledPhotonicsSymbol: phoneticConfig.isOpen,
         enabledSingleWordLoop: typingState.isLoopSingleWord,
         pronunciationAuto: pronunciationConfig.isOpen,
-        pronunciationOption: pronunciationConfig.isOpen === false ? 'none' : pronunciationConfig.type,
+        pronunciationOption:
+          pronunciationConfig.isOpen === false ? 'none' : pronunciationConfig.type,
       }
       mixpanel.track('Word', props)
     },

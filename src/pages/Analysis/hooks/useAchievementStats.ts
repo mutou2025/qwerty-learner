@@ -1,7 +1,7 @@
+import type { UserStats } from '../components/Achievements'
 import { db } from '@/utils/db'
 import dayjs from 'dayjs'
 import { useEffect, useState } from 'react'
-import type { UserStats } from '../components/Achievements'
 
 export function useAchievementStats(): UserStats {
   const [stats, setStats] = useState<UserStats>({
@@ -31,7 +31,10 @@ export function useAchievementStats(): UserStats {
         const totalWords = uniqueWords.size
 
         // 按日期分组
-        const dateMap = new Map<string, { words: number; time: number; wrongCount: number; totalChars: number }>()
+        const dateMap = new Map<
+          string,
+          { words: number; time: number; wrongCount: number; totalChars: number }
+        >()
         records.forEach((record) => {
           const date = dayjs(record.timeStamp * 1000).format('YYYY-MM-DD')
           const existing = dateMap.get(date) || { words: 0, time: 0, wrongCount: 0, totalChars: 0 }

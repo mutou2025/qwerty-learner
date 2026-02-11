@@ -1,7 +1,6 @@
 /**
  * 错题本设置弹窗
  */
-
 import * as Dialog from '@radix-ui/react-dialog'
 import { useState } from 'react'
 import IconX from '~icons/tabler/x'
@@ -24,7 +23,12 @@ interface SettingsModalProps {
   onSettingsChange: (settings: ErrorBookSettings) => void
 }
 
-export default function SettingsModal({ open, onOpenChange, settings, onSettingsChange }: SettingsModalProps) {
+export default function SettingsModal({
+  open,
+  onOpenChange,
+  settings,
+  onSettingsChange,
+}: SettingsModalProps) {
   const [localSettings, setLocalSettings] = useState<ErrorBookSettings>(settings)
 
   const handleSave = () => {
@@ -38,14 +42,18 @@ export default function SettingsModal({ open, onOpenChange, settings, onSettings
         <Dialog.Overlay className="fixed inset-0 z-40 bg-black/50" />
         <Dialog.Content className="fixed left-1/2 top-1/2 z-50 w-full max-w-md -translate-x-1/2 -translate-y-1/2 rounded-xl bg-white p-6 shadow-xl dark:bg-gray-800">
           <div className="mb-4 flex items-center justify-between">
-            <Dialog.Title className="text-xl font-bold text-gray-800 dark:text-white">错题本设置</Dialog.Title>
+            <Dialog.Title className="text-xl font-bold text-gray-800 dark:text-white">
+              错题本设置
+            </Dialog.Title>
             <Dialog.Close asChild>
               <button className="text-gray-400 hover:text-gray-600 dark:hover:text-gray-300">
                 <IconX className="h-5 w-5" />
               </button>
             </Dialog.Close>
           </div>
-          <p className="mb-6 text-sm text-gray-500 dark:text-gray-400">统一管理复习/排序/已掌握条件</p>
+          <p className="mb-6 text-sm text-gray-500 dark:text-gray-400">
+            统一管理复习/排序/已掌握条件
+          </p>
 
           {/* 复习模式 */}
           <div className="mb-6">
@@ -130,7 +138,12 @@ export default function SettingsModal({ open, onOpenChange, settings, onSettings
                 <span className="text-sm text-gray-500">错误次数排序</span>
                 <select
                   value={localSettings.errorCountOrder}
-                  onChange={(e) => setLocalSettings({ ...localSettings, errorCountOrder: e.target.value as ErrorCountOrder })}
+                  onChange={(e) =>
+                    setLocalSettings({
+                      ...localSettings,
+                      errorCountOrder: e.target.value as ErrorCountOrder,
+                    })
+                  }
                   className="rounded-lg border border-gray-300 bg-white px-3 py-1.5 text-sm dark:border-gray-600 dark:bg-gray-700 dark:text-white"
                 >
                   <option value="asc">从少到多</option>
@@ -143,17 +156,23 @@ export default function SettingsModal({ open, onOpenChange, settings, onSettings
           {/* 已掌握阈值 */}
           <div className="mb-6">
             <h3 className="mb-2 font-medium text-gray-800 dark:text-white">已掌握阈值</h3>
-            <p className="mb-3 text-sm text-gray-500 dark:text-gray-400">正确输入次数达到该值后视为已掌握</p>
+            <p className="mb-3 text-sm text-gray-500 dark:text-gray-400">
+              正确输入次数达到该值后视为已掌握
+            </p>
             <div className="flex items-center gap-4">
               <input
                 type="range"
                 min="1"
                 max="10"
                 value={localSettings.masteryThreshold}
-                onChange={(e) => setLocalSettings({ ...localSettings, masteryThreshold: Number(e.target.value) })}
+                onChange={(e) =>
+                  setLocalSettings({ ...localSettings, masteryThreshold: Number(e.target.value) })
+                }
                 className="h-2 flex-1 cursor-pointer appearance-none rounded-lg bg-gray-200 accent-indigo-500 dark:bg-gray-700"
               />
-              <span className="text-sm text-gray-600 dark:text-gray-400">当前：{localSettings.masteryThreshold} 次</span>
+              <span className="text-sm text-gray-600 dark:text-gray-400">
+                当前：{localSettings.masteryThreshold} 次
+              </span>
             </div>
           </div>
 

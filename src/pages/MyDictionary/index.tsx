@@ -1,12 +1,12 @@
-import Layout from '@/components/Layout'
+import DictionaryList from './components/DictionaryList'
+import UploadDialog from './components/UploadDialog'
+import type { UserDictionary } from './types'
 import Header from '@/components/Header'
+import Layout from '@/components/Layout'
 import { useCallback, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import type { UserDictionary } from './types'
-import UploadDialog from './components/UploadDialog'
-import DictionaryList from './components/DictionaryList'
-import IconPlus from '~icons/tabler/plus'
 import IconBooks from '~icons/tabler/books'
+import IconPlus from '~icons/tabler/plus'
 
 // 本地存储 key
 const STORAGE_KEY = 'userDictionaries'
@@ -115,7 +115,11 @@ export default function MyDictionary() {
       </div>
 
       {/* 上传对话框 */}
-      <UploadDialog isOpen={isUploadOpen} onClose={() => setIsUploadOpen(false)} onSave={handleAddDictionary} />
+      <UploadDialog
+        isOpen={isUploadOpen}
+        onClose={() => setIsUploadOpen(false)}
+        onSave={handleAddDictionary}
+      />
     </Layout>
   )
 }

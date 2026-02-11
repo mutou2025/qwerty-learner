@@ -1,11 +1,11 @@
-import { Dialog, Transition } from '@headlessui/react'
-import { Fragment, useCallback, useRef, useState } from 'react'
-import Papa from 'papaparse'
 import type { CSVRow, FieldMapping, UserDictionary } from '../types'
-import type { Word } from '@/typings'
 import FieldMapper from './FieldMapper'
-import IconX from '~icons/tabler/x'
+import type { Word } from '@/typings'
+import { Dialog, Transition } from '@headlessui/react'
+import Papa from 'papaparse'
+import { Fragment, useCallback, useRef, useState } from 'react'
 import IconUpload from '~icons/tabler/upload'
+import IconX from '~icons/tabler/x'
 
 interface UploadDialogProps {
   isOpen: boolean
@@ -95,7 +95,10 @@ export default function UploadDialog({ isOpen, onClose, onSave }: UploadDialogPr
         if (!word || !trans) return null
 
         // 处理���译，可能是多个翻译用分号分隔
-        const transArray = trans.split(/[;；]/).map((t) => t.trim()).filter(Boolean)
+        const transArray = trans
+          .split(/[;；]/)
+          .map((t) => t.trim())
+          .filter(Boolean)
 
         return {
           name: word,
@@ -272,17 +275,29 @@ export default function UploadDialog({ isOpen, onClose, onSave }: UploadDialogPr
                         <table className="w-full text-sm">
                           <thead className="bg-gray-50 dark:bg-gray-700">
                             <tr>
-                              <th className="px-3 py-2 text-left font-medium text-gray-600 dark:text-gray-300">单词</th>
-                              <th className="px-3 py-2 text-left font-medium text-gray-600 dark:text-gray-300">释义</th>
-                              <th className="px-3 py-2 text-left font-medium text-gray-600 dark:text-gray-300">音标</th>
+                              <th className="px-3 py-2 text-left font-medium text-gray-600 dark:text-gray-300">
+                                单词
+                              </th>
+                              <th className="px-3 py-2 text-left font-medium text-gray-600 dark:text-gray-300">
+                                释义
+                              </th>
+                              <th className="px-3 py-2 text-left font-medium text-gray-600 dark:text-gray-300">
+                                音标
+                              </th>
                             </tr>
                           </thead>
                           <tbody className="divide-y divide-gray-200 dark:divide-gray-600">
                             {previewWords.map((word, index) => (
                               <tr key={index}>
-                                <td className="px-3 py-2 text-gray-800 dark:text-gray-200">{word.name}</td>
-                                <td className="px-3 py-2 text-gray-600 dark:text-gray-400">{word.trans.join('; ')}</td>
-                                <td className="px-3 py-2 text-gray-500 dark:text-gray-500">{word.usphone || '-'}</td>
+                                <td className="px-3 py-2 text-gray-800 dark:text-gray-200">
+                                  {word.name}
+                                </td>
+                                <td className="px-3 py-2 text-gray-600 dark:text-gray-400">
+                                  {word.trans.join('; ')}
+                                </td>
+                                <td className="px-3 py-2 text-gray-500 dark:text-gray-500">
+                                  {word.usphone || '-'}
+                                </td>
                               </tr>
                             ))}
                           </tbody>

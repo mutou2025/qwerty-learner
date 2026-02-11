@@ -27,7 +27,9 @@ async function getRevisionWordCount(dict: string): Promise<number> {
     .toArray()
     .then((wordRecords) => {
       const res = new Map()
-      const reducedRecords = wordRecords.filter((item) => !res.has(item['word'] + item['dict']) && res.set(item['word'] + item['dict'], 1))
+      const reducedRecords = wordRecords.filter(
+        (item) => !res.has(item['word'] + item['dict']) && res.set(item['word'] + item['dict'], 1),
+      )
       return reducedRecords.length
     })
   return wordCount

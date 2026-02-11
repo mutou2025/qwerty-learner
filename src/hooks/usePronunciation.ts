@@ -10,7 +10,10 @@ import useSound from 'use-sound'
 import type { HookOptions } from 'use-sound/dist/types'
 
 const pronunciationApi = 'https://dict.youdao.com/dictvoice?audio='
-export function generateWordSoundSrc(word: string, pronunciation: Exclude<PronunciationType, false>): string {
+export function generateWordSoundSrc(
+  word: string,
+  pronunciation: Exclude<PronunciationType, false>,
+): string {
   switch (pronunciation) {
     case 'uk':
       return `${pronunciationApi}${word}&type=1`
@@ -36,7 +39,10 @@ export function generateWordSoundSrc(word: string, pronunciation: Exclude<Pronun
 
 export default function usePronunciationSound(word: string, isLoop?: boolean) {
   const pronunciationConfig = useAtomValue(pronunciationConfigAtom)
-  const loop = useMemo(() => (typeof isLoop === 'boolean' ? isLoop : pronunciationConfig.isLoop), [isLoop, pronunciationConfig.isLoop])
+  const loop = useMemo(
+    () => (typeof isLoop === 'boolean' ? isLoop : pronunciationConfig.isLoop),
+    [isLoop, pronunciationConfig.isLoop],
+  )
   const [isPlaying, setIsPlaying] = useState(false)
 
   const [play, { stop, sound }] = useSound(generateWordSoundSrc(word, pronunciationConfig.type), {
@@ -82,7 +88,9 @@ export function usePrefetchPronunciationSound(word: string | undefined) {
     if (soundUrl === '') return
 
     const head = document.head
-    const isPrefetch = (Array.from(head.querySelectorAll('link[href]')) as HTMLLinkElement[]).some((el) => el.href === soundUrl)
+    const isPrefetch = (Array.from(head.querySelectorAll('link[href]')) as HTMLLinkElement[]).some(
+      (el) => el.href === soundUrl,
+    )
 
     if (!isPrefetch) {
       const audio = new Audio()

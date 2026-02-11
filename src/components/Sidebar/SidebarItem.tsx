@@ -1,5 +1,5 @@
-import { NavLink } from 'react-router-dom'
 import type { ReactNode } from 'react'
+import { NavLink } from 'react-router-dom'
 
 interface SidebarItemProps {
   to: string
@@ -20,9 +20,7 @@ export default function SidebarItem({ to, icon, label }: SidebarItemProps) {
         }`
       }
     >
-      <span className="flex h-5 w-5 shrink-0 items-center justify-center text-xl">
-        {icon}
-      </span>
+      <span className="flex h-5 w-5 shrink-0 items-center justify-center text-xl">{icon}</span>
       <span className="text-sm font-medium">{label}</span>
     </NavLink>
   )
