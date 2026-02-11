@@ -18,6 +18,7 @@ import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
 
 const AnalysisPage = lazy(() => import('./pages/Analysis'))
 const GalleryPage = lazy(() => import('./pages/Gallery-N'))
+// const GalleryPage = lazy(() => import('./pages/Gallery'))
 const DictationPage = lazy(() => import('./pages/Dictation'))
 const SpeakingPage = lazy(() => import('./pages/Speaking'))
 const MyDictionaryPage = lazy(() => import('./pages/MyDictionary'))
@@ -34,22 +35,41 @@ if (process.env.NODE_ENV === 'production') {
 function Root() {
   const darkMode = useAtomValue(isOpenDarkModeAtom)
   useEffect(() => {
-    darkMode ? document.documentElement.classList.add('dark') : document.documentElement.classList.remove('dark')
+    darkMode
+      ? document.documentElement.classList.add('dark')
+      : document.documentElement.classList.remove('dark')
   }, [darkMode])
 
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 600)
 
+  function debounce<T extends (...args: any[]) => void>(fn: T, wait = 150) {
+    let t: any
+    return (...args: Parameters<T>) => {
+      clearTimeout(t)
+      t = setTimeout(() => fn(...args), wait)
+    }
+  }
+
   useEffect(() => {
+    const onResize = debounce(() => {
+      handleResize()
+    }, 250)
     const handleResize = () => {
       const isMobile = window.innerWidth <= 600
-      if (!isMobile) {
-        window.location.href = '/'
-      }
+      console.log('窗口', window, window.innerWidth)
+      // if (!isMobile) {
+      //   window.location.href = '/'
+      // }
       setIsMobile(isMobile)
     }
-
-    window.addEventListener('resize', handleResize)
-    return () => window.removeEventListener('resize', handleResize)
+    window.addEventListener('resize', onResize)
+    return () => {
+      window.removeEventListener('resize', onResize)
+    }
+    // window.addEventListener('resize', handleResize)
+    // return () => {
+    //   window.removeEventListener('resize', handleResize)
+    // }
   }, [])
 
   return (

@@ -7,7 +7,8 @@ import { useAtom } from 'jotai'
 import type React from 'react'
 import { Fragment, useEffect, useState } from 'react'
 import IconStar from '~icons/heroicons/star-solid'
-import IconX from '~icons/tabler/x'
+// import IconX from '~icons/tabler/x'
+import IconX from '~icons/lucide/x'
 
 const EnhancedPromotionModal: React.FC = () => {
   const [hasSeenPromotion, setHasSeenPromotion] = useAtom(hasSeenEnhancedPromotionAtom)
@@ -96,7 +97,9 @@ const EnhancedPromotionModal: React.FC = () => {
                       体验 Echo Learner
                     </h3>
 
-                    <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">解锁更强大的学习体验 ✨</p>
+                    <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">
+                      解锁更强大的学习体验 ✨
+                    </p>
                   </div>
 
                   {/* Main content */}
@@ -109,12 +112,15 @@ const EnhancedPromotionModal: React.FC = () => {
                     </p>
 
                     <div className="rounded-lg bg-white p-4 shadow-sm dark:bg-gray-800">
-                      <h4 className="mb-3 font-semibold text-gray-900 dark:text-white">🚀 专业功能</h4>
+                      <h4 className="mb-3 font-semibold text-gray-900 dark:text-white">
+                        🚀 专业功能
+                      </h4>
                       <ul className="space-y-2.5">
                         <li className="flex items-start">
                           <span className="mr-2 mt-0.5 text-blue-500">•</span>
                           <span>
-                            <strong>AI 智能词库</strong> - 一键上传，智能生成释义和词性，打造专属自定义词库
+                            <strong>AI 智能词库</strong> -
+                            一键上传，智能生成释义和词性，打造专属自定义词库
                           </span>
                         </li>
                         <li className="flex items-start">
@@ -140,7 +146,8 @@ const EnhancedPromotionModal: React.FC = () => {
 
                     <div className="rounded-lg bg-amber-50 p-3 text-xs text-amber-800 dark:bg-amber-900/20 dark:text-amber-200">
                       <p>
-                        <strong>说明：</strong>Echo Learner 基于开源项目进行二次开发并持续维护，提供稳定、可持续迭代的学习体验。
+                        <strong>说明：</strong>Echo Learner
+                        基于开源项目进行二次开发并持续维护，提供稳定、可持续迭代的学习体验。
                       </p>
                     </div>
                   </div>

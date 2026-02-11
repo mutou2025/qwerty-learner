@@ -6,14 +6,16 @@ import { recordOpenInfoPanelAction } from '@/utils'
 import { useAtom } from 'jotai'
 import type React from 'react'
 import { useCallback } from 'react'
+import IconCoffee from '~icons/lucide/coffee'
+// import IconWechat from '~icons/tabler/brand-wechat'
+// import IconCoffee from '~icons/tabler/coffee'
+import IconWechat from '~icons/lucide/message-circle'
 import IconMail from '~icons/material-symbols/mail'
 import IconCoffee2 from '~icons/mdi/coffee'
 import IconXiaoHongShu from '~icons/my-icons/xiaohongshu'
 import RiLinksLine from '~icons/ri/links-line'
 import IconGithub from '~icons/simple-icons/github'
 import IconWechat2 from '~icons/simple-icons/wechat'
-import IconWechat from '~icons/tabler/brand-wechat'
-import IconCoffee from '~icons/tabler/coffee'
 
 const Footer: React.FC = () => {
   const [infoPanelState, setInfoPanelState] = useAtom(infoPanelStateAtom)
@@ -54,7 +56,9 @@ const Footer: React.FC = () => {
         iconClassName="text-green-500 bg-green-100 dark:text-green-300 dark:bg-green-500"
         onClose={() => handleCloseInfoPanel('community')}
       >
-        <p className="text-sm text-gray-500 dark:text-gray-400">您可以与我们分享您的使用体验和建议，帮助我们改进产品，再次感谢您的支持和关注!</p>
+        <p className="text-sm text-gray-500 dark:text-gray-400">
+          您可以与我们分享您的使用体验和建议，帮助我们改进产品，再次感谢您的支持和关注!
+        </p>
         <br />
         <img className="ml-1 w-2/6 " src="/weChat-group.png" alt="weChat-group" />
         <br />
@@ -68,16 +72,24 @@ const Footer: React.FC = () => {
         iconClassName="text-red-500 bg-red-100 dark:text-red-600 dark:bg-red-500"
         onClose={() => handleCloseInfoPanel('redBook')}
       >
-        <p className="text-sm text-gray-500 dark:text-gray-400">您可以与我们分享您的使用体验和建议，帮助我们改进产品，再次感谢您的支持和关注!</p>
+        <p className="text-sm text-gray-500 dark:text-gray-400">
+          您可以与我们分享您的使用体验和建议，帮助我们改进产品，再次感谢您的支持和关注!
+        </p>
         <br />
         <img className="ml-1 w-5/12 " src="/weChat-group.png" alt="weChat-group" />
         <p className="text-sm text-gray-500 dark:text-gray-400">Tips: 请扫码添加微信</p>
         <br />
       </InfoPanel>
 
-      <footer className="mb-1 mt-4 flex w-full items-center justify-center gap-2.5 text-sm ease-in" onClick={(e) => e.currentTarget.blur()}>
+      <footer
+        className="mb-1 mt-4 flex w-full items-center justify-center gap-2.5 text-sm ease-in"
+        onClick={(e) => e.currentTarget.blur()}
+      >
         <span aria-label="GitHub 图标">
-          <IconGithub fontSize={15} className="text-gray-500 hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-100" />
+          <IconGithub
+            fontSize={15}
+            className="text-gray-500 hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-100"
+          />
         </span>
 
         <button
@@ -89,7 +101,10 @@ const Footer: React.FC = () => {
           }}
           aria-label="加入我们的小红书社群"
         >
-          <IconXiaoHongShu fontSize={14} className="text-gray-500 hover:text-red-500 dark:text-gray-400 dark:hover:text-red-500" />
+          <IconXiaoHongShu
+            fontSize={14}
+            className="text-gray-500 hover:text-red-500 dark:text-gray-400 dark:hover:text-red-500"
+          />
         </button>
 
         <button
@@ -101,7 +116,10 @@ const Footer: React.FC = () => {
           }}
           aria-label="加入我们的微信用户群"
         >
-          <IconWechat2 fontSize={16} className="text-gray-500 hover:text-green-500 dark:text-gray-400 dark:hover:text-green-500" />
+          <IconWechat2
+            fontSize={16}
+            className="text-gray-500 hover:text-green-500 dark:text-gray-400 dark:hover:text-green-500"
+          />
         </button>
 
         <button
@@ -113,14 +131,23 @@ const Footer: React.FC = () => {
           }}
           aria-label="考虑捐赠我们"
         >
-          <IconCoffee2 fontSize={16} className="text-gray-500 hover:text-amber-500 dark:text-gray-400 dark:hover:text-amber-500" />
+          <IconCoffee2
+            fontSize={16}
+            className="text-gray-500 hover:text-amber-500 dark:text-gray-400 dark:hover:text-amber-500"
+          />
         </button>
 
         <span aria-label="邮箱图标">
-          <IconMail fontSize={16} className="text-gray-500 hover:text-indigo-400 dark:text-gray-400 dark:hover:text-indigo-400" />
+          <IconMail
+            fontSize={16}
+            className="text-gray-500 hover:text-indigo-400 dark:text-gray-400 dark:hover:text-indigo-400"
+          />
         </span>
         <span aria-label="友链图标">
-          <RiLinksLine fontSize={14} className="text-gray-500 hover:text-indigo-400 dark:text-gray-400 dark:hover:text-indigo-400" />
+          <RiLinksLine
+            fontSize={14}
+            className="text-gray-500 hover:text-indigo-400 dark:text-gray-400 dark:hover:text-indigo-400"
+          />
         </span>
 
         <button

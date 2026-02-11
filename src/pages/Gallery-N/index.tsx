@@ -14,14 +14,15 @@ import IconX from '~icons/tabler/x'
 export default function GalleryPage() {
   const navigate = useNavigate()
   const [searchParams] = useSearchParams()
-  
+
   // 获取返回路径，默认为首页
   const returnTo = searchParams.get('returnTo') || '/'
 
   const { groupedByCategoryAndTag } = useMemo(() => {
     const groupedByCategory = Object.entries(groupBy(dictionaries, (dict) => dict.category))
     const groupedByCategoryAndTag = groupedByCategory.map(
-      ([category, dicts]) => [category, groupByDictTags(dicts)] as [string, Record<string, Dictionary[]>],
+      ([category, dicts]) =>
+        [category, groupByDictTags(dicts)] as [string, Record<string, Dictionary[]>],
     )
 
     return {
@@ -38,7 +39,10 @@ export default function GalleryPage() {
   return (
     <Layout>
       <div className="relative mb-auto mt-auto flex w-full flex-1 flex-col overflow-y-auto pl-20">
-        <IconX className="absolute right-20 top-10 mr-2 h-7 w-7 cursor-pointer text-gray-400" onClick={onBack} />
+        <IconX
+          className="absolute right-20 top-10 mr-2 h-7 w-7 cursor-pointer text-gray-400"
+          onClick={onBack}
+        />
         <div className="mt-20 flex w-full flex-1 flex-col items-center justify-center overflow-y-auto">
           <div className="flex h-full flex-col overflow-y-auto">
             <div className="flex h-20 w-full items-center justify-between pb-6 pr-20">
@@ -61,7 +65,10 @@ export default function GalleryPage() {
                   </p>
                 </div>
               </ScrollArea.Viewport>
-              <ScrollArea.Scrollbar className="flex touch-none select-none bg-transparent " orientation="vertical"></ScrollArea.Scrollbar>
+              <ScrollArea.Scrollbar
+                className="flex touch-none select-none bg-transparent "
+                orientation="vertical"
+              ></ScrollArea.Scrollbar>
             </ScrollArea.Root>
             {/* todo: 增加导航 */}
             {/* <div className="mt-20 h-40 w-40 text-center ">
