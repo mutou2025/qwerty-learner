@@ -8,7 +8,8 @@ body {
     'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #faf9ff;
+  background-color: #faf9f5;
+  color: #141413;
   @apply transition-colors duration-300;
   user-select: none;
 }
@@ -28,12 +29,11 @@ body,
 }
 
 .my-card {
-  box-shadow: 0px 100px 80px rgba(50, 46, 129, 0.07),
-    0px 41.7776px 33.4221px rgba(50, 46, 129, 0.0503198),
-    0px 22.3363px 17.869px rgba(50, 46, 129, 0.0417275),
-    0px 12.5216px 10.0172px rgba(50, 46, 129, 0.035),
-    0px 6.6501px 5.32008px rgba(50, 46, 129, 0.0282725),
-    0px 2.76726px 2.21381px rgba(50, 46, 129, 0.0196802);
+  box-shadow: 0px 100px 80px rgba(20, 20, 19, 0.07), 0px 41.7776px 33.4221px rgba(20, 20, 19, 0.05),
+    0px 22.3363px 17.869px rgba(20, 20, 19, 0.0417275),
+    0px 12.5216px 10.0172px rgba(20, 20, 19, 0.035),
+    0px 6.6501px 5.32008px rgba(20, 20, 19, 0.0282725),
+    0px 2.76726px 2.21381px rgba(20, 20, 19, 0.0196802);
 }
 
 /* Well, TailwindCSS does’t have `text-shadow` classes. */

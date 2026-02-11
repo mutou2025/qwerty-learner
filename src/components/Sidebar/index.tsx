@@ -1,5 +1,6 @@
 import SidebarItem from './SidebarItem'
 import logo from '@/assets/logo.svg'
+import { useLayoutContext } from '@/components/Layout/context'
 import { NavLink } from 'react-router-dom'
 // import IconArticle from '~icons/tabler/article'
 // import IconBook from '~icons/tabler/book'
@@ -29,87 +30,80 @@ import IconMicrophone from '~icons/lucide/mic'
 // 个人资料
 import IconUser from '~icons/lucide/user'
 
-export const brandStyle: React.CSSProperties = {
-  display: 'flex',
-  alignItems: 'center',
-  gap: 10,
-  padding: '10px 10px',
-  borderRadius: 14,
-}
-
-export const brandIconStyle: React.CSSProperties = {
-  width: 40,
-  height: 40,
-  padding: '4px 0',
-  borderRadius: 12,
-  display: 'grid',
-  placeItems: 'center',
-  color: '#5b6cff',
-
-  // background: 'rgba(91, 108, 255, 0.10)',
-  // border: '1px solid rgba(91, 108, 255, 0.14)',
-}
-
-export const brandTextStyle: React.CSSProperties = {
-  display: 'flex',
-  flexDirection: 'column',
-  lineHeight: 1.1,
-}
-
-export const brandTitleStyle: React.CSSProperties = {
-  fontSize: 15,
-  fontWeight: 700,
-  letterSpacing: '0.2px',
-  color: 'rgba(25, 28, 35, 0.92)',
-}
-
-export const brandSubStyle: React.CSSProperties = {
-  marginTop: 4,
-  fontSize: 12,
-  color: 'rgba(25, 28, 35, 0.5)',
-}
-
 export default function Sidebar() {
-  return (
-    <aside className="flex h-full w-60 flex-col border-r border-gray-100 bg-white dark:border-gray-800 dark:bg-gray-900">
-      {/* Logo */}
-      <div className="px-5 py-6">
-        <NavLink to="/" className="flex items-center gap-2.5">
-          {/* <span className="text-xl font-bold tracking-tight text-gray-800 dark:text-white">
-            ECHO
-          </span>
-          <span className="text-sm text-gray-500 dark:text-gray-400">Learner</span> */}
+  const layoutContext = useLayoutContext()
+  const collapsed = layoutContext?.isSidebarCollapsed ?? false
 
-          <div style={brandIconStyle} aria-hidden>
+  return (
+    <aside
+      className={`flex h-full flex-col border-r border-gray-200 bg-white transition-all duration-300 dark:border-gray-800 dark:bg-gray-900 ${
+        collapsed ? 'w-[82px]' : 'w-64'
+      }`}
+    >
+      {/* Logo */}
+      <div className={`py-6 ${collapsed ? 'px-3' : 'px-4'}`}>
+        <NavLink
+          to="/"
+          className={`group flex rounded-2xl border border-gray-200 bg-gradient-to-br from-white to-gray-50 shadow-sm transition-colors hover:border-indigo-200 dark:border-gray-700 dark:from-gray-800 dark:to-gray-800 ${
+            collapsed ? 'justify-center p-3' : 'items-center gap-3 p-3'
+          }`}
+          title={collapsed ? 'Echo Learner 精听实验室' : undefined}
+        >
+          <div
+            className={`grid place-items-center rounded-xl bg-white/80 ring-1 ring-gray-200 dark:bg-gray-800 dark:ring-gray-700 ${
+              collapsed ? 'h-10 w-10 p-1.5' : 'h-11 w-11 p-2'
+            }`}
+            aria-hidden
+          >
             <img
               src={logo}
               style={{ width: '100%', height: '100%', display: 'block' }}
               alt="Echo Learner Logo"
             />
-            {/* <Icon icon="lucide:audio-lines" width={22} height={22} /> */}
           </div>
 
-          <div style={brandTextStyle}>
-            {/* 中文名：建议用“回声学苑 / 回声学堂 / 回声口语”其一 */}
-            <div style={brandTitleStyle}>ECHO&nbsp;Learner</div>
-            <div style={brandSubStyle}>
-              <span className="font-bold text-gray-500 dark:text-gray-400">精听实验室</span>{' '}
+          {!collapsed && (
+            <div className="min-w-0 leading-tight">
+              <div className="truncate text-[15px] font-semibold tracking-[0.15px] text-gray-900 dark:text-gray-100">
+                ECHO Learner
+              </div>
+              <div className="mt-1 text-[12px] font-medium text-gray-500 dark:text-gray-400">
+                精听实验室
+              </div>
+              <div className="mt-1.5 text-[12px] font-semibold tracking-[0.3px] text-indigo-600 dark:text-indigo-300">
+                听见·模仿·成为
+              </div>
             </div>
-          </div>
+          )}
         </NavLink>
       </div>
 
       {/* 菜单列表 */}
-      <nav className="flex-1 space-y-1 px-3">
-        <SidebarItem to="/" icon={<IconHome />} label="主页" />
-        <SidebarItem to="/gallery" icon={<IconChartBar />} label="词库" />
-        <SidebarItem to="/analysis" icon={<IconChartLine />} label="学习统计" />
-        <SidebarItem to="/error-book" icon={<IconBook />} label="错题本" />
-        <SidebarItem to="/dictation" icon={<IconArticle />} label="听写" />
-        <SidebarItem to="/speaking" icon={<IconMicrophone />} label="口语跟读" />
-        <SidebarItem to="/my-dictionary" icon={<IconBooks />} label="个人词库" />
-        <SidebarItem to="/review" icon={<IconCalendar />} label="练习计划" />
-        <SidebarItem to="/profile" icon={<IconUser />} label="个人资料" />
+      <nav className={`flex-1 space-y-1 ${collapsed ? 'px-2' : 'px-3'}`}>
+        <SidebarItem to="/" icon={<IconHome />} label="主页" collapsed={collapsed} />
+        <SidebarItem to="/gallery" icon={<IconChartBar />} label="词库" collapsed={collapsed} />
+        <SidebarItem
+          to="/analysis"
+          icon={<IconChartLine />}
+          label="学习统计"
+          collapsed={collapsed}
+        />
+        <SidebarItem to="/error-book" icon={<IconBook />} label="错题本" collapsed={collapsed} />
+        <SidebarItem to="/dictation" icon={<IconArticle />} label="听写" collapsed={collapsed} />
+        <SidebarItem
+          to="/speaking"
+          icon={<IconMicrophone />}
+          label="口语跟读"
+          collapsed={collapsed}
+        />
+        <SidebarItem
+          to="/my-dictionary"
+          icon={<IconBooks />}
+          label="个人词库"
+          collapsed={collapsed}
+        />
+        <SidebarItem to="/review" icon={<IconCalendar />} label="练习计划" collapsed={collapsed} />
+        <SidebarItem to="/profile" icon={<IconUser />} label="个人资料" collapsed={collapsed} />
       </nav>
     </aside>
   )
